@@ -1,5 +1,5 @@
 return {
-    {
+    {"catppuccin/nvim", name = "catppuccin", priority = 1000}, {
         -- All the lua functions I don't want to write twice.
         "nvim-lua/plenary.nvim"
     }, {
@@ -7,8 +7,6 @@ return {
         config = function(_, opts)
             require("nvim-web-devicons").setup(opts)
         end
-    }, { -- Base 16 colorschemes
-        "RRethy/nvim-base16"
     }, {
         -- Nordic colorscheme
         'AlexvZyl/nordic.nvim',

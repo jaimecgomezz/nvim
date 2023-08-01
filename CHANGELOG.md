@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.2.0] - 2023-08-01
+
+### Changed
+
+- Use native catppuccin theme
+
 ## [1.1.1] - 2023-08-01
 
 ### Fixed
