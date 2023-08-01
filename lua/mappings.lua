@@ -24,6 +24,7 @@ return function(_)
         {desc = "Move up", expr = true})
     map("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
         {desc = "Move up", expr = true})
+
     map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
         {desc = "Move down", expr = true})
     map("v", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
@@ -87,17 +88,9 @@ return function(_)
     map("n", "<leader>bd", "<cmd>bdelete<cr>", {desc = "Delete buffer"})
     map("n", "<leader>bD", "<cmd>bdelete!<cr>", {desc = "Delete buffer!"})
     map("n", "<leader>bq", function()
-        vim.cmd([[bufdo bwipeout]])
+        local ok, _ = pcall(vim.cmd, [[bufdo bd]])
 
-        local bufnrs = vim.tbl_filter(function(b)
-            if 1 ~= vim.fn.buflisted(b) then
-                return false
-            else
-                return true
-            end
-        end, vim.api.nvim_list_bufs())
-
-        if #bufnrs ~= 0 then vim.cmd([[Startify]]) end
+        if ok then vim.cmd([[Startify]]) end
     end, {desc = "Quit buffer"})
     map("n", "<leader>bw", "<cmd>echo expand('%:p')<cr>",
         {desc = "Where buffer?"})
