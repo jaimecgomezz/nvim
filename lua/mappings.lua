@@ -86,7 +86,19 @@ return function(_)
     map("n", "<leader>bs", "<cmd>silent w<cr>", {desc = "Sabe buffer"})
     map("n", "<leader>bd", "<cmd>bdelete<cr>", {desc = "Delete buffer"})
     map("n", "<leader>bD", "<cmd>bdelete!<cr>", {desc = "Delete buffer!"})
-    map("n", "<leader>bq", "<cmd>bufdo bwipeout<cr>", {desc = "Quit buffer"})
+    map("n", "<leader>bq", function()
+        vim.cmd([[bufdo bwipeout]])
+
+        local bufnrs = vim.tbl_filter(function(b)
+            if 1 ~= vim.fn.buflisted(b) then
+                return false
+            else
+                return true
+            end
+        end, vim.api.nvim_list_bufs())
+
+        if #bufnrs ~= 0 then vim.cmd([[Startify]]) end
+    end, {desc = "Quit buffer"})
     map("n", "<leader>bw", "<cmd>echo expand('%:p')<cr>",
         {desc = "Where buffer?"})
 
