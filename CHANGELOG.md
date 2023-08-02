@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.4.1] - 2023-08-02
+
+### Removed
+
+- Delete custom statusline file
+
 ## [1.4.0] - 2023-08-02
 
 ### Changed
