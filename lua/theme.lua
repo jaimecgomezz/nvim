@@ -9,5 +9,4 @@ return function(config)
 
     vim.cmd.colorscheme("catppuccin")
     vim.g.transparency = config.transparency
-    vim.opt.statusline = require("statusline").run()
 end

@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.4.0] - 2023-08-02
+
+### Changed
+
+- Use lualine
+
 ## [1.3.0] - 2023-08-02
 
 ### Added

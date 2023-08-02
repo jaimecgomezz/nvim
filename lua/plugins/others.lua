@@ -1,5 +1,13 @@
 return {
-    {"catppuccin/nvim", name = "catppuccin", priority = 1000}, {
+    { -- Theme
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000
+    }, { -- Statusline
+        'nvim-lualine/lualine.nvim',
+        dependencies = {'nvim-tree/nvim-web-devicons'},
+        config = function() require('lualine').setup() end
+    }, {
         -- All the lua functions I don't want to write twice.
         "nvim-lua/plenary.nvim"
     }, {
