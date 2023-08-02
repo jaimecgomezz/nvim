@@ -61,5 +61,18 @@ return {
                 require("colorizer").attach_to_buffer(0)
             end, 0)
         end
+    }, { -- Rust support
+        'rust-lang/rust.vim',
+        ft = 'rust',
+        init = function() vim.g.rustfmt_autosave = 1 end
+    }, {
+        'simrat39/rust-tools.nvim',
+        ft = 'rust',
+        dependencies = 'neovim/nvim-lspconfig',
+        config = function()
+            require('rust-tools').setup({
+                server = require("plugins.lspconfig").M
+            })
+        end
     }
 }

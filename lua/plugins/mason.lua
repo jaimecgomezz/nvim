@@ -6,7 +6,8 @@ return {
     },
     opts = {
         ensure_installed = {
-            "lua-language-server", "ruff", "pyright", "mypy", "black", "debugpy"
+            "lua-language-server", "ruff", "pyright", "mypy", "black",
+            "debugpy", "rust-analyzer"
         }, -- not an option from mason.nvim
         PATH = "skip",
         ui = {

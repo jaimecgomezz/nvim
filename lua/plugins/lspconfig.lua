@@ -3,7 +3,6 @@ local M = {}
 vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
 vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
 
--- LSP settings (for overriding per client)
 M.handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = {
@@ -87,11 +86,13 @@ M.settings = {
             maxPreload = 100000,
             preloadFileSize = 10000
         }
-    }
+    },
+    ['rust-analyzer'] = {cargo = {allFeatures = true}}
 }
 
 return {
     "neovim/nvim-lspconfig",
+    M = M,
     config = function()
         local configs = require("lspconfig")
 

@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.3.0] - 2023-08-02
+
+### Added
+
+- Add support for Rust
+
 ## [1.2.0] - 2023-08-01
 
 ### Changed
