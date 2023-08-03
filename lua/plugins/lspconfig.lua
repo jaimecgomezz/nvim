@@ -33,6 +33,7 @@ M.on_attach = function(client, _)
 end
 
 M.capabilities = {
+    offsetEncoding = {"utf-16"},
     textDocument = {
         completion = {
             dynamicRegistration = false,

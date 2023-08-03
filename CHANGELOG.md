@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+## [1.5.1] - 2023-08-02
+
+### Fixed
+
+- Set lsp offsetEncoding to utf-16
+- Prevent indent-blankline to show current context
+
 ## [1.5.0] - 2023-08-02
 
 ### Added
