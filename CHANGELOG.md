@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.5.0] - 2023-08-02
+
+### Added
+
+- Add C/C++ support
+
 ## [1.4.1] - 2023-08-02
 
 ### Removed

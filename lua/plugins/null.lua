@@ -17,7 +17,8 @@ return {
                 formatting.rubocop.with({
                     command = {"bundle", "exec", "rubocop"}
                 }), -- Ruby
-                diagnostics.ruff, diagnostics.mypy, formatting.black -- Python
+                diagnostics.ruff, diagnostics.mypy, formatting.black, -- Python
+                formatting.clang_format
             },
             on_attach = function(client, bufnr)
                 if client.supports_method("textDocument/formatting") then

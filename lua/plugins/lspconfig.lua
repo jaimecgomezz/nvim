@@ -100,5 +100,6 @@ return {
         configs.pyright.setup(M)
         configs.ruff_lsp.setup(M)
         configs.solargraph.setup(M)
+        configs.clangd.setup(M)
     end
 }
