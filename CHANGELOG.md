@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.7.1] - 2023-08-04
+
+### Fixed
+
+- Fix folding on files opened with telescope
+
 ## [1.7.0] - 2023-08-04
 
 ### Changed

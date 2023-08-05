@@ -53,6 +53,7 @@ return function(config)
     opt.formatoptions:append "cro"
 
     -- folding
+    opt.foldenable = false
     opt.foldmethod = "expr"
     opt.foldexpr = "nvim_treesitter#foldexpr()"
 

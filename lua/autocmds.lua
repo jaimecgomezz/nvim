@@ -13,9 +13,8 @@ return function(_)
         callback = function() vim.opt_local.buflisted = false end
     })
 
-    -- Automatically open all folds when a buffer is open
-    vim.api.nvim_create_autocmd({"BufReadPost", "FileReadPost"}, {
-        pattern = "*",
-        callback = function() vim.opt_local.foldlevel = 999 end
-    })
+    -- Fix folding on files opened with telescope
+    -- See: https://github.com/nvim-telescope/telescope.nvim/issues/699
+    vim.api.nvim_create_autocmd({"BufEnter"},
+                                {pattern = {"*"}, command = "normal zx zR"})
 end
