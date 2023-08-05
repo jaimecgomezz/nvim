@@ -102,5 +102,6 @@ return {
         configs.ruff_lsp.setup(M)
         configs.solargraph.setup(M)
         configs.clangd.setup(M)
+        configs.zls.setup(M)
     end
 }

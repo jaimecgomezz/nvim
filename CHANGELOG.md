@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.8.0] - 2023-08-05
+
+### Added
+
+- Add Zig support
+
 ## [1.7.1] - 2023-08-04
 
 ### Fixed

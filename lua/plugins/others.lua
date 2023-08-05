@@ -94,5 +94,7 @@ return {
                 gitsigns = {enabled = true} -- disables git signs
             }
         }
+    }, { -- Zig support
+        'ziglang/zig.vim'
     }
 }

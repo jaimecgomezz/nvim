@@ -7,7 +7,8 @@ return {
     opts = {
         ensure_installed = {
             "lua-language-server", "ruff", "pyright", "mypy", "black",
-            "debugpy", "rust-analyzer", "clangd", "clang-format", "codelldb"
+            "debugpy", "rust-analyzer", "clangd", "clang-format", "codelldb",
+            "zls"
         }, -- not an option from mason.nvim
         PATH = "skip",
         ui = {
