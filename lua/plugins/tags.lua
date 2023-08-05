@@ -5,7 +5,7 @@ return {
             vim.g.tagbar_autoclose = 1
             vim.g.tagbar_width = 80
             vim.g.tagbar_autofocus = 1
-            vim.g.tagbar_compact = 1
+            vim.g.tagbar_compact = 2
             vim.g.tagbar_show_data_type = 1
             vim.g.tagbar_autoshowtag = 1
             vim.g.tagbar_ignore_anonymous = 1

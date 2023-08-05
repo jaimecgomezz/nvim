@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.5.3] - 2023-08-04
+
+### Fixed
+
+- Stylize tagbar
+
 ## [1.5.2] - 2023-08-04
 
 ### Changed
