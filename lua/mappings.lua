@@ -100,10 +100,6 @@ return function(_)
     map("n", "<C-s>", "<c-w><c-v>", {desc = "Split vertical"})
     map("n", "<C-t>", "<c-w><c-s>", {desc = "Split horizontal"})
     -- Switch between windows
-    map("n", "<C-h>", "<C-w>h", {desc = "Window left"})
-    map("n", "<C-l>", "<C-w>l", {desc = "Window right"})
-    map("n", "<C-j>", "<C-w>j", {desc = "Window down"})
-    map("n", "<C-k>", "<C-w>k", {desc = "Window up"})
     map("n", "<C-Left>", "<C-w>h", {desc = "Window left"})
     map("n", "<C-Right>", "<C-w>l", {desc = "Window right"})
     map("n", "<C-Down>", "<C-w>j", {desc = "Window down"})
@@ -165,35 +161,31 @@ return function(_)
 
     -- Telescope
     map("n", "<C-p>", "<cmd> Telescope find_files <CR>", {desc = "Find files"})
-    -- map("n", "<C-l>",
-    --     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({ cwd = vim.fn.expand('%:p:h'), previewer = false })) <CR>",
-    --     {desc = "Find relative files"})
+    map("n", "<C-l>",
+        "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({ cwd = vim.fn.expand('%:p:h'), previewer = false })) <CR>",
+        {desc = "Find relative files"})
     map("n", "<C-space>",
         "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({ sort_mru = true, ignore_current_buffer = true, previewer = false })) <CR>",
         {desc = "Find buffers"})
-    map("n", "<leader>fw", "<cmd> Telescope live_grep <CR>",
+    map("n", "<leader>ff", "<cmd> Telescope live_grep <CR>",
         {desc = "Live grep"})
-    map("n", "<leader>fT", "<cmd> Telescope tags <CR>",
-        {desc = "Find global tags"})
     map("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>",
         {desc = "Find oldfiles"})
-    map("n", "<leader>fb", "<cmd> Telescope filetypes <CR>",
+    map("n", "<leader>ft", "<cmd> Telescope filetypes <CR>",
         {desc = "Find filetypes"})
     map("n", "<leader>fq", "<cmd> Telescope quickfix <CR>",
         {desc = "Find quickfix"})
     map("n", "<leader>fr", "<cmd> Telescope registers <CR>",
         {desc = "Find registers"})
-    map("n", "<leader>fd", "<cmd> Telescope diagnostic <CR>",
+    map("n", "<leader>fd", "<cmd> Telescope diagnostics <CR>",
         {desc = "Find diagnostics"})
-    map("n", "<leader>fW", "<cmd> Telescope grep_string <CR>",
+    map("n", "<leader>fw", "<cmd> Telescope grep_string <CR>",
         {desc = "Find word under cursor"})
     map("n", "<leader>fc", "<cmd> Telescope colorscheme <CR>",
         {desc = "Find colorschemes"})
-    map("n", "<leader>ft", "<cmd> Telescope current_buffer_tags <CR>",
-        {desc = "Find buffer tags"})
-    map("n", "<leader>ff", "<cmd> Telescope current_buffer_fuzzy_find <CR>",
+    map("n", "<leader>fb", "<cmd> Telescope current_buffer_fuzzy_find <CR>",
         {desc = "Find in current buffer"})
-    map("n", "<C-S-p>",
+    map("n", "<C-A-p>",
         "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
         {desc = "Find all files"})
     map("n", "<leader>fgc", "<cmd> Telescope git_commits <CR>",

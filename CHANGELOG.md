@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.5.2] - 2023-08-04
+
+### Changed
+
+- Improve Telescope pickers mappings
+
 ## [1.5.1] - 2023-08-02
 
 ### Fixed
