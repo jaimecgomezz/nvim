@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.5.5] - 2023-08-04
+
+### Fixed
+
+- Map window movement using Alt and hjkl
+
 ## [1.5.4] - 2023-08-04
 
 ### Fixed
