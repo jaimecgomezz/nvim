@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.5.4] - 2023-08-04
+
+### Fixed
+
+- Remap the freaking Telescope default mappings
+
 ## [1.5.3] - 2023-08-04
 
 ### Fixed
