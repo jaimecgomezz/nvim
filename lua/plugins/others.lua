@@ -82,5 +82,17 @@ return {
                 server = require("plugins.lspconfig").M
             })
         end
+    }, {
+        "folke/zen-mode.nvim",
+        lazy = false,
+        opts = {
+            window = {
+                backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+                width = 0.50 -- width of the Zen window
+            },
+            plugins = {
+                gitsigns = {enabled = true} -- disables git signs
+            }
+        }
     }
 }

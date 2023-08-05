@@ -212,4 +212,6 @@ return function(_)
         {desc = "DAP continue"})
     map("n", "<leader>dn", function() require("dap").step_over() end,
         {desc = "DAP next"})
+
+    map("n", "zz", "<cmd> ZenMode <CR>", {desc = "Toggle zen mode"})
 end

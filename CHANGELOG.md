@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.6.0] - 2023-08-04
+
+### Added
+
+- Add zen-mode plugin
+
 ## [1.5.5] - 2023-08-04
 
 ### Fixed
