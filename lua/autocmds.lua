@@ -12,4 +12,10 @@ return function(_)
         pattern = "qf",
         callback = function() vim.opt_local.buflisted = false end
     })
+
+    -- Automatically open all folds when a buffer is open
+    vim.api.nvim_create_autocmd({"BufReadPost", "FileReadPost"}, {
+        pattern = "*",
+        callback = function() vim.opt_local.foldlevel = 999 end
+    })
 end

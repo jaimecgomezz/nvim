@@ -52,6 +52,10 @@ return function(config)
     opt.completeopt = {"menuone", "noselect", "noinsert"}
     opt.formatoptions:append "cro"
 
+    -- folding
+    opt.foldmethod = "expr"
+    opt.foldexpr = "nvim_treesitter#foldexpr()"
+
     -- fixes
     -- disable mouse
     opt.mouse = ""

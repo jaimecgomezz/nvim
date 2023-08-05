@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.7.0] - 2023-08-04
+
+### Changed
+
+- Use Tree-sitter based folding
+
 ## [1.6.0] - 2023-08-04
 
 ### Added
