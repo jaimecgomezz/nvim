@@ -1,5 +1,5 @@
 return {
-    {"ludovicchabant/vim-gutentags"}, {
+    {
         "preservim/tagbar",
         config = function()
             vim.g.tagbar_autoclose = 1
