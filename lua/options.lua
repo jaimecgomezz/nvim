@@ -2,8 +2,13 @@ return function(config)
     local opt = vim.opt
 
     -- Set leaders
-    vim.g.mapleader = config.leader or [[\]]
+    vim.g.mapleader = config.leader or [[ ]]
     vim.g.maplocalleader = config.localleader or [[,]]
+
+    -- Delimiters
+    vim.g.csv_delim=','
+    vim.g.csv_default_delim=','
+
 
     -- status
     opt.laststatus = 3
@@ -53,9 +58,9 @@ return function(config)
     opt.formatoptions:append "cro"
 
     -- folding
-    opt.foldenable = false
-    opt.foldmethod = "expr"
-    opt.foldexpr = "nvim_treesitter#foldexpr()"
+    opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+    opt.foldlevelstart = 99
+    opt.foldenable = true
 
     -- fixes
     -- disable mouse

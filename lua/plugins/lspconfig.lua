@@ -103,5 +103,6 @@ return {
         configs.solargraph.setup(M)
         configs.clangd.setup(M)
         configs.zls.setup(M)
+        configs.gopls.setup(M)
     end
 }

@@ -3,6 +3,13 @@ return {
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000
+    }, { -- White theme
+      'Verf/deepwhite.nvim',
+      lazy = false,
+    }, {
+      "zootedb0t/citruszest.nvim",
+      lazy = false,
+      priority = 1000,
     }, { -- Statusline
         'nvim-lualine/lualine.nvim',
         dependencies = {'nvim-tree/nvim-web-devicons'},
@@ -42,7 +49,9 @@ return {
         "triglav/vim-visual-increment"
     }, { -- CSV support
         "chrisbra/csv.vim",
-        init = function() vim.cmd([[filetype plugin on]]) end
+        init = function()
+          vim.cmd([[filetype plugin on]])
+        end
     }, { --  Undo support
         'mbbill/undotree'
     }, { -- Robust TODO and comments
@@ -96,7 +105,23 @@ return {
         }
     }, { -- Zig support
         'ziglang/zig.vim'
-    }
+    }, {
+      'junegunn/vim-peekaboo',
+    config = function ()
+      vim.g.peekaboo_window='vert bo 60new'
+    end
+    },
+    { -- folding
+      'kevinhwang91/nvim-ufo',
+      dependencies = 'kevinhwang91/promise-async',
+      config = function ()
+        require('ufo').setup({
+            provider_selector = function(_bufnr, _filetype, _buftype)
+                return {'treesitter', 'indent'}
+            end
+        })
+      end
+    },
     -- {
     --     'renerocksai/telekasten.nvim',
     --     dependencies = {

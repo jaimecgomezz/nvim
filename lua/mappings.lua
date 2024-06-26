@@ -83,11 +83,11 @@ return function(_)
         {desc = "Toggle relative number"})
 
     -- Buffers
-    map("n", "<localleader>bn", "<cmd> enew <CR>", {desc = "New buffer"})
-    map("n", "<localleader>bs", "<cmd>silent w<cr>", {desc = "Sabe buffer"})
-    map("n", "<localleader>bd", "<cmd>bdelete<cr>", {desc = "Delete buffer"})
-    map("n", "<localleader>bD", "<cmd>bdelete!<cr>", {desc = "Delete buffer!"})
-    map("n", "<localleader>bq", function()
+    map("n", "<leader>bn", "<cmd> enew <CR>", {desc = "New buffer"})
+    map("n", "<leader>bs", "<cmd>silent w<cr>", {desc = "Sabe buffer"})
+    map("n", "<leader>bd", "<cmd>bdelete<cr>", {desc = "Delete buffer"})
+    map("n", "<leader>bD", "<cmd>bdelete!<cr>", {desc = "Delete buffer!"})
+    map("n", "<leader>bq", function()
         local ok, _ = pcall(vim.cmd, [[bufdo bd]])
 
         if ok then vim.cmd([[Startify]]) end
@@ -132,17 +132,17 @@ return function(_)
     map("n", "<leader>fp", "<cmd>FzfSwitchProject<cr>", {desc = "Find projects"})
 
     -- Vim
-    map("n", "<localleader>vq", "<cmd>qa<cr>", {desc = "Quit vim"})
-    map("n", "<localleader>vQ", "<cmd>qa!<cr>", {desc = " Quit vim!"})
-    map("n", "<localleader>vs", "<cmd>Startify<cr>", {desc = "Start page"})
-    map("n", "<localleader>ve",
+    map("n", "<leader>vq", "<cmd>qa<cr>", {desc = "Quit vim"})
+    map("n", "<leader>vQ", "<cmd>qa!<cr>", {desc = " Quit vim!"})
+    map("n", "<leader>vs", "<cmd>Startify<cr>", {desc = "Start page"})
+    map("n", "<leader>ve",
         "<cmd>cd ~/.config/nvim<cr><cmd>:e ~/.config/nvim/init.lua<cr>",
         {desc = "Edit vim conf"})
 
     -- Git
     -- Fugitive
     map("n", "<leader>gg", "<cmd>vert Git<cr>", {desc = "Git status"})
-    map("n", "<leader>gl", "<cmd>vert Git log<cr>", {desc = "Git log"})
+    map("n", "<leader>gl", "<cmd>vert Git log --decorate<cr>", {desc = "Git log"})
     -- Signs
     map("n", "<leader>rh", function() require("gitsigns").reset_hunk() end,
         {desc = "Reset hunk"})
@@ -217,6 +217,17 @@ return function(_)
 
     map("n", "zz", "<cmd> ZenMode <CR>", {desc = "Toggle zen mode"})
 
-    map('n', '$', "g_", {desc = 'Go to last none-whitespace char'})
-    map('v', '$', "g_", {desc = 'Go to last none-whitespace char'})
+    map('n', '+', '<cmd> foldopen <CR>', { desc = "Open fold" })
+    map('n', '-', '<cmd> foldclose <CR>', { desc = "Close fold" })
+    map('n', 'zR', require('ufo').openAllFolds, { desc = "Open all folds" })
+    map('n', 'zM', require('ufo').closeAllFolds, { desc = "Close all folds" })
+    map('n', 'zK', function ()
+    local winid = require('ufo').peekFoldedLinesUnderCursor()
+    if not winid then
+      vim.lsp.buf.hover()
+    end
+    end, { desc = "Peek folding" })
+
+    -- map('n', '$', "g_", {desc = 'Go to last none-whitespace char'})
+    -- map('v', '$', "g_", {desc = 'Go to last none-whitespace char'})
 end

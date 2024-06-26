@@ -10,6 +10,7 @@ return { -- file managing , picker etc
         }
     },
     opts = {
+        auto_reload_on_write = true,
         disable_netrw = true,
         hijack_netrw = true,
         hijack_cursor = true,

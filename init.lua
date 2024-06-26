@@ -4,10 +4,10 @@ end
 
 load({
     -- leaders
-    leader = [[\]],
+    leader = [[ ]],
     localleader = [[,]],
 
     -- theme
     theme = "dark",
     transparency = false
-}, {"options", "autocmds", "mappings", "diagnostics", "laziest", "theme"})
+}, {"laziest", "options", "autocmds", "mappings", "diagnostics", "theme"})

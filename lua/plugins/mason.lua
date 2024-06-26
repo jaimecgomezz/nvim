@@ -9,7 +9,7 @@ return {
             "lua-language-server", "ruff", "pyright", "mypy", "black",
             "rust-analyzer", "clangd", "clang-format", "codelldb", "zls",
             -- See: https://github.com/williamboman/mason.nvim/discussions/286
-            "debugpy@1.6.7"
+            "debugpy@1.6.7", "solargraph"
         }, -- not an option from mason.nvim
         PATH = "skip",
         ui = {

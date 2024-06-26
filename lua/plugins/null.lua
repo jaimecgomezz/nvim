@@ -18,7 +18,9 @@ return {
                     command = {"bundle", "exec", "rubocop"}
                 }), -- Ruby
                 diagnostics.ruff, diagnostics.mypy, formatting.black, -- Python
-                formatting.clang_format
+                formatting.clang_format,
+                -- go
+                diagnostics.staticcheck, formatting.gofmt
             },
             on_attach = function(client, bufnr)
                 if client.supports_method("textDocument/formatting") then
@@ -37,6 +39,8 @@ return {
                         end
                     })
                 end
+
+                vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
             end
         })
     end

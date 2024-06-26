@@ -15,6 +15,9 @@ return function(_)
 
     -- Fix folding on files opened with telescope
     -- See: https://github.com/nvim-telescope/telescope.nvim/issues/699
-    vim.api.nvim_create_autocmd({"BufEnter"},
-                                {pattern = {"*"}, command = "normal zx zR"})
+    -- vim.api.nvim_create_autocmd({"BufEnter"},
+    --                             {pattern = {"*"}, command = "normal zx zR"})
+    --
+    -- vim.api.nvim_create_autocmd({"BufEnter", "BufWritePost"},
+                                -- {pattern = {"*"}, command = "set nofoldenable foldmethod=manual foldlevelstart=99"})
 end
