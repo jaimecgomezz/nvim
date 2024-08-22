@@ -1,13 +1,8 @@
-local function load(config, modules)
-    for _, module in ipairs(modules) do require(module)(config) end
-end
+-- Options and global configurations
+require("set")
 
-load({
-    -- leaders
-    leader = [[ ]],
-    localleader = [[,]],
+-- Lazy package manaer and plugins
+require("lzy")
 
-    -- theme
-    theme = "dark",
-    transparency = false
-}, {"laziest", "options", "autocmds", "mappings", "diagnostics", "theme"})
+local vim = vim
+vim.cmd.colorscheme("catppuccin-mocha")
