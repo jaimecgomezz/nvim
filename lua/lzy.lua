@@ -18,7 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup(
   {
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    { 'stevearc/oil.nvim', opts = {}, dependencies = { { "echasnovski/mini.icons", opts = {} } }, config = function() require("lzy.oil") end }
   },
   {
     change_detection = { notify = false },
