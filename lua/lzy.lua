@@ -19,6 +19,7 @@ require('lazy').setup(
   {
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     { 'echasnovski/mini.files', dependencies = { 'echasnovski/mini.icons' }, version = '*', config = function() require('lzy.mini_files') end },
+    { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }, config = function() require('lualine').setup() end }
   },
   {
     change_detection = { notify = false },
