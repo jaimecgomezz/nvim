@@ -7,6 +7,7 @@ vim.g.maplocalleader = [[,]]
 
 -- general
 opt.showmatch = true
+opt.helpheight=99999
 
 -- status
 opt.laststatus = 2
