@@ -50,6 +50,7 @@ local config = function()
       -- Traverse file tree with common Tab/Delete/Enter keymaps
       vim.keymap.set('n', '<Esc>', MiniFiles.close, { buffer = buf_id })
       vim.keymap.set('n', '<BS>', MiniFiles.go_out, { buffer = buf_id })
+      vim.keymap.set('n', '<S-Tab>', MiniFiles.go_out, { buffer = buf_id })
       vim.keymap.set('n', '<CR>', function() MiniFiles.go_in({ close_on_file = true }) end, { buffer = buf_id })
       vim.keymap.set('n', '<Tab>', function() MiniFiles.go_in({ close_on_file = true }) end, { buffer = buf_id })
     end,
