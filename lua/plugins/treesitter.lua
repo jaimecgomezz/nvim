@@ -184,6 +184,7 @@ local config = function()
             },
         },
     }
+  }
 
     require("nvim-treesitter.configs").setup(opts)
 
