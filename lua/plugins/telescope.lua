@@ -35,6 +35,8 @@ local config = function()
             ["="] = path_actions.insert_abspath_visual,
           },
           i = {
+            ["<Esc>"] = require("telescope.actions").close,
+            ["<C-n>"] = { "<esc>", type = "command" },
             ["<Tab>"] = require("telescope.actions").move_selection_next,
             ["<S-Tab>"] = require("telescope.actions").move_selection_previous,
             ["<C-Space>"] = require("telescope.actions").toggle_selection,
