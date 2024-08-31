@@ -57,6 +57,7 @@ local config = function()
 
   telescope.load_extension('fzf')
   telescope.load_extension('undo')
+  telescope.load_extension("ui-select")
 
   vim.keymap.set('n', '<C-p>', [[<CMD> Telescope find_files <CR>]], { desc = "Find files" })
   vim.keymap.set("n", "<C-A-p>", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", {desc = "Find all files"})
@@ -84,6 +85,7 @@ return({
     'nvim-lua/plenary.nvim',
     'debugloop/telescope-undo.nvim',
     'kiyoon/telescope-insert-path.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim',  build = 'make'  }
   },
 })
