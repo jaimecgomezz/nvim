@@ -201,7 +201,6 @@ return({
             "nvim-treesitter/nvim-treesitter-textobjects",
             "JoosepAlviste/nvim-ts-context-commentstring",
             "CKolkey/ts-node-action",
-            "nvim-treesitter/nvim-treesitter-context",
         },
     },
 })
