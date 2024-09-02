@@ -7,7 +7,7 @@ vim.g.maplocalleader = [[,]]
 
 -- general
 opt.showmatch = true
-opt.helpheight=99999
+opt.helpheight = 99999
 
 -- status
 opt.laststatus = 2
@@ -56,7 +56,7 @@ opt.undofile = true
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.termguicolors = true
 opt.clipboard = "unnamedplus"
-opt.completeopt = {"menuone", "noselect", "noinsert"}
+opt.completeopt = { "menuone", "noselect", "noinsert" }
 opt.formatoptions:append "cro"
 
 -- folding
@@ -74,3 +74,13 @@ opt.shortmess:append "sI"
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
+
+
+-- Diagnostics config
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false
+})
