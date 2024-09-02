@@ -1,4 +1,4 @@
-local jump_to_line function()
+local jump_to_line = function()
     require("flash").jump({
         search = { mode = "search", max_length = 0 },
         label = { after = { 0, 0 } },
