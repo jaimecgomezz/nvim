@@ -84,7 +84,7 @@ local config = function(_, _)
 					fallback()
 				end
 			end, { "i", "s" }),
-			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
+			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false }),
 		},
 	})
 
