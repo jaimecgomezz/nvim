@@ -26,6 +26,9 @@ return {
 		"chaoren/vim-wordmotion",
 	},
 	{
+		"tpope/vim-surround",
+	},
+	{
 		"NvChad/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup({ user_default_options = { mode = "virtualtext" } })
