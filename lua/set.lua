@@ -57,7 +57,7 @@ opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.termguicolors = true
 opt.clipboard = "unnamedplus"
 opt.completeopt = { "menuone", "noselect", "noinsert" }
-opt.formatoptions:append "cro"
+opt.formatoptions:append("cro")
 
 -- folding
 opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
@@ -70,19 +70,18 @@ opt.mouse = ""
 -- disable bell noise
 opt.errorbells = false
 -- disable nvim intro
-opt.shortmess:append "sI"
+opt.shortmess:append("sI")
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
-
+opt.whichwrap:append("<>[]hl")
 
 -- Diagnostics config
 vim.diagnostic.config({
-    virtual_text = false,
-    signs = true,
-    update_in_insert = true,
-    underline = true,
-    severity_sort = false
+	virtual_text = false,
+	signs = true,
+	update_in_insert = true,
+	underline = true,
+	severity_sort = false,
 })
 
 -- Neovide
