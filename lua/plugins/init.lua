@@ -35,6 +35,18 @@ return {
 		"triglav/vim-visual-increment",
 	},
 	{
+		"tpope/vim-repeat",
+	},
+	{
+		"numToStr/Comment.nvim",
+		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+		config = function()
+			require("Comment").setup({
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			})
+		end,
+	},
+	{
 		"NvChad/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup({ user_default_options = { mode = "virtualtext" } })
