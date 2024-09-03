@@ -148,6 +148,7 @@ return ({
             'prettier',
             'prettierd',
             'stylua',
+            'jsonlint',
             'luacheck',
             'markdownlint',
             'shellcheck',
