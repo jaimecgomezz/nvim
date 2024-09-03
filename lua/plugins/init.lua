@@ -26,6 +26,9 @@ return {
 		"chaoren/vim-wordmotion",
 	},
 	{
+		"wellle/targets.vim",
+	},
+	{
 		"tpope/vim-surround",
 	},
 	{
