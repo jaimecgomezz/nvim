@@ -84,3 +84,11 @@ vim.diagnostic.config({
     underline = true,
     severity_sort = false
 })
+
+-- Neovide
+vim.g.neovide_cursor_vfx_mode = ""
+vim.g.neovide_cursor_animation_length = 0
+vim.g.neovide_cursor_antialiasing = false
+vim.g.neovide_cursor_trail_size = 0
+vim.g.neovide_cursor_animate_in_insert_mode = false
+vim.g.neovide_cursor_animate_command_line = false
