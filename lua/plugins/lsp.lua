@@ -148,6 +148,9 @@ return ({
             'prettier',
             'prettierd',
             'stylua',
+            'luacheck',
+            'markdownlint',
+            'shellcheck',
         }
     },
     {
