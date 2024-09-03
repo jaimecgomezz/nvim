@@ -15,19 +15,8 @@ local hover_close = function(base_win_id)
     end
 end
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     local opts = { buffer = bufnr, remap = false, silent = true }
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-    if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function() vim.lsp.buf.format({ async = false, timeout_ms = 5000 }) end,
-        })
-    end
-
 
     vim.keymap.set(
         "n",
@@ -152,14 +141,25 @@ return ({
         config = function() require("mason").setup() end,
     },
     {
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        opts = {
+            'jq',
+            'shfmt',
+            'prettier',
+            'prettierd',
+            'stylua',
+        }
+    },
+    {
         "williamboman/mason-lspconfig.nvim",
         lazy = false,
         opts = {
             auto_install = true,
             ensure_installed = {
                 'lua_ls',
+                'rubocop',
                 'solargraph',
-                'rust_analyzer'
+                'rust_analyzer',
             },
         },
     },
