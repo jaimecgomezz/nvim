@@ -23,13 +23,22 @@ local config = function()
 
 	harpoon:setup()
 
-	vim.keymap.set("n", "<leader>ha", function()
-		harpoon:list():add()
+	vim.keymap.set("n", "<leader>H", function()
+		local item = harpoon:list():get_by_value(vim.fn.expand("%"))
+
+		if not item then
+			harpoon:list():add()
+		else
+			harpoon:list():remove()
+		end
 	end)
 
-	vim.keymap.set("n", "<leader>hh", function()
+	vim.keymap.set("n", "<leader>h", function()
 		toggle_telescope(harpoon:list())
-		-- harpoon.ui:toggle_quick_menu(harpoon:list())
+	end, { desc = "Open harpoon window" })
+
+	vim.keymap.set("n", "<leader>hc", function()
+		harpoon:list():clear()
 	end, { desc = "Open harpoon window" })
 
 	for n = 1, 9 do
