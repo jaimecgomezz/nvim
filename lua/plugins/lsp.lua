@@ -30,6 +30,10 @@ local on_attach = function(_, bufnr)
 		vim.lsp.buf.hover()
 	end, vim.tbl_deep_extend("force", opts, { desc = "LSP Hover" }))
 
+	vim.keymap.set("i", "<C-s>", function()
+		vim.lsp.buf.signature_help()
+	end, { desc = "LSP signature help" })
+
 	vim.keymap.set("n", "<Esc>", function()
 		hover_close(vim.api.nvim_get_current_win())
 	end, vim.tbl_deep_extend("force", opts, { desc = "Close active lsp hover popup" }))
