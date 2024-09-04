@@ -1,11 +1,10 @@
 local config = function()
 	require("noice").setup({
 		messages = { enabled = false },
-		popupmenu = { backend = "cmp" },
-		notify = { enabled = false },
+		popupmenu = { enabled = true, backend = "cmp" },
+		notify = { enabled = true },
 		redirect = {
-			view = "split",
-			filter = { event = "msg_show" },
+			view = "popup",
 		},
 		lsp = {
 			override = {
@@ -36,12 +35,21 @@ local config = function()
 			inc_rename = false, -- enables an input dialog for inc-rename.nvim
 			lsp_doc_border = true, -- add a border to hover docs and signature help
 		},
+		views = {
+			hover = { border = { style = "single" } },
+			confirm = { border = { style = "single" } },
+			popup = { border = { style = "single" } },
+		},
 	})
+
+	vim.keymap.set("c", "<S-Enter>", function()
+		require("noice").redirect(vim.fn.getcmdline())
+	end, { desc = "Redirect Cmdline" })
 end
 
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
 	config = config,
-	dependencies = { "MunifTanjim/nui.nvim" },
+	dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 }
