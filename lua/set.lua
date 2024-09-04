@@ -7,7 +7,6 @@ vim.g.maplocalleader = [[,]]
 
 -- general
 opt.showmatch = true
-opt.helpheight = 99999
 
 -- status
 opt.laststatus = 2
@@ -78,10 +77,23 @@ opt.whichwrap:append("<>[]hl")
 -- Diagnostics config
 vim.diagnostic.config({
 	virtual_text = false,
-	signs = true,
+	signs = false,
 	update_in_insert = true,
 	underline = true,
-	severity_sort = false,
+	severity_sort = true,
+	float = {
+		scope = "cursor",
+		source = true,
+		focusable = false,
+		border = "single",
+		close_events = {
+			"CursorMoved",
+			"CursorMovedI",
+			"BufHidden",
+			"InsertCharPre",
+			"WinLeave",
+		},
+	},
 })
 
 -- Neovide
