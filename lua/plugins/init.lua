@@ -52,4 +52,10 @@ return {
 			require("colorizer").setup({ user_default_options = { mode = "virtualtext" } })
 		end,
 	},
+	{
+		"chrisbra/csv.vim",
+		config = function()
+			vim.cmd([[filetype plugin on]])
+		end,
+	},
 }
