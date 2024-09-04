@@ -59,6 +59,7 @@ local config = function()
 	telescope.load_extension("fzf")
 	telescope.load_extension("undo")
 	telescope.load_extension("ui-select")
+	telescope.load_extension("cmdline")
 
 	vim.keymap.set("n", "<C-p>", [[<CMD> Telescope find_files <CR>]], { desc = "Find files" })
 
@@ -106,6 +107,8 @@ local config = function()
 	vim.keymap.set("n", "<leader>fbc", "<cmd> Telescope git_bcommits <CR>", { desc = "Find buffer commits" })
 
 	vim.keymap.set("n", "<leader>fgc", "<cmd> Telescope git_commits <CR>", { desc = "Find git commits" })
+
+	vim.keymap.set("n", ":", "<cmd> Telescope cmdline <CR>", { desc = "Cmdline" })
 end
 
 return {
@@ -117,6 +120,7 @@ return {
 		"debugloop/telescope-undo.nvim",
 		"kiyoon/telescope-insert-path.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
+		"jaimecgomezz/telescope-cmdline.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 }
