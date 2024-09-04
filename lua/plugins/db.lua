@@ -9,7 +9,7 @@ local config = function()
 		},
 	}
 
-	vim.keymap.set("n", "<localleader>d", "<CMD> tab DBUI <CR>", { desc = "DB UI" })
+	vim.keymap.set("n", "<localleader>b", "<CMD> tab DBUI <CR>", { desc = "DB UI" })
 end
 
 return {
