@@ -22,6 +22,7 @@ local config = function()
 			sorting_strategy = "ascending",
 			layout_strategy = "vertical",
 			path_display = { "truncate" },
+			file_ignore_patterns = { "node_modules" },
 			winblend = 0,
 			border = {},
 			borderchars = { "-", "|", "-", "|", "╭", "╮", "╯", "╰" },
