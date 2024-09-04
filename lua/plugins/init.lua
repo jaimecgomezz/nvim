@@ -58,4 +58,7 @@ return {
 			vim.cmd([[filetype plugin on]])
 		end,
 	},
+	{
+		"airblade/vim-rooter",
+	},
 }
