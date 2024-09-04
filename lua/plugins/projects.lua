@@ -6,13 +6,10 @@ return {
 		"tpope/vim-fugitive",
 	},
 	config = function()
+		vim.g.fzfSwitchProjectProjectDepth = 5
 		vim.g.fzfSwitchProjectAlwaysChooseFile = 0
 		vim.g.fzfSwitchProjectGitInitBehavior = "none"
-		vim.g.fzfSwitchProjectWorkspaces = {
-			"~/repos/jaimecgomezz",
-			"~/repos/aleph",
-			"~/repos/foreign",
-		}
+		vim.g.fzfSwitchProjectWorkspaces = { "~/repos" }
 
 		vim.keymap.set("n", "<leader>fp", [[<CMD> FzfSwitchProject <CR>]], { desc = "Find projects" })
 	end,
