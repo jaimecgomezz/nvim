@@ -16,6 +16,7 @@ local config = function()
 			markdown = { { "prettierd", "prettier" } },
 			bash = { "shfmt" },
 			rust = { "rustfmt" },
+			sql = { "sqlfluff" },
 		},
 	})
 

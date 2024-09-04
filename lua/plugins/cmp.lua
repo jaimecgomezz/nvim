@@ -103,6 +103,15 @@ local config = function(_, _)
 		}),
 	})
 
+	cmp.setup.filetype(
+		{ "sql" },
+		{ sources = {
+			{ name = "vim-dadbod-completion" },
+			{ name = "nvim_lsp" },
+			{ name = "buffer" },
+		} }
+	)
+
 	cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 end
 
