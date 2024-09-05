@@ -18,6 +18,7 @@
   "fzf": { "branch": "master", "commit": "8af0af3400fc36651b59a7e3f9a2bedd4a51daed" },
   "fzf-project": { "branch": "master", "commit": "6abaf1cf7d1b2c2d1651bdb462d7a0eca2da4766" },
   "fzf.vim": { "branch": "master", "commit": "c5ce7908ee86af7d4090d2007086444afb6ec1c9" },
+  "grug-far.nvim": { "branch": "main", "commit": "1d5dd56ba4037d1096dd9276579dd544035cd8bd" },
   "harpoon": { "branch": "harpoon2", "commit": "0378a6c428a0bed6a2781d459d7943843f374bce" },
   "indent-blankline.nvim": { "branch": "master", "commit": "18603eb949eba08300799f64027af11ef922283f" },
   "kulala.nvim": { "branch": "main", "commit": "18fd207fbf01ba311f2c4bc7b9ad60b1cad633ec" },
