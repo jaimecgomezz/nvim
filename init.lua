@@ -1,8 +1,8 @@
 -- Options and global configurations
 require("set")
 
+-- Mappings and general utilities
+require("map")
+
 -- Lazy package manaer and plugins
 require("lzy")
-
-local vim = vim
-vim.cmd.colorscheme("catppuccin-mocha")
