@@ -95,4 +95,27 @@ return {
 		},
 		opts = {},
 	},
+	{
+		"danymat/neogen",
+		cmd = "Neogen",
+		keys = {
+			{ "<localleader>n", "<cmd>lua require('neogen').generate() ", desc = "Generate Annotations (Neogen)" },
+		},
+		opts = {
+			snippet_engine = "luasnip",
+			placeholders_text = {
+				["description"] = "description",
+				["tparam"] = "tparam",
+				["parameter"] = "parameter",
+				["return"] = "return",
+				["class"] = "class",
+				["throw"] = "throw",
+				["varargs"] = "varargs",
+				["type"] = "type",
+				["attribute"] = "attribute",
+				["args"] = "args",
+				["kwargs"] = "kwargs",
+			},
+		},
+	},
 }
