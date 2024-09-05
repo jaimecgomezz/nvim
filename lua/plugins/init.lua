@@ -84,11 +84,6 @@ return {
 		},
 	},
 	{
-		"echasnovski/mini.diff",
-		version = "*",
-		opts = { view = { style = "sign" } },
-	},
-	{
 		"mistweaverco/kulala.nvim",
 		ft = "http",
 		keys = {
@@ -154,5 +149,8 @@ return {
 			{ "<leader>rl", "<CMD> ReplList <CR>", desc = "List RPLs", mode = { "n" } },
 			{ "<leader>rk", "<CMD> ReplStop <CR>", desc = "Stop RPL", mode = { "n" } },
 		},
+	},
+	{
+		"anuvyklack/hydra.nvim",
 	},
 }
