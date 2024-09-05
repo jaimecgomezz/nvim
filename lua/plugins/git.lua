@@ -18,21 +18,33 @@ local config = function()
 	})
 
 	vim.keymap.set("n", "<leader>gg", [[<CMD> Neogit <CR>]], { desc = "Open neogit interface" })
-
-	vim.keymap.set(
-		"n",
-		"<leader>gl",
-		neogit.action("log", "log_current", { "--graph", "--decorate", "--max-count=100" }),
-		{ desc = "Open neogit log" }
-	)
 end
 
 return {
-	"NeogitOrg/neogit",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"sindrets/diffview.nvim",
-		"nvim-telescope/telescope.nvim",
+	{
+		"FabijanZulj/blame.nvim",
+		opts = { blame_options = { "-w", "-CCC" } },
+		keys = { { "<leader>gb", "<CMD> BlameToggle<CR>", desc = "Git blame window" } },
 	},
-	config = config,
+	{
+		"junegunn/gv.vim",
+		keys = {
+			{ "<leader>gl", "<CMD> GV! <CR>", desc = "List file commits" },
+			{ "<leader>gL", "<CMD> GV <CR>", desc = "List project commits" },
+		},
+	},
+	{
+		"echasnovski/mini.diff",
+		version = "*",
+		opts = { view = { style = "sign" } },
+	},
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		config = config,
+	},
 }
