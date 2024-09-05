@@ -73,19 +73,12 @@ return {
 		{
 			"<leader>to",
 			function()
-				require("neotest").output.open({ enter = true, auto_close = true })
+				require("neotest").output_panel.toggle()
 			end,
 			desc = "Show Output",
 		},
 		{
-			"<leader>tO",
-			function()
-				require("neotest").output_panel.toggle()
-			end,
-			desc = "Toggle Output Panel",
-		},
-		{
-			"<leader>tS",
+			"<leader>tk",
 			function()
 				require("neotest").run.stop()
 			end,
