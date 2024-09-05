@@ -83,4 +83,16 @@ return {
 		version = "*",
 		opts = { view = { style = "sign" } },
 	},
+	{
+		"mistweaverco/kulala.nvim",
+		ft = "http",
+		keys = {
+			{ "<leader>c", "", desc = "+Rest" },
+			{ "<leader>cs", "<cmd>lua require('kulala').run()<cr>", desc = "Send the request" },
+			{ "<leader>ct", "<cmd>lua require('kulala').toggle_view()<cr>", desc = "Toggle headers/body" },
+			{ "<leader>cp", "<cmd>lua require('kulala').jump_prev()<cr>", desc = "Jump to previous request" },
+			{ "<leader>cn", "<cmd>lua require('kulala').jump_next()<cr>", desc = "Jump to next request" },
+		},
+		opts = {},
+	},
 }

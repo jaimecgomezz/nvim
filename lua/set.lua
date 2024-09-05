@@ -103,3 +103,6 @@ vim.g.neovide_cursor_antialiasing = false
 vim.g.neovide_cursor_trail_size = 0
 vim.g.neovide_cursor_animate_in_insert_mode = false
 vim.g.neovide_cursor_animate_command_line = false
+
+-- Filetypes
+vim.filetype.add({ extension = { ["http"] = "http" } })
