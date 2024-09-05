@@ -112,6 +112,14 @@ local config = function(_, _)
 		} }
 	)
 
+	cmp.setup.filetype({ "dap-repl", "dapui_watches" }, {
+		sources = cmp.config.sources({
+			{ name = "dap" },
+		}, {
+			{ name = "buffer" },
+		}),
+	})
+
 	cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 end
 
@@ -129,6 +137,7 @@ return {
 		"windwp/nvim-autopairs",
 		"L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
+		"rcarriga/cmp-dap",
 	},
 	config = config,
 }
