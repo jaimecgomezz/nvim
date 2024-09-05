@@ -20,9 +20,11 @@ local config = function()
 		},
 		view = {
 			adaptive_size = false,
-			side = "right",
+			side = "left",
 			preserve_window_proportions = true,
-			width = "40%",
+			width = {
+				min = 40,
+			},
 		},
 		renderer = {
 			root_folder_label = false,
@@ -32,7 +34,7 @@ local config = function()
 		},
 	})
 
-	vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle filer" })
+	vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeFindFileToggle<cr>", { desc = "Toggle filer" })
 end
 return {
 	{
