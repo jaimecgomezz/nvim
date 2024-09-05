@@ -1,6 +1,6 @@
 local config = function()
 	vim.keymap.set("n", "<leader>vs", [[<CMD> Startify <CR>]], { desc = "Startify" })
-	vim.keymap.set("n", "<leader>bq", [[<CMD> %bd <BAR> Startify <CR>]], { desc = "Startify" })
+	vim.keymap.set("n", "<leader>bq", [[<CMD>silent! %bd <BAR> Startify <CR>]], { desc = "Startify" })
 end
 
 return {
