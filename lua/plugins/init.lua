@@ -104,7 +104,7 @@ return {
 		"danymat/neogen",
 		cmd = "Neogen",
 		keys = {
-			{ "<localleader>n", "<cmd>lua require('neogen').generate() ", desc = "Generate Annotations (Neogen)" },
+			{ "<localleader>n", "<cmd>lua require('neogen').generate() <cr>", desc = "Generate Annotations (Neogen)" },
 		},
 		opts = {
 			snippet_engine = "luasnip",
