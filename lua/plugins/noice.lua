@@ -48,8 +48,18 @@ local config = function()
 end
 
 return {
-	"folke/noice.nvim",
-	event = "VeryLazy",
-	config = config,
-	dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			fps = 60,
+			render = "compact",
+			stages = "fade",
+		},
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		config = config,
+		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+	},
 }
