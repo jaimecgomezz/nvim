@@ -6,3 +6,6 @@ require("map")
 
 -- Lazy package manaer and plugins
 require("lzy")
+
+-- Manual dap setup
+require("mydap")

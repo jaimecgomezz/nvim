@@ -25,18 +25,6 @@ local config = function()
 		"sign_define",
 		{ "DapBreakpointRejected", { linehl = "", text = "", texthl = "", numhl = "" } }
 	)
-
-	-- setup dap config by VsCode launch.json file
-	local vscode = require("dap.ext.vscode")
-	local json = require("plenary.json")
-	vscode.json_decode = function(str)
-		return vim.json.decode(json.json_strip_comments(str))
-	end
-
-	-- Extends dap.configurations with entries read from .vscode/launch.json
-	if vim.fn.filereadable(".vscode/launch.json") then
-		vscode.load_launchjs()
-	end
 end
 
 local config_dapui = function()
@@ -115,9 +103,5 @@ return {
             { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
             { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
         },
-	},
-	{
-		"suketa/nvim-dap-ruby",
-		opts = {},
 	},
 }
