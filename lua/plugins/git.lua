@@ -37,6 +37,7 @@ return {
 		"echasnovski/mini.diff",
 		version = "*",
 		opts = { view = { style = "sign" } },
+		keys = { { "<leader>gd", "<CMD> lua MiniDiff.toggle() <CR>", desc = "Git blame window" } },
 	},
 	{
 		"NeogitOrg/neogit",
