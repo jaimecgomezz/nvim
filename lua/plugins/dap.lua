@@ -1,59 +1,44 @@
-local config = function()
+local function set_signs(_)
 	vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
-
-	vim.api.nvim_call_function(
-		"sign_define",
-		{ "DapBreakpoint", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" } }
-	)
-
-	vim.api.nvim_call_function(
-		"sign_define",
-		{ "DapBreakpointCondition", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" } }
-	)
-
-	vim.api.nvim_call_function(
-		"sign_define",
-		{ "DapLogPoint", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" } }
-	)
-
-	vim.api.nvim_call_function(
-		"sign_define",
-		{ "DapStopped", { linehl = "GitSignsChangeVirtLn", text = "", texthl = "diffChanged", numhl = "" } }
-	)
-
-	vim.api.nvim_call_function(
-		"sign_define",
-		{ "DapBreakpointRejected", { linehl = "", text = "", texthl = "", numhl = "" } }
+	vim.fn.sign_define("DapBreakpointRejected", { linehl = "", text = "", texthl = "", numhl = "" })
+	vim.fn.sign_define("DapLogPoint", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" })
+	vim.fn.sign_define("DapBreakpoint", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" })
+	vim.fn.sign_define("DapBreakpointCondition", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" })
+	vim.fn.sign_define(
+		"DapStopped",
+		{ linehl = "GitSignsChangeVirtLn", text = "", texthl = "diffChanged", numhl = "" }
 	)
 end
 
-local config_dapui = function()
-	local dap = require("dap")
+local function set_ui(dap)
 	local dapui = require("dapui")
 
 	dapui.setup({
-		icons = { collapsed = "", current_frame = "", expanded = "" },
+		icons = {
+			collapsed = "",
+			current_frame = "",
+			expanded = "",
+		},
 		layouts = {
 			{
-				elements = { "scopes", "watches", "stacks", "breakpoints" },
-				size = 80,
+				elements = { "scopes", "stacks", "breakpoints" },
+				size = 60,
 				position = "left",
 			},
-			{ elements = { "console", "repl" }, size = 0.25, position = "bottom" },
 		},
-		render = { indent = 2 },
 	})
 
-	dap.listeners.after.event_initialized["dapui_config"] = function()
-		dapui.open({})
+	dap.listeners.before.attach.dapui_config = function()
+		dapui.open()
 	end
-
-	dap.listeners.before.event_terminated["dapui_config"] = function()
-		dapui.close({})
+	dap.listeners.before.launch.dapui_config = function()
+		dapui.open()
 	end
-
-	dap.listeners.before.event_exited["dapui_config"] = function()
-		dapui.close({})
+	dap.listeners.before.event_terminated.dapui_config = function()
+		dapui.close()
+	end
+	dap.listeners.before.event_exited.dapui_config = function()
+		dapui.close()
 	end
 end
 
@@ -65,7 +50,6 @@ return {
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "nvim-neotest/nvim-nio" },
-		config = config_dapui,
         -- stylua: ignore
         keys = {
             { "<leader>dd", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
@@ -81,7 +65,14 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = { "rcarriga/nvim-dap-ui" },
-		config = config,
+		config = function()
+			local dap = require("dap")
+
+			require("plugins.daps.ruby").setup(dap)
+
+			set_ui(dap)
+			set_signs(dap)
+		end,
 		  -- stylua: ignore
         keys = {
             { "<leader>d", "", desc = "+debug", mode = {"n", "v"} },
