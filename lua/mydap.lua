@@ -6,16 +6,8 @@ local function append(table, element)
 	return table
 end
 
-local function concat(t1, t2)
-	for _, element in ipairs(t2) do
-		append(t1, element)
-	end
-
-	return t1
-end
-
-local function handle_args(stable, incoming, target)
-	local args = concat(stable, incoming)
+local function handle_args(args, target)
+	args = args or {}
 
 	if not target then
 		return args
@@ -24,9 +16,9 @@ local function handle_args(stable, incoming, target)
 	if target == "workspace" then
 		args = append(args, vim.fn.getcwd())
 	elseif target == "file" then
-		args = append(args, vim.fn.expand("%:~:."))
+		args = append(args, vim.fn.expand("%:p"))
 	elseif target == "line" then
-		args = append(args, vim.fn.expand("%:~:.") .. ":" .. vim.fn.line("."))
+		args = append(args, vim.fn.expand("%:p") .. ":" .. vim.fn.line("."))
 	else
 		args = append(args, target)
 	end
@@ -42,13 +34,13 @@ local function spawn_rdbg(opts)
 	opts = vim.tbl_extend("force", opts, {
 		cwd = vim.fn.getcwd(),
 		stdio = { nil, stdout },
-		args = handle_args({ "-n", "-c", "--" }, opts.args, opts.target),
+		args = handle_args(opts.args, opts.target),
 	})
 
 	handle, pid = vim.uv.spawn("rdbg", opts, function(_code, _signal)
-		if handle then
-			handle:close()
-		end
+		vim.uv.close(handle, function()
+			vim.notify("Debugger closed", vim.log.levels.INFO)
+		end)
 	end)
 
 	assert(handle, "Command `rdbg` ran from `" .. opts.cwd .. "` exited with code " .. pid)
@@ -112,49 +104,50 @@ end
 dap.configurations.ruby = {
 	gconf({
 		name = "run file",
-		args = { "ruby" },
+		args = { "-c", "--", "ruby" },
 		target = "file",
 	}),
 	gconf({
 		name = "rspec line",
-		args = { "rspec" },
+		args = { "-n", "-c", "--", "rspec" },
 		target = "line",
 	}),
 	gconf({
 		name = "rspec file",
-		args = { "rspec" },
+		args = { "-n", "-c", "--", "rspec" },
 		target = "file",
 	}),
 	gconf({
 		name = "rspec project",
-		args = { "rspec" },
+		args = { "-n", "-c", "--", "rspec" },
 	}),
-
 	gconf({
 		name = "run file (bundle)",
-		args = { "bundle", "exec", "ruby" },
+		args = { "-c", "--", "bundle", "exec", "ruby" },
 		target = "file",
 	}),
 	gconf({
 		name = "rspec line (bundle)",
-		args = { "bundle", "exec", "rspec" },
+		args = { "-n", "-c", "--", "bundle", "exec", "rspec" },
 		target = "line",
 	}),
 	gconf({
 		name = "rspec file (bundle)",
-		args = { "bundle", "exec", "rspec" },
+		args = { "-n", "-c", "--", "bundle", "exec", "rspec" },
 		target = "file",
 	}),
 	gconf({
 		name = "rspec project (bundle)",
-		args = { "bundle", "exec", "rspec" },
+		args = { "-n", "-c", "--", "bundle", "exec", "rspec" },
 	}),
-
 	gconf({
-		name = "rails server",
-		args = { "bundle", "exec", "rails", "server" },
+		name = "rails server (bin)",
+		args = { "-n", "-c", "--", "bin/rails", "server" },
 	}),
-
+	gconf({
+		name = "rails server (bundle)",
+		args = { "-n", "-c", "--", "bundle", "exec", "rails", "server" },
+	}),
 	gconf({
 		name = "attach to debugger",
 		should_pick_port = true,
