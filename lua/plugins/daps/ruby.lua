@@ -4,7 +4,7 @@ local function append(table, element)
 	return table
 end
 
-local function handle_args(args, target)
+local function handle_target(args, target)
 	args = args or {}
 
 	if not target then
@@ -24,7 +24,7 @@ local function handle_args(args, target)
 	return args
 end
 
-local function spawn_rdbg(opts)
+local function spawn_rdbg(config)
 	local handle, pid
 
 	-- Initialize a new pipe that will be used to communicate `rdbg` and
@@ -34,22 +34,21 @@ local function spawn_rdbg(opts)
 
 	-- Prepare the arguments that will be provided to spawn `rdbg`, along with
 	-- stablishing the `stdout` pipe that will be used by the process
-	opts = vim.tbl_extend("force", opts, {
-		cwd = vim.fn.getcwd(),
+	config = vim.tbl_extend("force", config, {
 		stdio = { nil, stdout },
-		args = handle_args(opts.args, opts.target),
+		args = handle_target(config.args, config.target),
 	})
 
 	-- Spawn a `rdbg` process that will accept requests through the
 	-- `config.port` provided. Finally, whenever said process finishes, close
 	-- the process handle obtained through the callback provided
-	handle, pid = vim.uv.spawn("rdbg", opts, function(_code, _signal)
+	handle, pid = vim.uv.spawn("rdbg", config, function(_code, _signal)
 		vim.uv.close(handle, function()
 			vim.notify("Debugger closed", vim.log.levels.INFO)
 		end)
 	end)
 
-	assert(handle, "Command `rdbg` ran from `" .. opts.cwd .. "` exited with code " .. pid)
+	assert(handle, "Command `rdbg` ran from `" .. config.cwd .. "` exited with code " .. pid)
 
 	-- Listen to the `rdbg` stdout and append its output to our `nvim-dap`
 	-- REPL's console
@@ -83,6 +82,7 @@ local function adapter(callback, config)
 	-- Handle config default values
 	config.wait = config.wait or 500
 	config.host = config.host or "127.0.0.1"
+	config.cwd = config.cwd or vim.fn.getcwd()
 	config.port = config.port or gport(config.should_pick_port)
 
 	-- Spawn a `rdbg` subprocess, the debuggee, and config the necessary
