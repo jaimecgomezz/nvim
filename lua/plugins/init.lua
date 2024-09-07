@@ -4,7 +4,40 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			require("catppuccin").setup({ integrations = { overseer = true } })
+			require("catppuccin").setup({
+				integrations = {
+					overseer = true,
+					cmp = true,
+					flash = true,
+					grug_far = true,
+					gitsigns = true,
+					neogit = true,
+					noice = false,
+					dap = true,
+					dap_ui = true,
+					notify = true,
+					nvim_surround = true,
+					nvimtree = true,
+					treesitter = true,
+					ufo = true,
+					indent_blankline = { enabled = true },
+					telescope = { enabled = true },
+					dadbod_ui = true,
+					mason = true,
+					markdown = true,
+					native_lsp = {
+						enabled = true,
+						underlines = {
+							errors = { "undercurl" },
+							hints = { "undercurl" },
+							warnings = { "undercurl" },
+							information = { "undercurl" },
+						},
+					},
+					neotest = true,
+					harpoon = true,
+				},
+			})
 
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
@@ -13,7 +46,7 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("lualine").setup()
+			require("lualine").setup({ options = { theme = "catppuccin" } })
 		end,
 	},
 	{
