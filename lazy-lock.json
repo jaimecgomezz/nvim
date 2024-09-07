@@ -68,6 +68,7 @@
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "quicker.nvim": { "branch": "master", "commit": "308088ebcec33f9ed551714e52390206b8f62ed6" },
   "reply.vim": { "branch": "master", "commit": "f458f7c13cbd8eafaf9acd69e8eade71416338c5" },
+  "smart-splits.nvim": { "branch": "master", "commit": "99216f4cdbd4a690e10fabafd7f6defcb25e97b2" },
   "tabby.nvim": { "branch": "main", "commit": "43d61e7418c062c18b67b2136fcc564426f08db2" },
   "tagbar": { "branch": "master", "commit": "d55d454bd3d5b027ebf0e8c75b8f88e4eddad8d8" },
   "targets.vim": { "branch": "master", "commit": "6325416da8f89992b005db3e4517aaef0242602e" },
@@ -92,5 +93,6 @@
   "vim-suda": { "branch": "master", "commit": "b97fab52f9cdeabe2bbb5eb98d82356899f30829" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-visual-increment": { "branch": "master", "commit": "0e55bb4054cdd5eefc0bb870f3e3c249673817cb" },
-  "vim-wordmotion": { "branch": "master", "commit": "81d9bd298376ab0dc465c85d55afa4cb8d5f47a1" }
+  "vim-wordmotion": { "branch": "master", "commit": "81d9bd298376ab0dc465c85d55afa4cb8d5f47a1" },
+  "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" }
 }

@@ -21,11 +21,6 @@ vim.keymap.set("n", "<leader>bw", "<cmd>echo expand('%:p')<cr>", { desc = "Where
 -- Split windows
 vim.keymap.set("n", "<C-s>", "<c-w><c-v>", { desc = "Split vertical" })
 vim.keymap.set("n", "<C-t>", "<c-w><c-s>", { desc = "Split horizontal" })
--- Switch between windows
-vim.keymap.set("n", "<A-h>", "<C-w>h", { desc = "Window left" })
-vim.keymap.set("n", "<A-l>", "<C-w>l", { desc = "Window right" })
-vim.keymap.set("n", "<A-j>", "<C-w>j", { desc = "Window down" })
-vim.keymap.set("n", "<A-k>", "<C-w>k", { desc = "Window up" })
 
 -- Projects
 vim.keymap.set("n", "<leader>pw", "<cmd>pwd<cr>", { desc = "Whre project?" })
