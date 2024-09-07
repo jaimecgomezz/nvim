@@ -68,6 +68,7 @@
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "quicker.nvim": { "branch": "master", "commit": "308088ebcec33f9ed551714e52390206b8f62ed6" },
   "reply.vim": { "branch": "master", "commit": "f458f7c13cbd8eafaf9acd69e8eade71416338c5" },
+  "tabby.nvim": { "branch": "main", "commit": "43d61e7418c062c18b67b2136fcc564426f08db2" },
   "tagbar": { "branch": "master", "commit": "d55d454bd3d5b027ebf0e8c75b8f88e4eddad8d8" },
   "targets.vim": { "branch": "master", "commit": "6325416da8f89992b005db3e4517aaef0242602e" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
