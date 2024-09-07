@@ -26,15 +26,23 @@ end
 
 local function spawn_rdbg(opts)
 	local handle, pid
+
+	-- Initialize a new pipe that will be used to communicate `rdbg` and
+	-- `nvim-dap` through the former's `stdout` output
 	local stdout = vim.uv.new_pipe()
 	assert(stdout, "Couldn't obtain new pipe for `rdbg` spawn")
 
+	-- Prepare the arguments that will be provided to spawn `rdbg`, along with
+	-- stablishing the `stdout` pipe that will be used by the process
 	opts = vim.tbl_extend("force", opts, {
 		cwd = vim.fn.getcwd(),
 		stdio = { nil, stdout },
 		args = handle_args(opts.args, opts.target),
 	})
 
+	-- Spawn a `rdbg` process that will accept requests through the
+	-- `config.port` provided. Finally, whenever said process finishes, close
+	-- the process handle obtained through the callback provided
 	handle, pid = vim.uv.spawn("rdbg", opts, function(_code, _signal)
 		vim.uv.close(handle, function()
 			vim.notify("Debugger closed", vim.log.levels.INFO)
@@ -43,6 +51,8 @@ local function spawn_rdbg(opts)
 
 	assert(handle, "Command `rdbg` ran from `" .. opts.cwd .. "` exited with code " .. pid)
 
+	-- Listen to the `rdbg` stdout and append its output to our `nvim-dap`
+	-- REPL's console
 	vim.uv.read_start(stdout, function(err, chunk)
 		assert(not err, err)
 
@@ -62,6 +72,7 @@ local function gport(should_pick_port)
 			port = input
 		end)
 	else
+		-- TODO: validate the port is available and regenerate if it isn't
 		port = math.random(49152, 65535)
 	end
 
@@ -69,10 +80,14 @@ local function gport(should_pick_port)
 end
 
 local function adapter(callback, config)
+	-- Handle config default values
 	config.wait = config.wait or 500
 	config.host = config.host or "127.0.0.1"
 	config.port = config.port or gport(config.should_pick_port)
 
+	-- Spawn a `rdbg` subprocess, the debuggee, and config the necessary
+	-- environmental variables. Only executed if `config.args` are provided,
+	-- otherwise we assume there's already a debuggee process we'll connect to
 	if config.args then
 		vim.env.RUBY_DEBUG_OPEN = true
 		vim.env.RUBY_DEBUG_HOST = config.host
@@ -81,6 +96,8 @@ local function adapter(callback, config)
 		spawn_rdbg(config)
 	end
 
+	-- Connect `nvim-dap`, the debugger, to the `rdbg` subprocess after
+	-- `config.wait` miliseconds have passed, to ensure it has already started
 	vim.defer_fn(function()
 		callback({
 			type = "server",
@@ -90,6 +107,7 @@ local function adapter(callback, config)
 	end, config.wait)
 end
 
+-- Easily generate DAP configurations
 local function gconf(conf)
 	return vim.tbl_extend("force", {
 		type = "ruby",
