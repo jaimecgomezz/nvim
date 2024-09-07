@@ -43,12 +43,17 @@ local function spawn_rdbg(config)
 	-- `config.port` provided. Finally, whenever said process finishes, close
 	-- the process handle obtained through the callback provided
 	handle, pid = vim.uv.spawn("rdbg", config, function(_code, _signal)
-		vim.uv.close(handle, function()
-			vim.notify("Debugger closed", vim.log.levels.INFO)
-		end)
+		if handle then
+			vim.uv.close(handle, function()
+				vim.notify("Debugger closed", vim.log.levels.INFO)
+			end)
+
+			vim.uv.kill(pid, "SIGTERM")
+		end
 	end)
 
-	assert(handle, "Command `rdbg` ran from `" .. config.cwd .. "` exited with code " .. pid)
+	-- Prevent further execution if spawn failed
+	assert(handle, "Unable to spawn `rdbg`: " .. tostring(pid))
 
 	-- Listen to the `rdbg` stdout and append its output to our `nvim-dap`
 	-- REPL's console
@@ -159,10 +164,12 @@ local configurations = {
 	gconf({
 		name = "rails server (bin)",
 		args = { "-n", "-c", "--", "bin/rails", "server" },
+		wait = 2000,
 	}),
 	gconf({
 		name = "rails server (bundle)",
 		args = { "-n", "-c", "--", "bundle", "exec", "rails", "server" },
+		wait = 2000,
 	}),
 	gconf({
 		name = "attach to debugger",
