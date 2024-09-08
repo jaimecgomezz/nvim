@@ -25,6 +25,7 @@ return {
 					dadbod_ui = true,
 					mason = true,
 					markdown = true,
+					render_markdown = true,
 					native_lsp = {
 						enabled = true,
 						underlines = {

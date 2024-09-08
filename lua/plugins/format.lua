@@ -13,7 +13,6 @@ local config = function()
 			typescript = { { "prettierd", "prettier" } },
 			graphql = { { "prettierd", "prettier" } },
 			ruby = { "rubocop" },
-			markdown = { { "prettierd", "prettier" } },
 			bash = { "shfmt" },
 			rust = { "rustfmt" },
 			sql = { "sqlfluff" },
