@@ -68,8 +68,6 @@ return {
 		config = function()
 			local dap = require("dap")
 
-			require("plugins.daps.ruby").setup(dap)
-
 			set_ui(dap)
 			set_signs(dap)
 		end,
@@ -93,5 +91,10 @@ return {
             { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
             { "<leader>dx", function() require("dap").clear_breakpoints() end, desc = "Clear breakpoints" },
         },
+	},
+	{
+		"jaimecgomezz/nvim-dap-ruby-rdbg",
+		dependencies = { "mfussenegger/nvim-dap" },
+		opts = { nonstop = false },
 	},
 }
