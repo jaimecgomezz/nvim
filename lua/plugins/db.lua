@@ -9,7 +9,9 @@ local config = function()
 		},
 	}
 
-	vim.keymap.set("n", "<localleader>b", "<CMD> tab DBUI <CR>", { desc = "DB UI" })
+	vim.keymap.set("n", "<localleader>bt", "<CMD> tab DBUI <CR>", { desc = "DB UI" })
+	vim.keymap.set("n", "<localleader>bb", "<CMD> DBUIToggle <CR>", { desc = "DB UI" })
+	vim.keymap.set("n", "<localleader>bf", "<CMD> DBUIFindBuffer<CR>", { desc = "DB UI" })
 end
 
 return {
