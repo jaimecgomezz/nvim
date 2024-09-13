@@ -112,6 +112,7 @@ local config = function()
 	lspconfig.lua_ls.setup(opts)
 	lspconfig.solargraph.setup(opts)
 	lspconfig.rust_analyzer.setup(opts)
+	lspconfig.svelte.setup(opts)
 end
 
 return {

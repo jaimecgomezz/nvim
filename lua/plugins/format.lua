@@ -11,6 +11,7 @@ local config = function()
 			json = { "jq" },
 			javascript = { "prettierd", "prettier" },
 			typescript = { "prettierd", "prettier" },
+			svelte = { "prettierd", "prettier" },
 			graphql = { "prettierd", "prettier" },
 			ruby = { "rubocop" },
 			bash = { "shfmt" },
