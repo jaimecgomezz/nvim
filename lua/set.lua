@@ -77,23 +77,16 @@ opt.whichwrap:append("<>[]hl")
 
 -- Diagnostics config
 vim.diagnostic.config({
-	virtual_text = false,
-	signs = false,
 	update_in_insert = true,
 	underline = true,
 	severity_sort = true,
+	virtual_text = false,
+	signs = true,
 	float = {
 		scope = "cursor",
 		source = true,
 		focusable = false,
 		border = "single",
-		close_events = {
-			"CursorMoved",
-			"CursorMovedI",
-			"BufHidden",
-			"InsertCharPre",
-			"WinLeave",
-		},
 	},
 })
 

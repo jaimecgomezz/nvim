@@ -3,19 +3,19 @@ local config = function()
 
 	conform.setup({
 		format_on_save = {
-			timeout_ms = 2000,
+			timeout_ms = 1000,
 			lsp_format = "fallback",
 		},
 		formatters_by_ft = {
 			lua = { "stylua" },
-			json = { { "jq" } },
-			javascript = { { "prettierd", "prettier" } },
-			typescript = { { "prettierd", "prettier" } },
-			graphql = { { "prettierd", "prettier" } },
+			json = { "jq" },
+			javascript = { "prettierd", "prettier" },
+			typescript = { "prettierd", "prettier" },
+			graphql = { "prettierd", "prettier" },
 			ruby = { "rubocop" },
 			bash = { "shfmt" },
 			rust = { "rustfmt" },
-			sql = { "sqlfluff" },
+			sql = { "sqlfluff", lsp_format = "never" },
 		},
 	})
 
