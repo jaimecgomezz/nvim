@@ -187,4 +187,7 @@ return {
 	{
 		"anuvyklack/hydra.nvim",
 	},
+	{
+		"xiyaowong/transparent.nvim",
+	},
 }
