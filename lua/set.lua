@@ -51,6 +51,7 @@ opt.textwidth = 80
 
 -- miscellaneus
 opt.updatetime = 100
+opt.autoread = true
 opt.swapfile = false
 opt.undofile = true
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"

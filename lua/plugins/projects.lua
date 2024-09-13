@@ -6,7 +6,7 @@ return {
 		"tpope/vim-fugitive",
 	},
 	config = function()
-		vim.g.fzfSwitchProjectProjectDepth = 5
+		vim.g.fzfSwitchProjectProjectDepth = 2
 		vim.g.fzfSwitchProjectAlwaysChooseFile = 0
 		vim.g.fzfSwitchProjectGitInitBehavior = "none"
 		vim.g.fzfSwitchProjectWorkspaces = { "~/repos" }
