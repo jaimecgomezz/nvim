@@ -12,6 +12,13 @@ local config = function()
 	end, {
 		desc = "Toggle loclist",
 	})
+
+	vim.keymap.set(
+		"n",
+		"<localleader>d",
+		"<CMD> lua vim.diagnostic.setloclist({})<CR>",
+		{ desc = "Send diagnostic to loclist" }
+	)
 end
 
 return {
