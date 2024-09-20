@@ -14,7 +14,15 @@ return {
 	},
 	{
 		"stevearc/quicker.nvim",
-		opts = {},
+		opts = {
+			type_icons = {
+				E = "E ",
+				W = "W ",
+				I = "I ",
+				N = "N ",
+				H = "H ",
+			},
+		},
 		-- stylua: ignore
 		keys = {
             { "<localleader>d", function() vim.diagnostic.setloclist({}) end,  desc = "Send diagnostic to loclist" },
