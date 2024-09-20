@@ -4,10 +4,10 @@ return {
 	},
 	{
 		"catppuccin/nvim",
-		enabled = false,
 		name = "catppuccin",
 		config = function()
 			require("catppuccin").setup({
+				-- transparent_background = true,
 				integrations = {
 					overseer = true,
 					cmp = true,
@@ -41,14 +41,24 @@ return {
 					neotest = true,
 					harpoon = true,
 				},
+				custom_highlights = function(colors)
+					return {
+						-- Transparent Floating Windows
+						Normal = { bg = "none" },
+						NormalFloat = { bg = "none" },
+						FloatBorder = { bg = "none" },
+						FloatTitle = { bg = "none" },
+					}
+				end,
 			})
 
-			-- -			vim.cmd.colorscheme("catppuccin-mocha")
+			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
+		enabled = true,
+		priority = 1000,
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		priority = 1000,
 		config = function()
 			require("kanagawa").setup({
 				transparent = true,
@@ -84,5 +94,7 @@ return {
 
 			vim.cmd.colorscheme("kanagawa")
 		end,
+		enabled = false,
+		priority = 1000,
 	},
 }
