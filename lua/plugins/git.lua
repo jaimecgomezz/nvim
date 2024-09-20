@@ -5,15 +5,28 @@
 return {
 	{
 		"tpope/vim-fugitive",
+		-- stylua: ignore
 		keys = {
 			{ "<leader>gg", "<CMD> vertical Git <CR>", desc = "Open fugitive" },
-			{ "<leader>gc", "<CMD> Git commit <CR>", desc = "Commit" },
+			{ "<leader>gc", "<CMD> Git commit <CR>", desc = "Git commit" },
+			{ "<leader>gp", "<CMD> Git pull <CR>", desc = "Git pull" },
+			{ "<leader>gS", "<CMD> Git stash <CR>", desc = "Git stash" },
+			{ "<leader>gP", "<CMD> Git push <CR>", desc = "Git push" },
 			{ "<leader>gll", "<CMD> vertical Git log <CR>", desc = "Commit" },
 			{ "<leader>glb", "<CMD> vertical Git log -- % <CR>", desc = "Commit" },
 			{ "<leader>gdd", "<CMD> vertical Git diff <CR>", desc = "Diff project" },
 			{ "<leader>gdb", "<CMD> vertical Git diff -- % <CR>", desc = "Diff file" },
 			{ "<Tab>", "=", ft = "fugitive", remap = true },
-			{ "q", "<CMD> close <CR>", ft = "fugitive", noremap = true },
+			{ "<BS>", "<", ft = "fugitive", remap = true },
+			{ "q", "<CMD> close <CR>", ft = { "fugitive", "git" }, noremap = true },
+			{ "<leader>gG", function ()
+                vim.ui.input({ prompt = "Git command: " }, function(command)
+                    if command ~= nil and command ~= "" then
+                        cmd = "vertical Git " .. command
+                        vim.cmd(cmd)
+                    end
+                end)
+			end, desc = "Run git command" },
 		},
 	},
 	{
