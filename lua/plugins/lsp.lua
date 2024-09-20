@@ -2,15 +2,11 @@
 --      - https://vi.stackexchange.com/a/43436
 --      - https://github.com/exosyphon/nvim/blob/main/lua/plugins/lsp.lua
 
-local hover_close = function(base_win_id)
-	local windows = vim.api.nvim_tabpage_list_wins(0)
-	for _, win_id in ipairs(windows) do
-		if win_id ~= base_win_id then
-			local win_cfg = vim.api.nvim_win_get_config(win_id)
-			if win_cfg.relative == "win" and win_cfg.win == base_win_id then
-				vim.api.nvim_win_close(win_id, true)
-				break
-			end
+local function close_floating_windows()
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local config = vim.api.nvim_win_get_config(win)
+		if config.relative ~= "" then
+			vim.api.nvim_win_close(win, false)
 		end
 	end
 end
@@ -33,6 +29,10 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("i", "<C-s>", function()
 		vim.lsp.buf.signature_help()
 	end, { desc = "LSP signature help" })
+
+	vim.keymap.set("n", "<Esc>", function()
+		close_floating_windows()
+	end, vim.tbl_deep_extend("force", opts, { desc = "Close active lsp hover popup" }))
 
 	vim.keymap.set("n", "<leader>vws", function()
 		vim.lsp.buf.workspace_symbol()
