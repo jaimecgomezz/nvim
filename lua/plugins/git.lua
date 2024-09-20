@@ -10,7 +10,8 @@ return {
 			{ "<leader>gg", "<CMD> vertical Git <CR>", desc = "Open fugitive" },
 			{ "<leader>gc", "<CMD> Git commit <CR>", desc = "Git commit" },
 			{ "<leader>gp", "<CMD> Git pull <CR>", desc = "Git pull" },
-			{ "<leader>gS", "<CMD> Git stash <CR>", desc = "Git stash" },
+			{ "<leader>gs", "<CMD> Git stash <CR>", desc = "Git stash" },
+			{ "<leader>gS", "<CMD> Git stash pop <CR>", desc = "Git stash pop" },
 			{ "<leader>gP", "<CMD> Git push <CR>", desc = "Git push" },
 			{ "<leader>gll", "<CMD> vertical Git log <CR>", desc = "Commit" },
 			{ "<leader>glb", "<CMD> vertical Git log -- % <CR>", desc = "Commit" },
@@ -36,7 +37,6 @@ return {
 		-- stylua: ignore
 		keys = {
             { "ih", ":<C-U>Gitsigns select_hunk<CR>", mode = { "o", "x" } },
-			{ "<leader>gs", function() require("gitsigns").toggle_signs() end, desc = "Toggle git signs" },
 			{ "<leader>hs", function() require("gitsigns").stage_hunk() end, desc = "Stage hunk" },
 			{ "<leader>hr", function() require("gitsigns").reset_hunk() end, desc = "Reset hunk" },
             { "<leader>hu", function() require("gitsigns").undo_stage_hunk() end, desc = "Undo stage hunk" },
