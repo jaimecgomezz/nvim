@@ -4,7 +4,10 @@ return {
 		opts = {
 			default_amount = 5,
 			at_edge = "stop",
-			resize_mode = { silent = true },
+			resize_mode = {
+				quit_key = "q",
+				silent = true,
+			},
 		},
         -- stylua: ignore
 		keys = {
