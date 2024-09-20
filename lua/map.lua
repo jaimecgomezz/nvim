@@ -1,11 +1,3 @@
--- Diagnostics navigation
-vim.keymap.set("n", "[d", function()
-	vim.diagnostic.goto_prev({ float = { border = "rounded" } })
-end, { desc = "Previous diagnostic" })
-vim.keymap.set("n", "]d", function()
-	vim.diagnostic.goto_next({ float = { border = "rounded" } })
-end, { desc = "Next diagnostic" })
-
 -- Don't copy the replaced text after pasting in visual mode
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_vim.keymap.setping_for_paste
 vim.keymap.set("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text" })

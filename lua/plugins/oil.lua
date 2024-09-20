@@ -56,16 +56,10 @@ local is_hidden_file = function(name, bufnr)
 	end
 end
 
-local config = function()
-	-- Clear git status cache on refresh
-	local refresh = require("oil.actions").refresh
-	local orig_refresh = refresh.callback
-	refresh.callback = function(...)
-		git_status = new_git_status()
-		orig_refresh(...)
-	end
-
-	require("oil").setup({
+return {
+	"stevearc/oil.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	opts = {
 		default_file_explorer = false,
 		delete_to_trash = true,
 		skip_confirm_for_simple_edits = true,
@@ -125,24 +119,9 @@ local config = function()
 				end,
 			},
 		},
-	})
-
-	vim.keymap.set("n", "<localleader>o", "<CMD> Oil <CR>", { desc = "Open oil" })
-
-	vim.api.nvim_create_autocmd("User", {
-		pattern = "OilEnter",
-		callback = vim.schedule_wrap(function(args)
-			local oil = require("oil")
-			if vim.api.nvim_get_current_buf() == args.data.buf and oil.get_cursor_entry() then
-				oil.open_preview()
-			end
-		end),
-	})
-end
-
-return {
-	"stevearc/oil.nvim",
-	config = config,
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	lazy = false,
+	},
+	-- stylua: ignore
+	keys = {
+		{ "<localleader>o", function() require("oil").open() end, desc = "Open oil", },
+	},
 }

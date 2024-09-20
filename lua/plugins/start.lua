@@ -1,11 +1,6 @@
-local config = function()
-	vim.keymap.set("n", "<leader>vs", [[<CMD> Startify <CR>]], { desc = "Startify" })
-	vim.keymap.set("n", "<leader>bq", [[<CMD>silent! %bd <BAR> Startify <CR>]], { desc = "Startify" })
-end
-
 return {
 	"mhinz/vim-startify",
-	config = config,
+	lazy = false,
 	init = function()
 		vim.cmd([[
           let g:ascii = [
@@ -24,4 +19,10 @@ return {
           let g:startify_lists = [{ 'type': 'files',     'header': ['   Recent']  }]
         ]])
 	end,
+	-- stylua: ignore
+	keys = {
+        { "<leader>vs", "<CMD> Startify <CR>", desc = "Startify" },
+        { "<leader>bq", "<CMD>silent! %bd <BAR> Startify <CR>", desc = "Startify" },
+    }
+,
 }

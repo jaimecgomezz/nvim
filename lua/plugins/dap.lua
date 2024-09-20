@@ -1,61 +1,4 @@
-local function set_signs(_)
-	vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
-	vim.fn.sign_define("DapBreakpointRejected", { linehl = "", text = "", texthl = "", numhl = "" })
-	vim.fn.sign_define("DapLogPoint", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" })
-	vim.fn.sign_define("DapBreakpoint", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" })
-	vim.fn.sign_define("DapBreakpointCondition", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" })
-	vim.fn.sign_define(
-		"DapStopped",
-		{ linehl = "GitSignsChangeVirtLn", text = "", texthl = "diffChanged", numhl = "" }
-	)
-end
-
-local function set_ui(dap)
-	local dapui = require("dapui")
-
-	dapui.setup({
-		icons = {
-			collapsed = "",
-			current_frame = "",
-			expanded = "",
-		},
-		layouts = {
-			{
-				elements = { "scopes", "stacks", "breakpoints" },
-				size = 60,
-				position = "left",
-			},
-		},
-	})
-
-	dap.listeners.before.attach.dapui_config = function()
-		dapui.open()
-	end
-	dap.listeners.before.launch.dapui_config = function()
-		dapui.open()
-	end
-	dap.listeners.before.event_terminated.dapui_config = function()
-		dapui.close()
-	end
-	dap.listeners.before.event_exited.dapui_config = function()
-		dapui.close()
-	end
-end
-
 return {
-	{
-		"theHamsta/nvim-dap-virtual-text",
-		opts = {},
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "nvim-neotest/nvim-nio" },
-        -- stylua: ignore
-        keys = {
-            { "<leader>dd", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
-            { "<leader>de", function() require("dapui").eval(vim.fn.getline("."), { context = "repl" }) end, desc = "Eval", mode = {"n", "v"} },
-        },
-	},
 	{
 		"jay-babu/mason-nvim-dap.nvim",
 		dependencies = "mason.nvim",
@@ -64,13 +7,18 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap",
-		dependencies = { "rcarriga/nvim-dap-ui" },
-		config = function()
-			local dap = require("dap")
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			{
+				"theHamsta/nvim-dap-virtual-text",
+				opts = {},
+			},
 
-			set_ui(dap)
-			set_signs(dap)
-		end,
+			{
+				"jaimecgomezz/nvim-dap-ruby-rdbg",
+				opts = { nonstop = false },
+			},
+		},
 		  -- stylua: ignore
         keys = {
             { "<leader>d", "", desc = "+debug", mode = {"n", "v"} },
@@ -93,8 +41,47 @@ return {
         },
 	},
 	{
-		"jaimecgomezz/nvim-dap-ruby-rdbg",
-		dependencies = { "mfussenegger/nvim-dap" },
-		opts = { nonstop = false },
+		"rcarriga/nvim-dap-ui",
+		dependencies = { "nvim-neotest/nvim-nio" },
+		init = function()
+			local dap = require("dap")
+			local dapui = require("dapui")
+
+			dap.listeners.before.attach.dapui_config = dapui.open
+			dap.listeners.before.launch.dapui_config = dapui.open
+			dap.listeners.before.event_terminated.dapui_config = dapui.close
+			dap.listeners.before.event_exited.dapui_config = dapui.close
+
+			vim.fn.sign_define("DapBreakpointRejected", { linehl = "", text = "", texthl = "", numhl = "" })
+			vim.fn.sign_define("DapLogPoint", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" })
+			vim.fn.sign_define("DapBreakpoint", { linehl = "", text = "", texthl = "diffRemoved", numhl = "" })
+			vim.fn.sign_define(
+				"DapBreakpointCondition",
+				{ linehl = "", text = "", texthl = "diffRemoved", numhl = "" }
+			)
+			vim.fn.sign_define(
+				"DapStopped",
+				{ linehl = "GitSignsChangeVirtLn", text = "", texthl = "diffChanged", numhl = "" }
+			)
+		end,
+		opts = {
+			icons = {
+				collapsed = "",
+				current_frame = "",
+				expanded = "",
+			},
+			layouts = {
+				{
+					elements = { "scopes", "stacks", "breakpoints" },
+					size = 60,
+					position = "left",
+				},
+			},
+		},
+        -- stylua: ignore
+        keys = {
+            { "<leader>dd", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
+            { "<leader>de", function() require("dapui").eval(vim.fn.getline("."), { context = "repl" }) end, desc = "Eval", mode = {"n", "v"} },
+        },
 	},
 }

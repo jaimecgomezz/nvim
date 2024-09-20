@@ -4,7 +4,7 @@ return {
 		"nvim-neotest/nvim-nio",
 		"olimorris/neotest-rspec",
 	},
-	config = function()
+	init = function()
 		local neotest_ns = vim.api.nvim_create_namespace("neotest")
 
 		vim.diagnostic.config({
@@ -16,8 +16,9 @@ return {
 				end,
 			},
 		}, neotest_ns)
-
-		require("neotest").setup({
+	end,
+	opts = function()
+		return {
 			status = { virtual_text = true, signs = false },
 			output = { enabled = true, open_on_run = true },
 			adapters = {
@@ -31,65 +32,18 @@ return {
 					end,
 				}),
 			},
-		})
+		}
 	end,
+	-- stylua: ignore
 	keys = {
 		{ "<leader>t", "", desc = "+test" },
-		{
-			"<leader>tt",
-			function()
-				require("neotest").run.run(vim.fn.expand("%"))
-			end,
-			desc = "Run File",
-		},
-		{
-			"<leader>tT",
-			function()
-				require("neotest").run.run(vim.uv.cwd())
-			end,
-			desc = "Run All Test Files",
-		},
-		{
-			"<leader>tr",
-			function()
-				require("neotest").run.run()
-			end,
-			desc = "Run Nearest",
-		},
-		{
-			"<leader>tl",
-			function()
-				require("neotest").run.run_last()
-			end,
-			desc = "Run Last",
-		},
-		{
-			"<leader>ts",
-			function()
-				require("neotest").summary.toggle()
-			end,
-			desc = "Toggle Summary",
-		},
-		{
-			"<leader>to",
-			function()
-				require("neotest").output_panel.toggle()
-			end,
-			desc = "Show Output",
-		},
-		{
-			"<leader>tk",
-			function()
-				require("neotest").run.stop()
-			end,
-			desc = "Stop",
-		},
-		{
-			"<leader>tw",
-			function()
-				require("neotest").watch.toggle(vim.fn.expand("%"))
-			end,
-			desc = "Toggle Watch",
-		},
+		{ "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
+		{ "<leader>tT", function() require("neotest").run.run(vim.uv.cwd()) end, desc = "Run All Test Files" },
+		{ "<leader>tr", function() require("neotest").run.run() end, desc = "Run Nearest" },
+		{ "<leader>tl", function() require("neotest").run.run_last() end, desc = "Run Last" },
+		{ "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle Summary" },
+		{ "<leader>to", function() require("neotest").output_panel.toggle() end, desc = "Show Output" },
+		{ "<leader>tk", function() require("neotest").run.stop() end, desc = "Stop" },
+		{ "<leader>tw", function() require("neotest").watch.toggle(vim.fn.expand("%")) end, desc = "Toggle Watch" },
 	},
 }

@@ -32,6 +32,7 @@ opt.wildmode = "list:longest,list:full"
 -- margin
 opt.ruler = false
 opt.number = true
+opt.relativenumber = true
 opt.numberwidth = 2
 opt.scrolloff = 999
 opt.cursorline = true
@@ -79,7 +80,7 @@ opt.whichwrap:append("<>[]hl")
 -- Diagnostics config
 vim.diagnostic.config({
 	update_in_insert = true,
-	underline = true,
+	underline = false,
 	severity_sort = true,
 	virtual_text = false,
 	signs = true,
@@ -98,6 +99,3 @@ vim.g.neovide_cursor_antialiasing = false
 vim.g.neovide_cursor_trail_size = 0
 vim.g.neovide_cursor_animate_in_insert_mode = false
 vim.g.neovide_cursor_animate_command_line = false
-
--- Filetypes
-vim.filetype.add({ extension = { ["http"] = "http" } })
