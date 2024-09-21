@@ -11,7 +11,7 @@ opt.hidden = true
 
 -- status
 opt.laststatus = 2
-opt.showtabline = 1
+opt.showtabline = 0
 opt.showmode = false
 
 -- indentation
