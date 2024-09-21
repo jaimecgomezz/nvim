@@ -41,26 +41,18 @@ return {
 					neotest = true,
 					harpoon = true,
 				},
-				custom_highlights = function(colors)
-					return {
-						-- Transparent Floating Windows
-						Normal = { bg = "none" },
-						NormalFloat = { bg = "none" },
-						FloatBorder = { bg = "none" },
-						FloatTitle = { bg = "none" },
-					}
-				end,
 			})
 
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
-		enabled = true,
+		enabled = false,
 		priority = 1000,
 	},
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
 			require("kanagawa").setup({
+				compile = true,
 				transparent = true,
 				dimInactive = false,
 				theme = "wave",
@@ -94,7 +86,7 @@ return {
 
 			vim.cmd.colorscheme("kanagawa")
 		end,
-		enabled = false,
+		enabled = true,
 		priority = 1000,
 	},
 }
