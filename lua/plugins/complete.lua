@@ -12,7 +12,6 @@ return {
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
-		"windwp/nvim-autopairs",
 		"rcarriga/cmp-dap",
 		"L3MON4D3/LuaSnip",
 	},
@@ -143,7 +142,5 @@ return {
 				{ name = "buffer" },
 			}),
 		})
-
-		cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 	end,
 }

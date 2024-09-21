@@ -19,9 +19,7 @@ return {
 		"romainl/vim-cool",
 	},
 	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
+		"jiangmiao/auto-pairs",
 	},
 	{
 		"andymass/vim-matchup",
