@@ -33,7 +33,10 @@ return {
 					"vim",
 					"vimdoc",
 				},
-				highlight = { enable = true },
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
 				matchup = { enable = true },
 
 				-- text objects manipulation
