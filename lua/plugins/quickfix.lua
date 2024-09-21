@@ -1,6 +1,7 @@
 return {
 	{
 		"kevinhwang91/nvim-bqf",
+		ft = "qf",
 		opts = {
 			preview = {
 				auto_preview = false,
@@ -14,6 +15,7 @@ return {
 	},
 	{
 		"stevearc/quicker.nvim",
+		ft = "qf",
 		opts = {
 			type_icons = {
 				E = "E ",
@@ -25,7 +27,6 @@ return {
 		},
 		-- stylua: ignore
 		keys = {
-            { "<localleader>d", function() vim.diagnostic.setloclist({}) end,  desc = "Send diagnostic to loclist" },
             { "<localleader>q", function ()
 				require("quicker").toggle({ focus = true, min_height = 10 })
             end, desc = "Toggle quickfix"  },

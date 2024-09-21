@@ -3,7 +3,7 @@ return {
 		"jay-babu/mason-nvim-dap.nvim",
 		dependencies = "mason.nvim",
 		cmd = { "DapInstall", "DapUninstall" },
-		opts = { automatic_installation = true },
+		opts = { automatic_installation = true, handlers = {} },
 	},
 	{
 		"mfussenegger/nvim-dap",
@@ -80,7 +80,7 @@ return {
 		},
         -- stylua: ignore
         keys = {
-            { "<leader>dd", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
+            { "<leader>dd", function() require("dapui").toggle() end, desc = "Dap UI" },
             { "<leader>de", function() require("dapui").eval(vim.fn.getline("."), { context = "repl" }) end, desc = "Eval", mode = {"n", "v"} },
         },
 	},

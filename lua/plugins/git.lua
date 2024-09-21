@@ -1,5 +1,4 @@
 -- TODO:
---  - fork and improve gv
 --  - toggle git status
 
 return {

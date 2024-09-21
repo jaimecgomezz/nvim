@@ -29,7 +29,7 @@ return {
 		},
 		-- stylua: ignore
 		keys = {
-			{ "<localleader>c", function() require('neogen').generate() end, desc = "Generate Annotations (Neogen)" },
+			{ "gcg", function() require('neogen').generate() end, desc = "Generate Annotations (Neogen)" },
 		},
 	},
 }

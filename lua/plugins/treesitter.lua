@@ -38,6 +38,7 @@ return {
 					additional_vim_regex_highlighting = false,
 				},
 				matchup = { enable = true },
+				endwise = { enable = true },
 
 				-- text objects manipulation
 				textobjects = {
