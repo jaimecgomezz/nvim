@@ -7,7 +7,7 @@ return {
 		name = "catppuccin",
 		config = function()
 			require("catppuccin").setup({
-				-- transparent_background = true,
+				transparent_background = true,
 				integrations = {
 					overseer = true,
 					cmp = true,
