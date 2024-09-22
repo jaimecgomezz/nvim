@@ -29,9 +29,6 @@ return {
 		"romainl/vim-cool",
 	},
 	{
-		"jiangmiao/auto-pairs",
-	},
-	{
 		"andymass/vim-matchup",
 	},
 	{

@@ -14,6 +14,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"rcarriga/cmp-dap",
 		"L3MON4D3/LuaSnip",
+		"windwp/nvim-autopairs",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -142,5 +143,7 @@ return {
 				{ name = "buffer" },
 			}),
 		})
+
+		cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 	end,
 }
