@@ -25,7 +25,16 @@ local config = function()
 			file_ignore_patterns = { "node_modules" },
 			winblend = 0,
 			layout_strategy = "vertical",
-			layout_config = { vertical = { width = 0.4 } },
+			layout_config = {
+				vertical = {
+					width = function(_, max_columns)
+						local min = 80
+						local percentage = 0.4
+
+						return math.max(math.floor(percentage * max_columns), min)
+					end,
+				},
+			},
 			mappings = {
 				n = {
 					-- Exit
