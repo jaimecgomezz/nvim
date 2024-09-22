@@ -41,7 +41,7 @@ return {
             { "<leader>dq", function() require("dap").terminate() end, desc = "Terminate session" },
             { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
             { "<leader>du", function() require("dap").reverse_continue() end, desc = "Reverse continue" },
-            { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
+            { "<leader>ds", function() require("dap").pause() end, desc = "Pause" },
             { "<leader>dw", function () require('persistent-breakpoints.api').set_log_point() end, desc = "Set log point" },
             { "<leader>dx", function() require('persistent-breakpoints.api').clear_all_breakpoints() end, desc = "Clear breakpoints" },
         },

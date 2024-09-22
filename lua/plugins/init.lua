@@ -115,4 +115,23 @@ return {
 			},
 		},
 	},
+	{
+		"andrewferrier/debugprint.nvim",
+		opts = {
+			keymaps = {
+				normal = {
+					plain_below = "<leader>dp",
+					plain_above = "<leader>dP",
+					variable_below = "<leader>dv",
+					variable_above = "<leader>dV",
+					toggle_comment_debug_prints = "<leader>dt",
+					delete_debug_prints = "<leader>dD",
+				},
+				visual = {
+					variable_below = "<leader>dv",
+					variable_above = "<leader>dV",
+				},
+			},
+		},
+	},
 }
