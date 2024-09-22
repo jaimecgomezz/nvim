@@ -9,9 +9,6 @@ return {
 				winblend = 0,
 			},
 		},
-		keys = {
-			{ "q", "<CMD> close <CR>", ft = "qf", noremap = true },
-		},
 	},
 	{
 		"stevearc/quicker.nvim",

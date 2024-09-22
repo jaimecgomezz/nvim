@@ -19,7 +19,6 @@ return {
             { "<leader>gD", "<CMD> vertical Git diff <CR>", desc = "Diff project" },
 			{ "<Tab>", "=", ft = "fugitive", remap = true },
 			{ "<BS>", "<", ft = "fugitive", remap = true },
-			{ "q", "<CMD> close <CR>", ft = { "fugitive", "git" }, noremap = true },
 			{ "<leader>gG", function ()
                 vim.ui.input({ prompt = "Git command: " }, function(command)
                     if command ~= nil and command ~= "" then
