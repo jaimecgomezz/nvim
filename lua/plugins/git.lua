@@ -35,6 +35,7 @@ return {
 		opts = {},
 		-- stylua: ignore
 		keys = {
+            { "ah", ":<C-U>Gitsigns select_hunk<CR>", mode = { "o", "x" } },
             { "ih", ":<C-U>Gitsigns select_hunk<CR>", mode = { "o", "x" } },
 			{ "<leader>hs", function() require("gitsigns").stage_hunk() end, desc = "Stage hunk" },
 			{ "<leader>hr", function() require("gitsigns").reset_hunk() end, desc = "Reset hunk" },
@@ -63,5 +64,32 @@ return {
 					end
 				end, desc = "Next diff hunk" },
 		},
+	},
+	{
+		"pwntester/octo.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		opts = {
+			enable_builtin = true,
+			mappings_disable_default = true,
+		},
+		-- stylua: ignore
+        keys = {
+            { '<leader>go', "<CMD> Octo <CR>", desc = "Octo" }
+        },
+		init = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "octo",
+				callback = function()
+					vim.keymap.set("i", "@", "@<C-x><C-o>", { silent = true, buffer = true })
+					vim.keymap.set("i", "#", "#<C-x><C-o>", { silent = true, buffer = true })
+				end,
+			})
+
+			vim.treesitter.language.register("markdown", "octo")
+		end,
 	},
 }
