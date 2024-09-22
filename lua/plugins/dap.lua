@@ -13,17 +13,22 @@ return {
 				"theHamsta/nvim-dap-virtual-text",
 				opts = {},
 			},
-
 			{
 				"jaimecgomezz/nvim-dap-ruby-rdbg",
 				opts = { nonstop = false },
+			},
+			{
+				"Weissle/persistent-breakpoints.nvim",
+				opts = {
+					load_breakpoints_event = { "BufReadPost" },
+				},
 			},
 		},
 		  -- stylua: ignore
         keys = {
             { "<leader>d", "", desc = "+debug", mode = {"n", "v"} },
-            { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
-            { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+            { "<leader>dB", function() require('persistent-breakpoints.api').set_conditional_breakpoint() end, desc = "Breakpoint Condition" },
+            { "<leader>db", function() require('persistent-breakpoints.api').toggle_breakpoint() end, desc = "Toggle Breakpoint" },
             { "<leader>dc", function() require("dap").continue() end, desc = "Continue" },
             { "<leader>dg", function() require("dap").run_to_cursor() end, desc = "Go to Line (No Execute)" },
             { "<leader>dl", function() require("dap").step_into() end, desc = "Step Into" },
@@ -37,7 +42,8 @@ return {
             { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
             { "<leader>du", function() require("dap").reverse_continue() end, desc = "Reverse continue" },
             { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
-            { "<leader>dx", function() require("dap").clear_breakpoints() end, desc = "Clear breakpoints" },
+            { "<leader>dw", function () require('persistent-breakpoints.api').set_log_point() end, desc = "Set log point" },
+            { "<leader>dx", function() require('persistent-breakpoints.api').clear_all_breakpoints() end, desc = "Clear breakpoints" },
         },
 	},
 	{
