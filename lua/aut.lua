@@ -18,6 +18,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- Close terminals with `q`
+vim.api.nvim_create_autocmd("TermOpen", {
+	callback = function()
+		vim.keymap.set("n", "q", vim.cmd.close, { desc = "Close" })
+	end,
+})
+
 -- Dynamicalle create missing dirs on write
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function(event)
