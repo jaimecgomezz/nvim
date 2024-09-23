@@ -3,7 +3,7 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
-			messages = { enabled = true },
+			messages = { enabled = false },
 			popupmenu = { enabled = false },
 			notify = { enabled = true },
 			lsp = {
