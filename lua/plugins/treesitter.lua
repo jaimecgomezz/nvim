@@ -9,6 +9,7 @@ return {
 			"CKolkey/ts-node-action",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"JoosepAlviste/nvim-ts-context-commentstring",
+			"RRethy/nvim-treesitter-textsubjects",
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
@@ -126,6 +127,21 @@ return {
 							["[K"] = "@object_key",
 							["[V"] = "@object_value",
 							["[W"] = "@method_parameter",
+						},
+					},
+				},
+				textsubjects = {
+					enable = true,
+					prev_selection = ",",
+					keymaps = {
+						[";"] = "textsubjects-smart",
+						["i;"] = {
+							"textsubjects-container-inner",
+							desc = "Select inside containers (classes, functions, etc.)",
+						},
+						["a;"] = {
+							"textsubjects-container-outer",
+							desc = "Select inside containers (classes, functions, etc.)",
 						},
 					},
 				},
