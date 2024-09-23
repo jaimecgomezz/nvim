@@ -84,12 +84,7 @@ vim.diagnostic.config({
 	severity_sort = true,
 	virtual_text = false,
 	signs = true,
-	float = {
-		scope = "cursor",
-		source = true,
-		focusable = false,
-		border = "single",
-	},
+	float = false,
 })
 
 -- Neovide

@@ -43,11 +43,11 @@ local on_attach = function(_, bufnr)
 	end, vim.tbl_deep_extend("force", opts, { desc = "Close active lsp hover popup" }))
 
 	vim.keymap.set("n", "]d", function()
-		vim.diagnostic.goto_next({ float = { border = "rounded" } })
+		vim.diagnostic.goto_next({ float = false })
 	end, vim.tbl_deep_extend("force", opts, { desc = "Next Diagnostic" }))
 
 	vim.keymap.set("n", "[d", function()
-		vim.diagnostic.goto_prev({ float = { border = "rounded" } })
+		vim.diagnostic.goto_prev({ float = false })
 	end, vim.tbl_deep_extend("force", opts, { desc = "Previous Diagnostic" }))
 
 	vim.keymap.set("n", "<leader>ld", function()
@@ -144,6 +144,19 @@ return {
 					require("sqls").on_attach(client, bufnr)
 				end,
 			}))
+		end,
+	},
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
+
+			vim.diagnostic.config({
+				virtual_lines = {
+					only_current_line = true,
+					highlight_whole_line = false,
+				},
+			})
 		end,
 	},
 }
