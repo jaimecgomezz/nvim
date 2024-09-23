@@ -79,7 +79,7 @@ opt.whichwrap:append("<>[]hl")
 
 -- Diagnostics config
 vim.diagnostic.config({
-	update_in_insert = false,
+	update_in_insert = true,
 	underline = false,
 	severity_sort = true,
 	virtual_text = false,
