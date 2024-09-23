@@ -157,4 +157,12 @@ return {
 			})
 		end,
 	},
+	{
+		"gsuuon/tshjkl.nvim",
+		opts = {
+			keymaps = {
+				toggle = "<A-t>",
+			},
+		},
+	},
 }
