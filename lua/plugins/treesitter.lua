@@ -39,6 +39,7 @@ return {
 				},
 				matchup = { enable = true },
 				endwise = { enable = true },
+				indent = { enable = true },
 
 				-- text objects manipulation
 				textobjects = {

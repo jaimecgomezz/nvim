@@ -21,7 +21,7 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.copyindent = true
 opt.shiftround = true
-opt.smartindent = true
+opt.smartindent = false
 opt.autoindent = true
 
 -- search
