@@ -47,6 +47,9 @@ return {
 		"tpope/vim-repeat",
 	},
 	{
+		"ludovicchabant/vim-gutentags",
+	},
+	{
 		"NvChad/nvim-colorizer.lua",
 		opts = { user_default_options = { mode = "virtualtext" } },
 	},
