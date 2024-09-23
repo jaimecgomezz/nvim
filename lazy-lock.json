@@ -72,7 +72,7 @@
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "quicker.nvim": { "branch": "master", "commit": "308088ebcec33f9ed551714e52390206b8f62ed6" },
   "render-markdown.nvim": { "branch": "main", "commit": "2f9d4f0be8784ed4fef5960eb7b80bf60c5fdf56" },
-  "reply.vim": { "branch": "master", "commit": "f458f7c13cbd8eafaf9acd69e8eade71416338c5" },
+  "scratch.nvim": { "branch": "main", "commit": "b397b0f2191778bd642e9e8326c119f3f84ab508" },
   "smart-splits.nvim": { "branch": "master", "commit": "99216f4cdbd4a690e10fabafd7f6defcb25e97b2" },
   "sqls.nvim": { "branch": "main", "commit": "4b1274b5b44c48ce784aac23747192f5d9d26207" },
   "tagbar": { "branch": "master", "commit": "d55d454bd3d5b027ebf0e8c75b8f88e4eddad8d8" },
