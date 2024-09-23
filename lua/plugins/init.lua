@@ -1,5 +1,8 @@
 return {
 	{
+		"ludovicchabant/vim-gutentags",
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		lazy = false,
@@ -26,30 +29,6 @@ return {
 		},
 	},
 	{
-		"romainl/vim-cool",
-	},
-	{
-		"andymass/vim-matchup",
-	},
-	{
-		"chaoren/vim-wordmotion",
-	},
-	{
-		"wellle/targets.vim",
-	},
-	{
-		"tpope/vim-surround",
-	},
-	{
-		"triglav/vim-visual-increment",
-	},
-	{
-		"tpope/vim-repeat",
-	},
-	{
-		"ludovicchabant/vim-gutentags",
-	},
-	{
 		"NvChad/nvim-colorizer.lua",
 		opts = { user_default_options = { mode = "virtualtext" } },
 	},
@@ -65,23 +44,6 @@ return {
 			vim.g.rooter_patterns = { ".git", "Makefile" }
 			vim.g.rooter_change_directory_for_non_project_files = "current"
 		end,
-	},
-	{
-		"echasnovski/mini.move",
-		version = "*",
-		opts = {
-			mappings = {
-				left = "<C-S-h>",
-				right = "<C-S-l>",
-				down = "<C-S-j>",
-				up = "<C-S-k>",
-
-				line_left = "<C-S-h>",
-				line_right = "<C-S-l>",
-				line_down = "<C-S-j>",
-				line_up = "<C-S-k>",
-			},
-		},
 	},
 	{
 		"chrishrb/gx.nvim",
