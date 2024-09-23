@@ -9,14 +9,16 @@ return {
 			{ "<leader>gg", "<CMD> vertical Git <CR>", desc = "Open fugitive" },
 			{ "<leader>gc", "<CMD> Git commit <CR>", desc = "Git commit" },
 			{ "<leader>gp", "<CMD> Git pull <CR>", desc = "Git pull" },
+			{ "<leader>gf", "<CMD> Git fetch <CR>", desc = "Git fetch" },
 			{ "<leader>gs", "<CMD> Git stash <CR>", desc = "Git stash" },
 			{ "<leader>gS", "<CMD> Git stash pop <CR>", desc = "Git stash pop" },
 			{ "<leader>gP", "<CMD> Git push <CR>", desc = "Git push" },
-            { "<leader>gB", "<CMD> vertical Git branch <CR>", desc = "Git pull" },
-			{ "<leader>gl", "<CMD> vertical Git log -- % <CR>", desc = "Commit" },
-            { "<leader>gL", "<CMD> vertical Git log <CR>", desc = "Commit" },
-			{ "<leader>gd", "<CMD> vertical Git diff -- % <CR>", desc = "Diff file" },
-            { "<leader>gD", "<CMD> vertical Git diff <CR>", desc = "Diff project" },
+            { "<leader>gB", "<CMD> vertical Git branch -a <CR>", desc = "Git branch locals" },
+            { "<leader>gl", "<CMD> vertical Git log <CR>", desc = "Commit" },
+			{ "<leader>gdm", "<CMD> vertical Git diff master -- % <CR>", desc = "Diff file with master" },
+			{ "<leader>gdd", "<CMD> vertical Git diff dev -- % <CR>", desc = "Diff file with dev" },
+            { "<leader>gDm", "<CMD> vertical Git diff master <CR>", desc = "Diff project with master" },
+            { "<leader>gDd", "<CMD> vertical Git diff dev <CR>", desc = "Diff project with dev" },
 			{ "<Tab>", "=", ft = "fugitive", remap = true },
 			{ "<BS>", "<", ft = "fugitive", remap = true },
 			{ "<leader>gG", function ()
@@ -43,7 +45,7 @@ return {
 			{ "<leader>hp", function() require("gitsigns").preview_hunk() end, desc = "Preview hunk" },
 			{ "<leader>hS", function() require("gitsigns").stage_buffer() end, desc = "Stage buffer" },
 			{ "<leader>hR", function() require("gitsigns").reset_buffer() end, desc = "Reset buffer" },
-			{ "<leader>gb", function() require("gitsigns").blame_line({ full = true, ignore_whitespace = true }) end, desc = "Git blame line" },
+			{ "<leader>gr", function() require("gitsigns").blame_line({ full = true, ignore_whitespace = true }) end, desc = "Git blame line" },
 			{ "<leader>hd", function() require("gitsigns").diffthis() end, desc = "Diff hunk" },
 			{ "<leader>hD", function() require("gitsigns").diffthis("~") end, desc = "Diff buffer" },
 			{ "<leader>hx", function() require("gitsigns").toggle_deleted() end, desc = "Toggle deleted hunks" },
@@ -72,10 +74,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"nvim-tree/nvim-web-devicons",
 		},
-		opts = {
-			enable_builtin = true,
-			mappings_disable_default = true,
-		},
+		opts = { enable_builtin = true },
 		-- stylua: ignore
         keys = {
             { '<leader>go', "<CMD> Octo <CR>", desc = "Octo" }
