@@ -18,18 +18,6 @@ end
 local on_attach = function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false, silent = true }
 
-	vim.keymap.set("n", "gr", function()
-		vim.lsp.buf.references()
-	end, vim.tbl_deep_extend("force", opts, { desc = "LSP Goto Reference" }))
-
-	vim.keymap.set("n", "gd", function()
-		vim.lsp.buf.definition()
-	end, vim.tbl_deep_extend("force", opts, { desc = "LSP Goto Definition" }))
-
-	vim.keymap.set("n", "gi", function()
-		vim.lsp.buf.implementation()
-	end, vim.tbl_deep_extend("force", opts, { desc = "LSP Goto Definition" }))
-
 	vim.keymap.set("n", "K", function()
 		vim.lsp.buf.hover()
 	end, vim.tbl_deep_extend("force", opts, { desc = "LSP Hover" }))
@@ -158,5 +146,32 @@ return {
 				},
 			})
 		end,
+	},
+	{
+		"dnlhc/glance.nvim",
+		opts = {
+			detached = true,
+			border = {
+				enable = true,
+				top_char = "─",
+				bottom_char = "─",
+			},
+			list = {
+				position = "left",
+				width = 0.20,
+			},
+			theme = {
+				mode = "darken",
+			},
+			preview_win_opts = {
+				cursorline = false,
+			},
+		},
+		keys = {
+			{ "gr", "<CMD>Glance references<CR>", desc = "LSP Goto Reference" },
+			{ "gd", "<CMD>Glance definitions<CR>", desc = "LSP Goto Definition" },
+			{ "gt", "<CMD>Glance type_definitions<CR>", desc = "LSP Goto Type Definition" },
+			{ "gi", "<CMD>Glance implementations<CR>", desc = "LSP Goto Implementations" },
+		},
 	},
 }
