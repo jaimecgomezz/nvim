@@ -134,4 +134,22 @@ return {
 			},
 		},
 	},
+	{
+		"tversteeg/registers.nvim",
+		lazy = false,
+		cmd = "Registers",
+		name = "registers",
+		opts = {
+			show_empty = false,
+			window = {
+				max_width = 80,
+				border = "single",
+				transparency = 0,
+			},
+		},
+		keys = {
+			{ '"', mode = { "n", "v" } },
+			{ "<C-R>", mode = "i" },
+		},
+	},
 }
