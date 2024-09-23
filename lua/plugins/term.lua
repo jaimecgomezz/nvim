@@ -7,7 +7,10 @@ return {
 				if term.direction == "horizontal" then
 					return 15
 				elseif term.direction == "vertical" then
-					return vim.o.columns * 0.5
+					local min = 80
+					local percentage = 0.5
+
+					return math.max(math.floor(percentage * vim.o.columns), min)
 				end
 			end,
 			open_mapping = [[<C-;>]],
