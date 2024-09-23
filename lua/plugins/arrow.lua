@@ -28,7 +28,7 @@ return {
 	keys = {
 		{ "H", function() require("arrow.persist").previous() end, desc = "Previous arrowed file" },
 		{ "L", function() require("arrow.persist").next() end, desc = "Next arrowed file" },
-        { "<C-a>", function() require("arrow.persist").toggle() end, desc = "Arrow file" },
-        { "<C-b>", function() require("arrow.commands").commands.toggle_current_line_for_buffer() end, desc = "Arrow line" },
+        { "<leader>h", function() require("arrow.persist").toggle() end, desc = "Arrow file" },
+        { "<leader>H", function() require("arrow.commands").commands.toggle_current_line_for_buffer() end, desc = "Arrow line" },
 	},
 }
