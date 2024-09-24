@@ -1,16 +1,25 @@
 local function toggle_terminal()
+	local lastbuff = vim.fn.bufnr("#")
 	local termbuff = vim.g.termbuff
 	local currbuff = vim.api.nvim_get_current_buf()
 
 	-- Create terminal if not exists
 	if not termbuff then
 		vim.cmd.terminal()
+		vim.g.prevbuff = currbuff
 		vim.g.termbuff = vim.api.nvim_get_current_buf()
-		vim.cmd.startinsert()
 
 	-- Open last edited buffer if we're in terminal
 	elseif currbuff == termbuff then
-		pcall(vim.cmd, "silent! buffer#")
+		if vim.fn.buflisted(vim.g.prevbuff) == 1 then
+			vim.cmd("buffer" .. vim.g.prevbuff)
+
+		-- Open the last edited buffer
+		elseif vim.fn.buflisted(lastbuff) == 1 then
+			vim.cmd("buffer" .. lastbuff)
+		end
+
+		vim.g.prevbuff = nil
 
 		-- Handle no other buffers listed with start page
 		if vim.api.nvim_get_current_buf() == termbuff then
@@ -20,12 +29,13 @@ local function toggle_terminal()
 	-- Open terminal if we're not in it
 	else
 		vim.cmd("buffer" .. tostring(termbuff))
+		vim.g.prevbuff = currbuff
 		vim.cmd.startinsert()
 	end
 end
 
 local function kill_terminal()
-	local prevbuff = vim.fn.bufnr("#")
+	local lastbuff = vim.fn.bufnr("#")
 	local termbuff = vim.g.termbuff
 	local currbuff = vim.api.nvim_get_current_buf()
 
@@ -37,8 +47,15 @@ local function kill_terminal()
 	pcall(vim.cmd, "silent! bdelete! " .. termbuff)
 
 	if currbuff == termbuff then
-		if vim.fn.buflisted(prevbuff) == 1 then
-			vim.cmd("buffer" .. prevbuff)
+		-- Open the buffer prior to switching to terminal
+		if vim.fn.buflisted(vim.g.prevbuff) == 1 then
+			vim.cmd("buffer" .. vim.g.prevbuff)
+
+		-- Open the last edited buffer
+		elseif vim.fn.buflisted(lastbuff) == 1 then
+			vim.cmd("buffer" .. lastbuff)
+
+		-- Open Start page
 		else
 			vim.cmd.Startify()
 		end
