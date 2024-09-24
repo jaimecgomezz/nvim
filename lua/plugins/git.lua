@@ -45,7 +45,7 @@ return {
 			{ "<leader>hp", function() require("gitsigns").preview_hunk() end, desc = "Preview hunk" },
 			{ "<leader>hS", function() require("gitsigns").stage_buffer() end, desc = "Stage buffer" },
 			{ "<leader>hR", function() require("gitsigns").reset_buffer() end, desc = "Reset buffer" },
-			{ "<leader>gr", function() require("gitsigns").blame_line({ full = true, ignore_whitespace = true }) end, desc = "Git blame line" },
+			{ "<leader>gb", function() require("gitsigns").blame_line({ full = true, ignore_whitespace = true }) end, desc = "Git blame line" },
 			{ "<leader>hd", function() require("gitsigns").diffthis() end, desc = "Diff hunk" },
 			{ "<leader>hD", function() require("gitsigns").diffthis("~") end, desc = "Diff buffer" },
 			{ "<leader>hx", function() require("gitsigns").toggle_deleted() end, desc = "Toggle deleted hunks" },
