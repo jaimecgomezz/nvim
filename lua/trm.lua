@@ -24,7 +24,29 @@ local function toggle_terminal()
 	end
 end
 
+local function kill_terminal()
+	local prevbuff = vim.fn.bufnr("#")
+	local termbuff = vim.g.termbuff
+	local currbuff = vim.api.nvim_get_current_buf()
+
+	if not termbuff then
+		return
+	end
+
+	vim.g.termbuff = nil
+	pcall(vim.cmd, "silent! bdelete! " .. termbuff)
+
+	if currbuff == termbuff then
+		if vim.fn.buflisted(prevbuff) == 1 then
+			vim.cmd("buffer" .. prevbuff)
+		else
+			vim.cmd.Startify()
+		end
+	end
+end
+
 vim.keymap.set({ "n", "t" }, "<C-;>", toggle_terminal, { desc = "Toggle term" })
+vim.keymap.set({ "n", "t" }, "<C-S-;>", kill_terminal, { desc = "Kill term" })
 vim.keymap.set("t", "<A-h>", [[<C-\><C-n><C-W>h]], { desc = "Move left" })
 vim.keymap.set("t", "<A-j>", [[<C-\><C-n><C-W>j]], { desc = "Move down" })
 vim.keymap.set("t", "<A-k>", [[<C-\><C-n><C-W>k]], { desc = "Move up" })
