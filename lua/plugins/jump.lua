@@ -13,7 +13,6 @@ return {
 			char = {
 				autohide = true,
 				jump_labels = true,
-				keys = { "f", "F", "t", "T" },
 			},
 			treesitter_search = {
 				search = { incremental = true },
