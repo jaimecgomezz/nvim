@@ -18,17 +18,10 @@ return {
 		"tpope/vim-repeat",
 	},
 	{
-		"chrisgrieser/nvim-spider",
-		opts = { consistentOperatorPending = true },
-		-- stylua: ignore
-		keys = {
-            { "cw", "ce", remap = true },
-			{ "e", function() require("spider").motion("e") end, mode = { "n", "o", "x" } },
-			{ "w", function() require("spider").motion("w") end, mode = { "n", "o", "x" } },
-			{ "b", function() require("spider").motion("b") end, mode = { "n", "o", "x" } },
-            { "<C-f>", "<Esc>l<cmd>lua require('spider').motion('w')<CR>i", mode = "v" },
-            { "<C-b>", "<Esc><cmd>lua require('spider').motion('b')<CR>i", mode = "v" },
-		},
+		"chaoren/vim-wordmotion",
+		init = function()
+			vim.g.wordmotion_spaces = { "_", "-", ".", ":", "?" }
+		end,
 	},
 	{
 		"echasnovski/mini.move",
