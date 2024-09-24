@@ -7,8 +7,5 @@ require("map")
 -- Autocmds
 require("aut")
 
--- Terminal
-require("ter")
-
 -- Lazy package manaer and plugins
 require("lzy")
