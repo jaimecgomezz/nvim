@@ -13,7 +13,7 @@ return {
 			{ "<leader>gs", "<CMD> Git stash <CR>", desc = "Git stash" },
 			{ "<leader>gS", "<CMD> Git stash pop <CR>", desc = "Git stash pop" },
 			{ "<leader>gP", "<CMD> Git push <CR>", desc = "Git push" },
-            { "<leader>gB", "<CMD> vertical Git branch -a <CR>", desc = "Git branch locals" },
+            { "<leader>gB", "<CMD> Telescope git_branches <CR>", desc = "Git branch locals" },
             { "<leader>gl", "<CMD> vertical Git log <CR>", desc = "Commit" },
 			{ "<leader>gdm", "<CMD> vertical Git diff master -- % <CR>", desc = "Diff file with master" },
 			{ "<leader>gdd", "<CMD> vertical Git diff dev -- % <CR>", desc = "Diff file with dev" },
