@@ -87,7 +87,6 @@
   "telescope-insert-path.nvim": { "branch": "master", "commit": "9c7bbf8b5129550c6c5bf93fd5c077b6a00cc176" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "d829aa64059001ee7b2c8c8aa9c4e6df0b17d893" },
-  "toggleterm.nvim": { "branch": "main", "commit": "137d06fb103952a0fb567882bb8527e2f92d327d" },
   "transparent.nvim": { "branch": "main", "commit": "8a2749a2fa74f97fe6557f61b89ac7fd873f3c21" },
   "ts-node-action": { "branch": "master", "commit": "6d3b60754fd87963d70eadaa2f77873b447eac26" },
   "tshjkl.nvim": { "branch": "main", "commit": "3fe81ab2c15f014a78b752062238d6c110a08fc8" },

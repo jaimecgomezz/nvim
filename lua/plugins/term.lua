@@ -1,40 +1,5 @@
 return {
 	{
-		"akinsho/toggleterm.nvim",
-		lazy = false,
-		opts = {
-			size = function(term)
-				if term.direction == "horizontal" then
-					return 15
-				elseif term.direction == "vertical" then
-					local min = 80
-					local percentage = 0.5
-
-					return math.max(math.floor(percentage * vim.o.columns), min)
-				end
-			end,
-			open_mapping = [[<C-;>]],
-			shading_factor = "1",
-			persist_size = false,
-			direction = "vertical",
-			autochdir = true,
-			winbar = {
-				enabled = false,
-				name_formatter = function(term) --  term: Terminal
-					return term.name
-				end,
-			},
-		},
-		-- stylua: ignore
-		keys = {
-			{ "<A-h>", [[<C-\><C-n><C-W>h]], desc = "Move left window", mode = { "t" } },
-			{ "<A-j>", [[<C-\><C-n><C-W>j]], desc = "Move bottom window", mode = { "t" } },
-			{ "<A-k>", [[<C-\><C-n><C-W>k]], desc = "Move upper window", mode = { "t" } },
-			{ "<A-l>", [[<C-\><C-n><C-W>l]], desc = "Move right window", mode = { "t" } },
-			{ "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), desc = "Escape terminal mode", mode = { "t" }, },
-		},
-	},
-	{
 		"willothy/flatten.nvim",
 		config = true,
 		lazy = false,
