@@ -6,7 +6,6 @@ return {
 			at_edge = "stop",
 			resize_mode = {
 				quit_key = "q",
-				silent = true,
 			},
 		},
         -- stylua: ignore
@@ -23,7 +22,7 @@ return {
             { "<C-A-k>", function() require("smart-splits").resize_up() end, desc = "Resize window to top" },
             { "<C-A-l>", function() require("smart-splits").resize_right() end, desc = "Resize window to right" },
 
-            { "<leader>br", function() require("smart-splits").start_resize_mode() end, desc = "Start resize mode" },
+            { "<C-w>r", function() require("smart-splits").start_resize_mode() end, desc = "Start resize mode" },
         },
 	},
 	{
@@ -44,7 +43,7 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader>bs", "<Cmd>WinShift<CR>", desc = "Shift window" },
+			{ "<C-w>s", "<Cmd>WinShift<CR>", desc = "Shift window" },
 		},
 	},
 }
