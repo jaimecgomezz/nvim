@@ -1,73 +1,99 @@
+local config = function()
+	local telescope = require("telescope")
+	local actions = require("telescope.actions")
+	local path_actions = require("telescope_insert_path")
+
+	telescope.setup({
+		defaults = {
+			vimgrep_arguments = {
+				"rg",
+				"-L",
+				"--color=never",
+				"--no-heading",
+				"--with-filename",
+				"--line-number",
+				"--column",
+				"--smart-case",
+			},
+			prompt_prefix = "❯ ",
+			selection_caret = "❯ ",
+			entry_orefix = "  ",
+			initial_mode = "insert",
+			selection_strategy = "reset",
+			sorting_strategy = "ascending",
+			path_display = { "truncate" },
+			file_ignore_patterns = { "node_modules" },
+			winblend = 0,
+			layout_strategy = "vertical",
+			layout_config = {
+				vertical = {
+					width = function(_, max_columns)
+						local min = 80
+						local percentage = 0.4
+
+						return math.max(math.floor(percentage * max_columns), min)
+					end,
+				},
+			},
+			mappings = {
+				n = {
+					-- Exit
+					["q"] = actions.close,
+					["<Esc>"] = actions.close,
+
+					-- Selection
+					["<C-Space>"] = actions.toggle_selection,
+					["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+
+					-- Path
+					["-"] = path_actions.insert_reltobufpath_visual,
+					["="] = path_actions.insert_abspath_visual,
+				},
+				i = {
+					-- Exit
+					["<Esc>"] = actions.close,
+					["<C-n>"] = { "<esc>", type = "command" },
+
+					-- Selection
+					["<C-Space>"] = actions.toggle_selection,
+					["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+
+					-- Movement
+					["<Tab>"] = actions.move_selection_next,
+					["<S-Tab>"] = actions.move_selection_previous,
+				},
+			},
+		},
+	})
+
+	telescope.load_extension("fzf")
+	telescope.load_extension("ui-select")
+end
+
 return {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        'nvim-telescope/telescope-media-files.nvim'
-    },
-    lazy = false,
-    config = function(_, _)
-        local telescope = require("telescope")
-
-        telescope.setup({
-            defaults = {
-                vimgrep_arguments = {
-                    "rg", "-L", "--color=never", "--no-heading",
-                    "--with-filename", "--line-number", "--column",
-                    "--smart-case"
-                },
-                prompt_prefix = "   ",
-                selection_caret = "  ",
-                entry_prefix = "  ",
-                initial_mode = "insert",
-                selection_strategy = "reset",
-                sorting_strategy = "ascending",
-                layout_strategy = "horizontal",
-                layout_config = {
-                    horizontal = {
-                        prompt_position = "top",
-                        preview_width = 0.55,
-                        results_width = 0.8
-                    },
-                    vertical = {mirror = false},
-                    width = 0.87,
-                    height = 0.80,
-                    preview_cutoff = 120
-                },
-                file_sorter = require("telescope.sorters").get_fuzzy_file,
-                file_ignore_patterns = {"node_modules"},
-                generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-                path_display = {"truncate"},
-                winblend = 0,
-                border = {},
-                borderchars = {
-                    "─", "│", "─", "│", "╭", "╮", "╯", "╰"
-                },
-                color_devicons = true,
-                set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
-                file_previewer = require("telescope.previewers").vim_buffer_cat
-                    .new,
-                grep_previewer = require("telescope.previewers").vim_buffer_vimgrep
-                    .new,
-                qflist_previewer = require("telescope.previewers").vim_buffer_qflist
-                    .new,
-                -- Developer configurations: Not meant for general override
-                buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-                mappings = {
-                    n = {["q"] = require("telescope.actions").close},
-                    i = {
-                        ['<Tab>'] = require("telescope.actions").move_selection_next,
-                        ['<S-Tab>'] = require("telescope.actions").move_selection_previous,
-                        ['<C-Space>'] = require("telescope.actions").toggle_selection,
-                        ['<Esc>'] = require("telescope.actions").close,
-                        ['<C-q>'] = require("telescope.actions").send_selected_to_qflist
-                    }
-                }
-            }
-        })
-
-        -- load extensions
-        for _, ext in ipairs({'media_files'}) do
-            telescope.load_extension(ext)
-        end
-    end
+	"nvim-telescope/telescope.nvim",
+	tag = "0.1.7",
+	config = config,
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"kiyoon/telescope-insert-path.nvim",
+		"nvim-telescope/telescope-ui-select.nvim",
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	},
+	-- stylua: ignore
+	keys = {
+        { "<C-p>", [[<CMD> Telescope find_files <CR>]], desc = "Find files" },
+        { "<leader>ff", "<cmd> Telescope live_grep <CR>", desc = "Live grep" },
+        { "<leader>fo", "<cmd> Telescope oldfiles <CR>", desc = "Find oldfiles" },
+        { "<leader>ft", "<cmd> Telescope filetypes <CR>", desc = "Find filetypes" },
+        { "<leader>fr", "<cmd> Telescope registers <CR>", desc = "Find registers" },
+        { "<leader>fd", "<cmd> Telescope diagnostics bufnr=0 <CR>", desc = "Find diagnostics" },
+        { "<leader>fw", "<cmd> Telescope grep_string <CR>", desc = "Find word under cursor" },
+        { "<leader>fc", "<cmd> Telescope colorscheme <CR>", desc = "Find colorschemes" },
+        { "<leader>fh", "<cmd> Telescope help_tags <CR>", desc = "Find help tags" },
+        { "<C-A-p>", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "Find all files" },
+        { "<C-l>", "<cmd>lua require( 'telescope.builtin').find_files( { cwd = vim.fn.expand( '%:p:h') }) <CR>", desc = "Find relative files" },
+        { "<C-space>", "<cmd>lua require( 'telescope.builtin').buffers( { sort_mru = true, ignore_current_buffer = true }) <CR>", desc = "Find buffers" }
+    }
+,
 }

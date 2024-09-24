@@ -1,13 +1,11 @@
-local function load(config, modules)
-    for _, module in ipairs(modules) do require(module)(config) end
-end
+-- Options and global configurations
+require("set")
 
-load({
-    -- leaders
-    leader = [[ ]],
-    localleader = [[,]],
+-- Mappings and general utilities
+require("map")
 
-    -- theme
-    theme = "dark",
-    transparency = false
-}, {"laziest", "options", "autocmds", "mappings", "diagnostics", "theme"})
+-- Autocmds
+require("aut")
+
+-- Lazy package manaer and plugins
+require("lzy")

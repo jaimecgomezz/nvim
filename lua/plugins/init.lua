@@ -1,41 +1,118 @@
-local M = {
-    plugins = {
-        {
-            require("plugins.others"), require("plugins.blankline"),
-            require("plugins.treesitter"), require("plugins.gitsigns"),
-            require("plugins.mason"), require("plugins.cmp"),
-            require("plugins.luasnip"), require("plugins.lspconfig"),
-            require("plugins.comment"), require("plugins.nvimtree"),
-            require("plugins.telescope"), require("plugins.startify"),
-            require("plugins.toggleterm"), require("plugins.projects"),
-            require("plugins.tags"), require("plugins.null"),
-            require("plugins.dap")
-        }
-    },
-    options = {
-        defaults = {lazy = false},
-        ui = {
-            icons = {
-                ft = "",
-                lazy = "󰂠 ",
-                loaded = "",
-                not_loaded = ""
-            }
-        },
-        performance = {
-            rtp = {
-                disabled_plugins = {
-                    "2html_plugin", "tohtml", "getscript", "getscriptPlugin",
-                    "gzip", "logipat", "netrw", "netrwPlugin", "netrwSettings",
-                    "netrwFileHandlers", "matchit", "tar", "tarPlugin",
-                    "rrhelper", "spellfile_plugin", "vimball", "vimballPlugin",
-                    "zip", "zipPlugin", "tutor", "rplugin", "syntax", "synmenu",
-                    "optwin", "compiler", "bugreport", "ftplugin",
-                    "editorconfig"
-                }
-            }
-        }
-    }
+return {
+	{
+		"ludovicchabant/vim-gutentags",
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		lazy = false,
+		opts = {
+			extensions = {
+				"quickfix",
+				"fugitive",
+				"man",
+				"nvim-tree",
+				"oil",
+				"overseer",
+				"toggleterm",
+			},
+			options = {
+				ignore_focus = {
+					"dapui_watches",
+					"dapui_breakpoints",
+					"dapui_scopes",
+					"dapui_console",
+					"dapui_stacks",
+					"dap-repl",
+				},
+			},
+		},
+	},
+	{
+		"NvChad/nvim-colorizer.lua",
+		opts = { user_default_options = { mode = "virtualtext" } },
+	},
+	{
+		"chrisbra/csv.vim",
+		config = function()
+			vim.cmd([[filetype plugin on]])
+		end,
+	},
+	{
+		"airblade/vim-rooter",
+		init = function()
+			vim.g.rooter_buftypes = { "" }
+			vim.g.rooter_patterns = { ".git", "Makefile" }
+			vim.g.rooter_change_directory_for_non_project_files = "current"
+		end,
+	},
+	{
+		"chrishrb/gx.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		cmd = { "Browse" },
+		init = function()
+			vim.g.netrw_nogx = 1
+		end,
+		config = true,
+		submodules = false,
+		keys = {
+			{ "gx", "<cmd>Browse<cr>", mode = { "n", "x" } },
+		},
+	},
+	{
+		"lambdalisue/vim-suda",
+		init = function()
+			vim.g.suda_smart_edit = 1
+		end,
+	},
+	{
+		"anuvyklack/hydra.nvim",
+	},
+	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		dependencies = { { "Bilal2453/luvit-meta", lazy = true } },
+		opts = {
+			library = {
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+			},
+		},
+	},
+	{
+		"andrewferrier/debugprint.nvim",
+		opts = {
+			keymaps = {
+				normal = {
+					plain_below = "<leader>dp",
+					plain_above = "<leader>dP",
+					variable_below = "<leader>dv",
+					variable_above = "<leader>dV",
+					toggle_comment_debug_prints = "<leader>dt",
+					delete_debug_prints = "<leader>dD",
+				},
+				visual = {
+					variable_below = "<leader>dv",
+					variable_above = "<leader>dV",
+				},
+			},
+		},
+	},
+	{
+		"tversteeg/registers.nvim",
+		lazy = false,
+		cmd = "Registers",
+		name = "registers",
+		opts = {
+			show_empty = false,
+			window = {
+				max_width = 80,
+				border = "single",
+				transparency = 0,
+			},
+		},
+		keys = {
+			{ '"', mode = { "n", "v" } },
+			{ "<C-R>", mode = "i" },
+		},
+	},
 }
-
-return M

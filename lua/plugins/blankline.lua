@@ -1,15 +1,32 @@
 return {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-        indentLine_enabled = 1,
-        filetype_exclude = {
-            "help", "terminal", "lazy", "lspinfo", "TelescopePrompt",
-            "TelescopeResults", "mason", "nvdash", "nvcheatsheet", "startify"
-        },
-        buftype_exclude = {"terminal"},
-        show_trailing_blankline_indent = false,
-        show_first_indent_level = false,
-        show_current_context = false
-    },
-    config = function(_, opts) require("indent_blankline").setup(opts) end
+	"lukas-reineke/indent-blankline.nvim",
+	main = "ibl",
+	config = function()
+		local ibl = require("ibl")
+		local hooks = require("ibl.hooks")
+
+		ibl.setup({
+			exclude = {
+				buftypes = { "terminal" },
+				filetypes = {
+					"help",
+					"terminal",
+					"lazy",
+					"lspinfo",
+					"TelescopePrompt",
+					"TelescopeResults",
+					"mason",
+					"nvdash",
+					"nvcheatsheet",
+					"startify",
+					"fugitive",
+				},
+			},
+			scope = {
+				enabled = false,
+			},
+		})
+
+		hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+	end,
 }

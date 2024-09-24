@@ -1,59 +1,168 @@
+-- source: https://github.com/catgoose/nvim/blob/main/lua/plugins/treesitter.lua
+
 return {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-        incremental_selection = {
-            enable = true,
-            keymaps = {
-                init_selection = "gnn",
-                node_incremental = "grn",
-                scope_incremental = "grc",
-                node_decremental = "grm"
-            }
-        },
-        ident = {enable = true},
-        auto_install = true,
-        matchup = {enable = true},
-        ensure_installed = {
-            "bash", "dockerfile", "dot", "go", "graphql", "html", "http",
-            "javascript", "json", "json5", "lua", "make", "python", "ruby",
-            "rust", "toml", "yaml"
-        },
-        highlight = {
-            enable = true,
-            use_languagetree = true,
-            disable = {"latex"}
-        },
-        indent = {enable = true},
-        actions = {
-            open_file = {quit_on_open = true},
-            change_dir = {enable = true, global = true}
-        },
-        view = {width = 30, side = "left"},
-        hijack_cursor = true,
-        update_cwd = true,
-        disable_netrw = false,
-        hijack_netrw = false,
-        hijack_directories = {enable = true, auto_open = false},
-        renderer = {
-            root_folder_label = false,
-            indent_markers = {enable = true},
-            icons = {
-                glyphs = {
-                    git = {
-                        staged = "✓",
-                        ignored = "~",
-                        unstaged = "Ξ",
-                        untracked = "+",
-                        unmerged = "µ",
-                        deleted = "✕",
-                        renamed = "≌"
-                    }
-                }
-            }
-        },
-        respect_buf_cwd = true
-    },
-    build = ":TSUpdate",
-    cmd = {"TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo"},
-    config = function(_, opts) require("nvim-treesitter.configs").setup(opts) end
+	{
+		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
+		build = ":TSUpdate",
+		dependencies = {
+			"CKolkey/ts-node-action",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			"RRethy/nvim-treesitter-textsubjects",
+		},
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"bash",
+					"c",
+					"csv",
+					"diff",
+					"go",
+					"graphql",
+					"json",
+					"json5",
+					"lua",
+					"luadoc",
+					"markdown",
+					"markdown_inline",
+					"python",
+					"ruby",
+					"rust",
+					"sql",
+					"svelte",
+					"vim",
+					"vimdoc",
+				},
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = { "markdown" },
+				},
+				matchup = { enable = true },
+				endwise = { enable = true },
+				indent = { enable = true },
+
+				-- text objects manipulation
+				textobjects = {
+					lsp_interop = {
+						enable = true,
+						border = "rounded",
+						floating_preview_opts = {},
+					},
+					select = {
+						enable = true,
+						lookahead = true,
+						keymaps = {
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["aC"] = "@call.outer",
+							["iC"] = "@call.inner",
+							["ac"] = "@class.outer",
+							["ic"] = "@class.inner",
+							["ip"] = "@parameter.inner",
+							["ap"] = "@parameter.outer",
+							["ib"] = "@block.inner",
+							["ab"] = "@block.outer",
+							["il"] = "@loop.inner",
+							["al"] = "@loop.outer",
+							["ia"] = "@attribute.inner",
+							["aa"] = "@attribute.outer",
+						},
+					},
+					move = {
+						enable = true,
+						set_jumps = true,
+						goto_next_start = {
+							["]f"] = "@function.outer",
+							["]p"] = "@parameter.inner",
+							["]b"] = "@block.outer",
+							["]a"] = "@attribute.inner",
+							["]l"] = "@loop.outer",
+							["]m"] = "@this_method_call",
+							["]s"] = { query = "@scope", query_group = "locals" },
+							["]c"] = "@method_object_call",
+							["]o"] = "@object_declaration",
+							["]k"] = "@object_key",
+							["]v"] = "@object_value",
+							["]w"] = "@method_parameter",
+						},
+						goto_previous_start = {
+							["[f"] = "@function.outer",
+							["[p"] = "@parameter.inner",
+							["[b"] = "@block.outer",
+							["[a"] = "@attribute.inner",
+							["[l"] = "@loop.outer",
+							["[m"] = "@this_method_call",
+							["[s"] = { query = "@scope", query_group = "locals" },
+							["[c"] = "@method_object_call",
+							["[o"] = "@object_declaration",
+							["[k"] = "@object_key",
+							["[v"] = "@object_value",
+							["[w"] = "@method_parameter",
+						},
+						goto_next_end = {
+							["]F"] = "@function.outer",
+							["]P"] = "@parameter.inner",
+							["]B"] = "@block.outer",
+							["]A"] = "@attribute.inner",
+							["]L"] = "@loop.outer",
+							["]M"] = "@this_method_call",
+							["]S"] = { query = "@scope", query_group = "locals" },
+							["]C"] = "@method_object_call",
+							["]O"] = "@object_declaration",
+							["]K"] = "@object_key",
+							["]V"] = "@object_value",
+							["]W"] = "@method_parameter",
+						},
+						goto_previous_end = {
+							["[F"] = "@function.outer",
+							["[P"] = "@parameter.inner",
+							["[B"] = "@block.outer",
+							["[A"] = "@attribute.inner",
+							["[L"] = "@loop.outer",
+							["[M"] = "@this_method_call",
+							["[S"] = { query = "@scope", query_group = "locals" },
+							["[C"] = "@method_object_call",
+							["[O"] = "@object_declaration",
+							["[K"] = "@object_key",
+							["[V"] = "@object_value",
+							["[W"] = "@method_parameter",
+						},
+					},
+				},
+				textsubjects = {
+					enable = true,
+					prev_selection = ",",
+					keymaps = {
+						[";"] = "textsubjects-smart",
+						["i;"] = {
+							"textsubjects-container-inner",
+							desc = "Select inside containers (classes, functions, etc.)",
+						},
+						["a;"] = {
+							"textsubjects-container-outer",
+							desc = "Select inside containers (classes, functions, etc.)",
+						},
+					},
+				},
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						node_incremental = "v",
+						node_decremental = "V",
+						init_selection = "<C-y>",
+						scope_incremental = "<C-v>",
+					},
+				},
+			})
+		end,
+	},
+	{
+		"gsuuon/tshjkl.nvim",
+		opts = {
+			keymaps = {
+				toggle = "<A-t>",
+			},
+		},
+	},
 }
