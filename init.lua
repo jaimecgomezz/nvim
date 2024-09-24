@@ -8,7 +8,7 @@ require("map")
 require("aut")
 
 -- Terminal
-require("trm")
+require("ter")
 
 -- Lazy package manaer and plugins
 require("lzy")
