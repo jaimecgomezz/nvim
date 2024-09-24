@@ -21,7 +21,7 @@ return {
 		per_buffer_config = {
 			lines = 5,
 		},
-		leader_key = "'",
+		leader_key = ";",
 		buffer_leader_key = "m",
 	},
 	-- stylua: ignore
