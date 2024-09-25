@@ -6,9 +6,7 @@ return {
 		lazy = false,
 		build = ":TSUpdate",
 		dependencies = {
-			"CKolkey/ts-node-action",
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			"JoosepAlviste/nvim-ts-context-commentstring",
 			"RRethy/nvim-treesitter-textsubjects",
 		},
 		config = function()
