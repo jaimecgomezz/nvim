@@ -8,7 +8,7 @@ vim.g.maplocalleader = [[,]]
 -- general
 opt.showmatch = true
 opt.hidden = true
-opt.spell = true
+opt.spell = false
 opt.spelllang = "en_us"
 
 -- status

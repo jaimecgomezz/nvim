@@ -26,3 +26,8 @@ vim.keymap.set(
 	"<cmd>cd ~/.config/nvim<cr><cmd>:e ~/.config/nvim/init.lua<cr>",
 	{ desc = "Edit vim conf" }
 )
+
+-- Toggle spell
+vim.keymap.set("n", "<localleader>s", function()
+	vim.o.spell = not vim.o.spell
+end, { desc = "Toggle spell" })

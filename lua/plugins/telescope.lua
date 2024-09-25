@@ -92,7 +92,6 @@ return {
         { "<leader>fc", "<cmd> Telescope colorscheme <CR>", desc = "Find colorschemes" },
         { "<leader>fh", "<cmd> Telescope help_tags <CR>", desc = "Find help tags" },
         { "z=", "<cmd> Telescope spell_suggest <CR>", desc = "Suggest spell corrections" },
-        { "<localleader>s", "<cmd> Telescope spell_suggest <CR>", desc = "Suggest spell corrections" },
         { "<C-A-p>", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "Find all files" },
         { "<C-l>", "<cmd>lua require( 'telescope.builtin').find_files( { cwd = vim.fn.expand( '%:p:h') }) <CR>", desc = "Find relative files" },
         { "<C-space>", "<cmd>lua require( 'telescope.builtin').buffers( { sort_mru = true, ignore_current_buffer = true }) <CR>", desc = "Find buffers" }
