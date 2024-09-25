@@ -24,6 +24,9 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Close terminals with `q`
 vim.api.nvim_create_autocmd("TermOpen", {
 	callback = function()
+		vim.opt_local.spell = false
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
 		vim.keymap.set("n", "q", vim.cmd.close, { desc = "Close", buffer = vim.api.nvim_get_current_buf() })
 		vim.cmd.startinsert()
 	end,

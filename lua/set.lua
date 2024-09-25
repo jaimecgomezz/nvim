@@ -8,6 +8,8 @@ vim.g.maplocalleader = [[,]]
 -- general
 opt.showmatch = true
 opt.hidden = true
+opt.spell = true
+opt.spelllang = "en_us"
 
 -- status
 opt.laststatus = 2
