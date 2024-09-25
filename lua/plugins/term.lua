@@ -80,6 +80,10 @@ return {
 		keys = {
             { "<C-;>", toggle_terminal,  desc = "Toggle term", mode = { "n", "t" }},
             { "<C-S-;>", kill_terminal, desc = "Kill term", mode = { "n", "t" }},
+            { "<C-w>h", [[<C-\><C-n><C-W>h]], desc = "Move left window", mode = { "t" } },
+            { "<C-w>j", [[<C-\><C-n><C-W>j]], desc = "Move bottom window", mode = { "t" } },
+            { "<C-w>k", [[<C-\><C-n><C-W>k]], desc = "Move upper window", mode = { "t" } },
+            { "<C-w>l", [[<C-\><C-n><C-W>l]], desc = "Move right window", mode = { "t" } },
             { "<A-h>", [[<C-\><C-n><C-W>h]], desc = "Move left window", mode = { "t" } },
             { "<A-j>", [[<C-\><C-n><C-W>j]], desc = "Move bottom window", mode = { "t" } },
             { "<A-k>", [[<C-\><C-n><C-W>k]], desc = "Move upper window", mode = { "t" } },
