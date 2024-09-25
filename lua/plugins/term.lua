@@ -3,6 +3,11 @@ local function toggle_terminal()
 	local termbuff = vim.g.termbuff
 	local currbuff = vim.api.nvim_get_current_buf()
 
+	-- Prevent opening terminal within another terminals
+	if vim.bo.buftype == "terminal" and currbuff ~= termbuff then
+		return
+	end
+
 	-- Create terminal if not exists
 	if not termbuff then
 		vim.cmd.terminal()
