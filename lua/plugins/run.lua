@@ -20,6 +20,11 @@ return {
 			form = { win_opts = { winblend = 0 } },
 			confirm = { win_opts = { winblend = 0 } },
 			task_win = { win_opts = { winblend = 0 } },
+			task_list = {
+				min_height = 20,
+				max_height = 0.5,
+				win_opts = { winblend = 0 },
+			},
 		},
 		keys = {
 			{ "<leader>ow", "<cmd>OverseerToggle<cr>", desc = "Task list" },

@@ -5,7 +5,8 @@ return {
 			default_amount = 5,
 			at_edge = "stop",
 			resize_mode = {
-				quit_key = "q",
+				quit_key = "r",
+				silent = true,
 			},
 		},
         -- stylua: ignore
