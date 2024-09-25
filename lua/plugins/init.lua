@@ -1,6 +1,9 @@
 return {
 	{
 		"ludovicchabant/vim-gutentags",
+		init = function()
+			vim.g.gutentags_ctags_executable_ruby = "ripper-tags"
+		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
