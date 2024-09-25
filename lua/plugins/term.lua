@@ -1,7 +1,3 @@
-local function notify(message)
-	vim.notify(message, vim.log.levels.INFO, { title = "Term" })
-end
-
 local function return_to_buffer(prevbuff, termbuff)
 	-- Enter the buffer we were at prior to entering our terminal
 	if vim.fn.buflisted(prevbuff) == 1 and prevbuff ~= termbuff then
@@ -84,11 +80,11 @@ return {
 		keys = {
             { "<C-;>", toggle_terminal,  desc = "Toggle term", mode = { "n", "t" }},
             { "<C-S-;>", kill_terminal, desc = "Kill term", mode = { "n", "t" }},
-			{ "<A-h>", [[<C-\><C-n><C-W>h]], desc = "Move left window", mode = { "t" } },
-			{ "<A-j>", [[<C-\><C-n><C-W>j]], desc = "Move bottom window", mode = { "t" } },
-			{ "<A-k>", [[<C-\><C-n><C-W>k]], desc = "Move upper window", mode = { "t" } },
-			{ "<A-l>", [[<C-\><C-n><C-W>l]], desc = "Move right window", mode = { "t" } },
-			{ "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), desc = "Escape terminal mode", mode = { "t" }, },
+            { "<A-h>", [[<C-\><C-n><C-W>h]], desc = "Move left window", mode = { "t" } },
+            { "<A-j>", [[<C-\><C-n><C-W>j]], desc = "Move bottom window", mode = { "t" } },
+            { "<A-k>", [[<C-\><C-n><C-W>k]], desc = "Move upper window", mode = { "t" } },
+            { "<A-l>", [[<C-\><C-n><C-W>l]], desc = "Move right window", mode = { "t" } },
+            { "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), desc = "Escape terminal mode", mode = { "t" }, },
         },
 	},
 }

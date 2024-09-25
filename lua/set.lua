@@ -34,7 +34,7 @@ opt.wildmode = "list:longest,list:full"
 -- margin
 opt.ruler = false
 opt.number = true
-opt.relativenumber = true
+opt.relativenumber = false
 opt.numberwidth = 2
 opt.scrolloff = 999
 opt.cursorline = true
