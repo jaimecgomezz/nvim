@@ -14,6 +14,19 @@ vim.keymap.set("n", "<leader>bw", "<cmd>echo expand('%:p')<cr>", { desc = "Where
 vim.keymap.set("n", "<C-s>", "<c-w><c-v>", { desc = "Split vertical" })
 vim.keymap.set("n", "<C-t>", "<c-w><c-s>", { desc = "Split horizontal" })
 
+-- Jump to tag in split window
+vim.keymap.set("n", "gs", function()
+	local word = vim.fn.expand("<cword>")
+	vim.cmd("vertical split")
+	vim.cmd("tag " .. word)
+end, { desc = "Jump to definition (vsplit)" })
+
+vim.keymap.set("n", "gS", function()
+	local word = vim.fn.expand("<cword>")
+	vim.cmd("split")
+	vim.cmd("tag " .. word)
+end, { desc = "Jump to definition (vsplit)" })
+
 -- Projects
 vim.keymap.set("n", "<leader>pw", "<cmd>pwd<cr>", { desc = "Whre project?" })
 
