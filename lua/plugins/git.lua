@@ -1,12 +1,37 @@
--- TODO:
---  - toggle git status
+local function toggle_fugitive()
+	if vim.bo.filetype == "fugitive" then
+		vim.cmd("close")
+		return
+	end
+
+	-- Close any existing fugitive buffers
+	for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.fn.buflisted(buffer) == 1 then
+			local buftype = vim.fn.getbufvar(buffer, "&filetype")
+
+			if buftype == "fugitive" then
+				vim.cmd("bdelete " .. buffer)
+				return
+			end
+		end
+	end
+
+	-- If we're on a Git repository, open fugitive
+	if vim.fn.finddir(".git", vim.fn.getcwd() .. ";") ~= "" then
+		vim.cmd("vertical Git")
+
+	-- Switch to a git project otherwise
+	else
+		vim.cmd("FzfSwitchProject")
+	end
+end
 
 return {
 	{
 		"tpope/vim-fugitive",
 		-- stylua: ignore
 		keys = {
-			{ "<leader>gg", "<CMD> vertical Git <CR>", desc = "Open fugitive" },
+			{ "<leader>gg", toggle_fugitive, desc = "Open fugitive" },
 			{ "<leader>gc", "<CMD> Git commit <CR>", desc = "Git commit" },
 			{ "<leader>gp", "<CMD> Git pull <CR>", desc = "Git pull" },
 			{ "<leader>gf", "<CMD> Git fetch <CR>", desc = "Git fetch" },

@@ -1,5 +1,6 @@
 return {
 	"benwainwright/fzf-project",
+	lazy = false,
 	dependencies = {
 		"junegunn/fzf",
 		"junegunn/fzf.vim",
