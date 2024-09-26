@@ -50,7 +50,7 @@ opt.updatetime = 250
 
 -- text
 opt.wrap = false
-opt.textwidth = 80
+opt.textwidth = 120
 
 -- miscellaneus
 opt.updatetime = 100

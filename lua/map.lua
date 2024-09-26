@@ -50,3 +50,13 @@ vim.keymap.set("t", "<A-h>", [[<C-\><C-n><C-W>h]], { desc = "Move left window" }
 vim.keymap.set("t", "<A-j>", [[<C-\><C-n><C-W>j]], { desc = "Move bottom window" })
 vim.keymap.set("t", "<A-k>", [[<C-\><C-n><C-W>k]], { desc = "Move upper window" })
 vim.keymap.set("t", "<A-l>", [[<C-\><C-n><C-W>l]], { desc = "Move right window" })
+
+-- Move between wrapped lines
+vim.keymap.set("n", "<localleader>w", function()
+	local wrap = not vim.o.wrap
+
+	vim.o.wrap = wrap
+	vim.o.textwidth = wrap and 0 or 120
+end, { desc = "Toggle wrap" })
+vim.keymap.set("n", "j", "gj", { desc = "Move to line below" })
+vim.keymap.set("n", "k", "gk", { desc = "Move to line below" })
