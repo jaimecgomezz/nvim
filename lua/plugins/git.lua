@@ -1,6 +1,6 @@
 local function toggle_fugitive()
 	if vim.bo.filetype == "fugitive" then
-		vim.cmd("close")
+		vim.cmd("Git")
 		return
 	end
 
