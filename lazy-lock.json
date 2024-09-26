@@ -25,6 +25,7 @@
   "grug-far.nvim": { "branch": "main", "commit": "876ba28a4ab61dd5632b34ac6e7432110bd1d899" },
   "gx.nvim": { "branch": "main", "commit": "28060914ee334da8a7f3c17509fd23cec023a0f7" },
   "harpoon": { "branch": "harpoon2", "commit": "0378a6c428a0bed6a2781d459d7943843f374bce" },
+  "here.term": { "branch": "master", "commit": "d0a00b2132191d56869923d6687b8e323e8f21fc" },
   "hydra.nvim": { "branch": "master", "commit": "3ced42c0b6a6c85583ff0f221635a7f4c1ab0dd0" },
   "indent-blankline.nvim": { "branch": "master", "commit": "18603eb949eba08300799f64027af11ef922283f" },
   "iron.nvim": { "branch": "master", "commit": "e6b78ec1bc56eab63b3a9112d348b3d79836b672" },

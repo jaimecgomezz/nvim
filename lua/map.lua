@@ -44,3 +44,9 @@ vim.keymap.set(
 vim.keymap.set("n", "<localleader>s", function()
 	vim.o.spell = not vim.o.spell
 end, { desc = "Toggle spell" })
+
+-- Move in/out terminal
+vim.keymap.set("t", "<A-h>", [[<C-\><C-n><C-W>h]], { desc = "Move left window" })
+vim.keymap.set("t", "<A-j>", [[<C-\><C-n><C-W>j]], { desc = "Move bottom window" })
+vim.keymap.set("t", "<A-k>", [[<C-\><C-n><C-W>k]], { desc = "Move upper window" })
+vim.keymap.set("t", "<A-l>", [[<C-\><C-n><C-W>l]], { desc = "Move right window" })
