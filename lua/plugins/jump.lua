@@ -1,52 +1,35 @@
 return {
 	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			local harpoon = require("harpoon")
-
-			harpoon:setup()
-
-			vim.keymap.set("n", "<C-a>", function()
-				local item = harpoon:list():get_by_value(vim.fn.expand("%"))
-
-				if not item then
-					harpoon:list():add()
-				else
-					harpoon:list():remove()
-				end
-			end)
-
-			vim.keymap.set("n", "<leader>hh", function()
-				local file_paths = {}
-				for _, item in ipairs(harpoon:list().items) do
-					table.insert(file_paths, item.value)
-				end
-
-				local tvalues = require("telescope.config").values
-				require("telescope.pickers")
-					.new({}, {
-						prompt_title = "Harpoon",
-						finder = require("telescope.finders").new_table({
-							results = file_paths,
-						}),
-						previewer = tvalues.file_previewer({}),
-						sorter = tvalues.generic_sorter({}),
-					})
-					:find()
-			end, { desc = "Open harpoon window" })
-
-			vim.keymap.set("n", "<leader>hx", function()
-				harpoon:list():clear()
-			end, { desc = "Open harpoon window" })
-
-			for n = 1, 9 do
-				vim.keymap.set("n", "'" .. n, function()
-					harpoon:list():select(n)
-				end)
-			end
-		end,
+		"otavioschwanck/arrow.nvim",
+		lazy = false,
+		opts = {
+			hide_handbook = true,
+			mappings = {
+				edit = "e",
+				delete_mode = "d",
+				clear_all_items = "X",
+				toggle = "a",
+				open_vertical = "v",
+				open_horizontal = "s",
+				quit = "q",
+				remove = "x",
+				next_item = "]",
+				prev_item = "[",
+			},
+			window = {
+				border = "single",
+			},
+			per_buffer_config = {
+				lines = 5,
+			},
+			leader_key = "'",
+		},
+	-- stylua: ignore
+	keys = {
+		{ "H", function() require("arrow.persist").previous() end, desc = "Previous arrowed file" },
+		{ "L", function() require("arrow.persist").next() end, desc = "Next arrowed file" },
+        { "<C-h>", function() require("arrow.persist").toggle() end, desc = "Arrow file" },
+	},
 	},
 	{
 		"folke/flash.nvim",
