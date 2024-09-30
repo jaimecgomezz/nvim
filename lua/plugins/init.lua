@@ -118,4 +118,10 @@ return {
 			{ "<C-R>", mode = "i" },
 		},
 	},
+	{
+		"NStefan002/screenkey.nvim",
+		commands = { "Screenkey" },
+		lazy = false,
+		version = "*",
+	},
 }

@@ -78,6 +78,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "2f9d4f0be8784ed4fef5960eb7b80bf60c5fdf56" },
   "rest.nvim": { "branch": "main", "commit": "cb72444968dff18369be11ca988b78fad5f49f74" },
   "scratch.nvim": { "branch": "main", "commit": "b397b0f2191778bd642e9e8326c119f3f84ab508" },
+  "screenkey.nvim": { "branch": "main", "commit": "0589de3c857721e150ea694cfe66d6d0e8aecacb" },
   "smart-splits.nvim": { "branch": "master", "commit": "99216f4cdbd4a690e10fabafd7f6defcb25e97b2" },
   "sqls.nvim": { "branch": "main", "commit": "4b1274b5b44c48ce784aac23747192f5d9d26207" },
   "targets.vim": { "branch": "master", "commit": "6325416da8f89992b005db3e4517aaef0242602e" },
