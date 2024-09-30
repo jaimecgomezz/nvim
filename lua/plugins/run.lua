@@ -37,11 +37,6 @@ return {
 		},
 	},
 	{
-		"pianocomposer321/officer.nvim",
-		dependencies = "stevearc/overseer.nvim",
-		opts = {},
-	},
-	{
 		"Vigemus/iron.nvim",
 		config = function()
 			require("iron.core").setup({
