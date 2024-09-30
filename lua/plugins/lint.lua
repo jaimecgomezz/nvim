@@ -14,7 +14,7 @@ return {
 			markdown = { "markdownlint" },
 			bash = { "shellcheck" },
 			rust = { "ruff" },
-			sql = { "sqlfluff" },
+			sql = {},
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

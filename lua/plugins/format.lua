@@ -18,7 +18,7 @@ return {
 			ruby = { "rubocop" },
 			bash = { "shfmt" },
 			rust = { "rustfmt" },
-			sql = { "sqlfluff", lsp_format = "never" },
+			sql = { "sql_formatter" },
 		},
 	},
 	-- stylua: ignore
