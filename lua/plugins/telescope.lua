@@ -22,7 +22,7 @@ local config = function()
 			selection_strategy = "reset",
 			sorting_strategy = "ascending",
 			path_display = { "truncate" },
-			file_ignore_patterns = { "node_modules" },
+			file_ignore_patterns = { "node_modules", "tags" },
 			winblend = 0,
 			layout_strategy = "vertical",
 			layout_config = {
@@ -94,6 +94,6 @@ return {
         { "z=", "<cmd> Telescope spell_suggest <CR>", desc = "Suggest spell corrections" },
         { "<C-A-p>", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "Find all files" },
         { "<C-l>", "<cmd>lua require( 'telescope.builtin').find_files( { cwd = vim.fn.expand( '%:p:h') }) <CR>", desc = "Find relative files" },
-        { "<C-space>", "<cmd>lua require( 'telescope.builtin').buffers( { sort_mru = true, ignore_current_buffer = true }) <CR>", desc = "Find buffers" }
+        { "<C-space>", "<cmd>lua require( 'telescope.builtin').buffers({ show_all_buffers = false, sort_mru = true, ignore_current_buffer = true }) <CR>", desc = "Find buffers" }
     },
 }

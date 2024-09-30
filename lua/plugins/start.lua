@@ -1,3 +1,5 @@
+-- TODO: when buffers remaining, show a prompt to be able to delete them
+
 return {
 	"mhinz/vim-startify",
 	lazy = false,
