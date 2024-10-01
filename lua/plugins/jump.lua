@@ -25,11 +25,11 @@ return {
 			leader_key = "'",
 		},
 	-- stylua: ignore
-	keys = {
-		{ "H", function() require("arrow.persist").previous() end, desc = "Previous arrowed file" },
-		{ "L", function() require("arrow.persist").next() end, desc = "Next arrowed file" },
-        { "<C-h>", function() require("arrow.persist").toggle() end, desc = "Arrow file" },
-	},
+        keys = {
+            { "H", function() require("arrow.persist").previous() end, desc = "Previous arrowed file" },
+            { "L", function() require("arrow.persist").next() end, desc = "Next arrowed file" },
+            { "<C-h>", function() require("arrow.persist").toggle() end, desc = "Arrow file" },
+        },
 	},
 	{
 		"folke/flash.nvim",
@@ -65,5 +65,32 @@ return {
             { "?", function() require("flash").treesitter_search() end, desc = "Treesitter Search", mode = { "n", "o", "x" } },
             { "<C-s>", function() require("flash").toggle() end, desc = "Toggle Flash Search", mode = { "c" } },
         },
+	},
+	{
+		"MattesGroeger/vim-bookmarks",
+		init = function()
+			vim.g.bookmark_no_default_key_mappings = 1
+			vim.g.bookmark_save_per_working_dir = 1
+			vim.g.bookmark_auto_save = 1
+		end,
+		keys = {
+			{ "mm", "<CMD> BookmarkToggle <CR>", desc = "Toggle bookmark" },
+			{
+				"mM",
+				function()
+					vim.ui.input({ prompt = "Comment: " }, function(comment)
+						if comment ~= nil and comment ~= "" then
+							cmd = "BookmarkAnnotate " .. comment
+							vim.cmd(cmd)
+						end
+					end)
+				end,
+				desc = "Toggle commentary bookmark",
+			},
+			{ "mn", "<CMD> BookmarkNext <CR>", desc = "Next bookmark" },
+			{ "mp", "<CMD> BookmarkPrev <CR>", desc = "Previous bookmark" },
+			{ "ml", "<CMD> BookmarkShowAll <CR>", desc = "Show all bookmark" },
+			{ "mx", "<CMD> BookmarkClearAll <CR>", desc = "Clear all bookmark" },
+		},
 	},
 }
