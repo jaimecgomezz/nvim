@@ -21,6 +21,11 @@ return {
     "chaoren/vim-wordmotion",
   },
   {
+    "mawkler/refjump.nvim",
+    keys = { "]r", "[r" },
+    opts = {},
+  },
+  {
     "echasnovski/mini.move",
     version = "*",
     opts = {

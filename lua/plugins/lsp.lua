@@ -161,32 +161,4 @@ return {
       { "gi", "<CMD>Glance implementations<CR>", desc = "LSP Goto Implementations" },
     },
   },
-  {
-    {
-      "SmiteshP/nvim-navbuddy",
-      dependencies = {
-        "SmiteshP/nvim-navic",
-        "MunifTanjim/nui.nvim",
-        "numToStr/Comment.nvim",
-        "nvim-telescope/telescope.nvim",
-        "williamboman/mason-lspconfig.nvim",
-      },
-      opts = {
-        window = {
-          border = "single",
-          size = { height = "60%", width = "60%" },
-          position = "50%",
-        },
-        lsp = {
-          auto_attach = true,
-        },
-      },
-      keys = {},
-    },
-  },
-  {
-    "mawkler/refjump.nvim",
-    keys = { "]r", "[r" },
-    opts = {},
-  },
 }
