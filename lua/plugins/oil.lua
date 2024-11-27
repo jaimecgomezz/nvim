@@ -120,8 +120,13 @@ return {
       },
     },
   },
-	-- stylua: ignore
-	keys = {
-		{ "<localleader>o", function() require("oil").open() end, desc = "Open oil", },
-	},
+  keys = {
+    {
+      "<localleader>o",
+      function()
+        require("oil").open()
+      end,
+      desc = "Open oil",
+    },
+  },
 }
