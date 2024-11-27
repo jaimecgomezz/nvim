@@ -7,7 +7,6 @@ return {
     build = ":TSUpdate",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "RRethy/nvim-treesitter-textsubjects",
     },
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -127,35 +126,12 @@ return {
             },
           },
         },
-        textsubjects = {
-          enable = true,
-          prev_selection = ",",
-          keymaps = {
-            [";"] = "textsubjects-smart",
-            ["i;"] = {
-              "textsubjects-container-inner",
-              desc = "Select inside containers (classes, functions, etc.)",
-            },
-            ["a;"] = {
-              "textsubjects-container-outer",
-              desc = "Select inside containers (classes, functions, etc.)",
-            },
-          },
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            node_incremental = "v",
-            node_decremental = "V",
-            init_selection = "<C-y>",
-            scope_incremental = "<C-v>",
-          },
-        },
       })
     end,
   },
   {
     "gsuuon/tshjkl.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       keymaps = {
         toggle = "<A-t>",
