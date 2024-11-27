@@ -14,7 +14,6 @@ return {
         ensure_installed = {
           "bash",
           "c",
-          "csv",
           "diff",
           "go",
           "graphql",
@@ -34,6 +33,7 @@ return {
         },
         highlight = {
           enable = true,
+          disable = { "csv" },
           additional_vim_regex_highlighting = { "markdown" },
         },
         matchup = { enable = true },

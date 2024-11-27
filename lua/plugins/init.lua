@@ -55,8 +55,23 @@ return {
     opts = { user_default_options = { mode = "virtualtext" } },
   },
   {
-    "mechatroner/rainbow_csv",
-    lazy = false,
+    "chrisbra/csv.vim",
+    ft = {
+      "csv",
+      "tsv",
+      "csv_semicolon",
+      "csv_whitespace",
+      "csv_pipe",
+      "rfc_csv",
+      "rfc_semicolon",
+    },
+    init = function()
+      vim.g.csv_delim = ","
+      vim.g.csv_default_delim = ","
+      vim.g.csv_start = 1
+      vim.g.csv_end = 2
+      vim.g.csv_arrange_align = "l*"
+    end,
   },
   {
     "airblade/vim-rooter",

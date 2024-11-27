@@ -20,6 +20,7 @@ return {
           "nvcheatsheet",
           "startify",
           "fugitive",
+          "csv",
         },
       },
       scope = {

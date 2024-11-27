@@ -100,5 +100,5 @@ vim.g.neovide_cursor_animate_command_line = false
 -- Latex
 vim.cmd([[
   filetype plugin indent on
-  syntax enable
+  syntax on
 ]])
