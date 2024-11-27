@@ -1,6 +1,15 @@
 -- sources:
 --      - https://github.com/catgoose/nvim/blob/main/lua/plugins/cmp.lua
 
+local buffer_source = {
+  name = "buffer",
+  option = {
+    get_bufnrs = function()
+      return vim.api.nvim_list_bufs()
+    end,
+  },
+}
+
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
@@ -68,18 +77,7 @@ return {
             return not context.in_treesitter_capture("string") and not context.in_syntax_group("String")
           end,
         },
-        {
-          name = "buffer",
-          option = {
-            get_bufnrs = function()
-              local bufs = {}
-              for _, win in ipairs(vim.api.nvim_list_wins()) do
-                bufs[vim.api.nvim_win_get_buf(win)] = true
-              end
-              return vim.tbl_keys(bufs)
-            end,
-          },
-        },
+        buffer_source,
         {
           name = "lazydev",
           entry_filter = function()
@@ -132,15 +130,14 @@ return {
       sources = {
         { name = "vim-dadbod-completion" },
         { name = "nvim_lsp" },
-        { name = "buffer" },
+        buffer_source,
       },
     })
 
     cmp.setup.filetype({ "dap-repl", "dapui_watches" }, {
       sources = cmp.config.sources({
         { name = "dap" },
-      }, {
-        { name = "buffer" },
+        buffer_source,
       }),
     })
 
