@@ -1,7 +1,6 @@
 return {
   {
     "folke/noice.nvim",
-    lazy = false,
     event = "VeryLazy",
     opts = {
       messages = { enabled = false },
@@ -12,9 +11,6 @@ return {
         progress = { enabled = false },
         hover = { enabled = false },
         signature = { enabled = false },
-      },
-      redirect = {
-        view = "vsplit",
       },
       views = {
         confirm = {
@@ -33,16 +29,6 @@ return {
             winblend = 0,
           },
         },
-      },
-    },
-    keys = {
-      {
-        "<S-Enter>",
-        function()
-          require("noice").redirect(vim.fn.getcmdline())
-        end,
-        desc = "Redirect cmdline",
-        mode = "c",
       },
     },
   },
