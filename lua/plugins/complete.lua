@@ -24,6 +24,7 @@ return {
     "rcarriga/cmp-dap",
     "L3MON4D3/LuaSnip",
     "windwp/nvim-autopairs",
+    "ray-x/cmp-treesitter",
   },
   config = function()
     local cmp = require("cmp")
