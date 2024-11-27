@@ -31,6 +31,15 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
+-- Change to insert mode when entered to terminal buffer
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.bo.buftype == "terminal" then
+      vim.cmd.startinsert()
+    end
+  end,
+})
+
 -- Dynamicalle create missing dirs on write
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function(event)
