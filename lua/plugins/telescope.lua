@@ -80,20 +80,27 @@ return {
     "nvim-telescope/telescope-ui-select.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
-	-- stylua: ignore
-	keys = {
-        { "<C-p>", [[<CMD> Telescope find_files <CR>]], desc = "Find files" },
-        { "<leader>ff", "<cmd> Telescope live_grep <CR>", desc = "Live grep" },
-        { "<leader>fo", "<cmd> Telescope oldfiles <CR>", desc = "Find oldfiles" },
-        { "<leader>ft", "<cmd> Telescope filetypes <CR>", desc = "Find filetypes" },
-        { "<leader>fr", "<cmd> Telescope registers <CR>", desc = "Find registers" },
-        { "<leader>fd", "<cmd> Telescope diagnostics bufnr=0 <CR>", desc = "Find diagnostics" },
-        { "<leader>fw", "<cmd> Telescope grep_string <CR>", desc = "Find word under cursor" },
-        { "<leader>fc", "<cmd> Telescope colorscheme <CR>", desc = "Find colorschemes" },
-        { "<leader>fh", "<cmd> Telescope help_tags <CR>", desc = "Find help tags" },
-        { "z=", "<cmd> Telescope spell_suggest <CR>", desc = "Suggest spell corrections" },
-        { "<C-A-p>", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "Find all files" },
-        { "<C-l>", "<cmd>lua require( 'telescope.builtin').find_files( { cwd = vim.fn.expand( '%:p:h') }) <CR>", desc = "Find relative files" },
-        { "<C-space>", "<cmd>lua require( 'telescope.builtin').buffers({ show_all_buffers = false, sort_mru = true, ignore_current_buffer = true }) <CR>", desc = "Find buffers" }
+  keys = {
+    { "<C-p>", [[<CMD> Telescope find_files <CR>]], desc = "Find files" },
+    { "<leader>ff", "<cmd> Telescope live_grep <CR>", desc = "Live grep" },
+    { "<leader>fo", "<cmd> Telescope oldfiles <CR>", desc = "Find oldfiles" },
+    { "<leader>ft", "<cmd> Telescope filetypes <CR>", desc = "Find filetypes" },
+    { "<leader>fr", "<cmd> Telescope registers <CR>", desc = "Find registers" },
+    { "<leader>fd", "<cmd> Telescope diagnostics bufnr=0 <CR>", desc = "Find diagnostics" },
+    { "<leader>fw", "<cmd> Telescope grep_string <CR>", desc = "Find word under cursor" },
+    { "<leader>fc", "<cmd> Telescope colorscheme <CR>", desc = "Find colorschemes" },
+    { "<leader>fh", "<cmd> Telescope help_tags <CR>", desc = "Find help tags" },
+    { "z=", "<cmd> Telescope spell_suggest <CR>", desc = "Suggest spell corrections" },
+    { "<C-A-p>", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", desc = "Find all files" },
+    {
+      "<C-l>",
+      "<cmd>lua require( 'telescope.builtin').find_files( { cwd = vim.fn.expand( '%:p:h') }) <CR>",
+      desc = "Find relative files",
     },
+    {
+      "<C-space>",
+      "<cmd>lua require( 'telescope.builtin').buffers({ show_all_buffers = false, sort_mru = true, ignore_current_buffer = true }) <CR>",
+      desc = "Find buffers",
+    },
+  },
 }
