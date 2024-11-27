@@ -1,7 +1,7 @@
 return {
-	"MagicDuck/grug-far.nvim",
-	opts = { headerMaxWidth = 80 },
-	cmd = "GrugFar",
+  "MagicDuck/grug-far.nvim",
+  opts = { headerMaxWidth = 80 },
+  cmd = "GrugFar",
 	-- stylua: ignore
 	keys = {
 		{ "<leader>sr", function()

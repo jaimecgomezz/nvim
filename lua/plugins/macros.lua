@@ -1,17 +1,17 @@
 return {
-	{
-		"desdic/macrothis.nvim",
-		lazy = false,
-		opts = {
-			run_register = "q",
-			editor = { -- Edit window
-				width = 80,
-				height = 1,
-				style = "minimal",
-				border = "rounded",
-			},
-			default_register = "q",
-		},
+  {
+    "desdic/macrothis.nvim",
+    lazy = false,
+    opts = {
+      run_register = "q",
+      editor = { -- Edit window
+        width = 80,
+        height = 1,
+        style = "minimal",
+        border = "rounded",
+      },
+      default_register = "q",
+    },
         -- stylua: ignore
         keys = {
             { "<leader>qd", function() require('macrothis').delete() end, desc = "delete" },
@@ -27,11 +27,11 @@ return {
             -- Telescope integration
             { "<leader>fq", "<CMD> Telescope macrothis <CR>", desc = "list macros" },
         },
-		init = function()
-			local ok, telescope = pcall(require, "telescope")
-			if ok then
-				require("telescope").load_extension("macrothis")
-			end
-		end,
-	},
+    init = function()
+      local ok, telescope = pcall(require, "telescope")
+      if ok then
+        require("telescope").load_extension("macrothis")
+      end
+    end,
+  },
 }

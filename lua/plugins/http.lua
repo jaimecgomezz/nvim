@@ -1,9 +1,9 @@
 return {
-	"rest-nvim/rest.nvim",
-	ft = "http",
-	config = function()
-		vim.filetype.add({ extension = { ["http"] = "http" } })
-	end,
+  "rest-nvim/rest.nvim",
+  ft = "http",
+  config = function()
+    vim.filetype.add({ extension = { ["http"] = "http" } })
+  end,
     -- stylua: ignore
     keys = {
         { "<leader>s", "", desc = "+Rest" },

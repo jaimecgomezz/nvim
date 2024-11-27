@@ -1,85 +1,85 @@
 local config = function()
-	local telescope = require("telescope")
-	local actions = require("telescope.actions")
-	local path_actions = require("telescope_insert_path")
+  local telescope = require("telescope")
+  local actions = require("telescope.actions")
+  local path_actions = require("telescope_insert_path")
 
-	telescope.setup({
-		defaults = {
-			vimgrep_arguments = {
-				"rg",
-				"-L",
-				"--color=never",
-				"--no-heading",
-				"--with-filename",
-				"--line-number",
-				"--column",
-				"--smart-case",
-			},
-			prompt_prefix = "❯ ",
-			selection_caret = "❯ ",
-			entry_orefix = "  ",
-			initial_mode = "insert",
-			selection_strategy = "reset",
-			sorting_strategy = "ascending",
-			path_display = { "truncate" },
-			file_ignore_patterns = { "node_modules", "tags" },
-			winblend = 0,
-			layout_strategy = "vertical",
-			layout_config = {
-				vertical = {
-					width = function(_, max_columns)
-						local min = 80
-						local percentage = 0.4
+  telescope.setup({
+    defaults = {
+      vimgrep_arguments = {
+        "rg",
+        "-L",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+      },
+      prompt_prefix = "❯ ",
+      selection_caret = "❯ ",
+      entry_orefix = "  ",
+      initial_mode = "insert",
+      selection_strategy = "reset",
+      sorting_strategy = "ascending",
+      path_display = { "truncate" },
+      file_ignore_patterns = { "node_modules", "tags" },
+      winblend = 0,
+      layout_strategy = "vertical",
+      layout_config = {
+        vertical = {
+          width = function(_, max_columns)
+            local min = 80
+            local percentage = 0.4
 
-						return math.max(math.floor(percentage * max_columns), min)
-					end,
-				},
-			},
-			mappings = {
-				n = {
-					-- Exit
-					["q"] = actions.close,
-					["<Esc>"] = actions.close,
+            return math.max(math.floor(percentage * max_columns), min)
+          end,
+        },
+      },
+      mappings = {
+        n = {
+          -- Exit
+          ["q"] = actions.close,
+          ["<Esc>"] = actions.close,
 
-					-- Selection
-					["<C-Space>"] = actions.toggle_selection,
-					["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+          -- Selection
+          ["<C-Space>"] = actions.toggle_selection,
+          ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 
-					-- Path
-					["-"] = path_actions.insert_reltobufpath_visual,
-					["="] = path_actions.insert_abspath_visual,
-				},
-				i = {
-					-- Exit
-					["<Esc>"] = actions.close,
-					["<C-n>"] = { "<esc>", type = "command" },
+          -- Path
+          ["-"] = path_actions.insert_reltobufpath_visual,
+          ["="] = path_actions.insert_abspath_visual,
+        },
+        i = {
+          -- Exit
+          ["<Esc>"] = actions.close,
+          ["<C-n>"] = { "<esc>", type = "command" },
 
-					-- Selection
-					["<C-Space>"] = actions.toggle_selection,
-					["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+          -- Selection
+          ["<C-Space>"] = actions.toggle_selection,
+          ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 
-					-- Movement
-					["<Tab>"] = actions.move_selection_next,
-					["<S-Tab>"] = actions.move_selection_previous,
-				},
-			},
-		},
-	})
+          -- Movement
+          ["<Tab>"] = actions.move_selection_next,
+          ["<S-Tab>"] = actions.move_selection_previous,
+        },
+      },
+    },
+  })
 
-	telescope.load_extension("fzf")
-	telescope.load_extension("ui-select")
+  telescope.load_extension("fzf")
+  telescope.load_extension("ui-select")
 end
 
 return {
-	"nvim-telescope/telescope.nvim",
-	tag = "0.1.7",
-	config = config,
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"kiyoon/telescope-insert-path.nvim",
-		"nvim-telescope/telescope-ui-select.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	},
+  "nvim-telescope/telescope.nvim",
+  tag = "0.1.7",
+  config = config,
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "kiyoon/telescope-insert-path.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  },
 	-- stylua: ignore
 	keys = {
         { "<C-p>", [[<CMD> Telescope find_files <CR>]], desc = "Find files" },

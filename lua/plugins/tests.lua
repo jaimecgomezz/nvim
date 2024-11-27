@@ -1,39 +1,39 @@
 return {
-	"nvim-neotest/neotest",
-	dependencies = {
-		"nvim-neotest/nvim-nio",
-		"olimorris/neotest-rspec",
-	},
-	init = function()
-		local neotest_ns = vim.api.nvim_create_namespace("neotest")
+  "nvim-neotest/neotest",
+  dependencies = {
+    "nvim-neotest/nvim-nio",
+    "olimorris/neotest-rspec",
+  },
+  init = function()
+    local neotest_ns = vim.api.nvim_create_namespace("neotest")
 
-		vim.diagnostic.config({
-			virtual_text = {
-				format = function(diagnostic)
-					-- Replace newline and tab characters with space for more compact diagnostics
-					local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-					return message
-				end,
-			},
-		}, neotest_ns)
-	end,
-	opts = function()
-		return {
-			status = { virtual_text = true, signs = false },
-			output = { enabled = true, open_on_run = true },
-			adapters = {
-				require("neotest-rspec")({
-					rspec_cmd = function()
-						return vim.tbl_flatten({
-							"bundle",
-							"exec",
-							"rspec",
-						})
-					end,
-				}),
-			},
-		}
-	end,
+    vim.diagnostic.config({
+      virtual_text = {
+        format = function(diagnostic)
+          -- Replace newline and tab characters with space for more compact diagnostics
+          local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+          return message
+        end,
+      },
+    }, neotest_ns)
+  end,
+  opts = function()
+    return {
+      status = { virtual_text = true, signs = false },
+      output = { enabled = true, open_on_run = true },
+      adapters = {
+        require("neotest-rspec")({
+          rspec_cmd = function()
+            return vim.tbl_flatten({
+              "bundle",
+              "exec",
+              "rspec",
+            })
+          end,
+        }),
+      },
+    }
+  end,
 	-- stylua: ignore
 	keys = {
 		{ "<leader>t", "", desc = "+test" },

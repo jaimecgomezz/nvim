@@ -7,5 +7,8 @@ require("map")
 -- Autocmds
 require("aut")
 
+-- Redirect
+require("rdr")
+
 -- Lazy package manaer and plugins
 require("lzy")

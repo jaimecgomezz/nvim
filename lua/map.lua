@@ -14,19 +14,6 @@ vim.keymap.set("n", "<leader>bw", "<cmd>echo expand('%:p')<cr>", { desc = "Where
 vim.keymap.set("n", "<C-s>", "<c-w><c-v>", { desc = "Split vertical" })
 vim.keymap.set("n", "<C-t>", "<c-w><c-s>", { desc = "Split horizontal" })
 
--- Jump to tag in split window
-vim.keymap.set("n", "gs", function()
-	local word = vim.fn.expand("<cword>")
-	vim.cmd("vertical split")
-	vim.cmd("tag " .. word)
-end, { desc = "Jump to definition (vsplit)" })
-
-vim.keymap.set("n", "gS", function()
-	local word = vim.fn.expand("<cword>")
-	vim.cmd("split")
-	vim.cmd("tag " .. word)
-end, { desc = "Jump to definition (vsplit)" })
-
 -- Projects
 vim.keymap.set("n", "<leader>pw", "<cmd>pwd<cr>", { desc = "Whre project?" })
 
@@ -34,15 +21,15 @@ vim.keymap.set("n", "<leader>pw", "<cmd>pwd<cr>", { desc = "Whre project?" })
 vim.keymap.set("n", "<leader>vq", "<cmd>qa<cr>", { desc = "Quit vim" })
 vim.keymap.set("n", "<leader>vQ", "<cmd>qa!<cr>", { desc = " Quit vim!" })
 vim.keymap.set(
-	"n",
-	"<leader>ve",
-	"<cmd>cd ~/.config/nvim<cr><cmd>:e ~/.config/nvim/init.lua<cr>",
-	{ desc = "Edit vim conf" }
+  "n",
+  "<leader>ve",
+  "<cmd>cd ~/.config/nvim<cr><cmd>:e ~/.config/nvim/init.lua<cr>",
+  { desc = "Edit vim conf" }
 )
 
 -- Toggle spell
 vim.keymap.set("n", "<localleader>s", function()
-	vim.o.spell = not vim.o.spell
+  vim.o.spell = not vim.o.spell
 end, { desc = "Toggle spell" })
 
 -- Move in/out terminal
@@ -53,10 +40,10 @@ vim.keymap.set("t", "<A-l>", [[<C-\><C-n><C-W>l]], { desc = "Move right window" 
 
 -- Move between wrapped lines
 vim.keymap.set("n", "<localleader>w", function()
-	local wrap = not vim.o.wrap
+  local wrap = not vim.o.wrap
 
-	vim.o.wrap = wrap
-	vim.o.textwidth = wrap and 0 or 120
+  vim.o.wrap = wrap
+  vim.o.textwidth = wrap and 0 or 80
 end, { desc = "Toggle wrap" })
 vim.keymap.set("n", "j", "gj", { desc = "Move to line below" })
 vim.keymap.set("n", "k", "gk", { desc = "Move to line below" })
