@@ -8,16 +8,16 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Close certain files with `q`
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "help", "qf", "fugitive", "git", "NvimTree" },
-  callback = function(event)
-    local ft = event.match
-    local buffer = vim.api.nvim_get_current_buf()
+  pattern = { "help" },
+  callback = function()
+    vim.keymap.set("n", "q", vim.cmd.bd, { desc = "Close", buffer = vim.api.nvim_get_current_buf() })
+  end,
+})
 
-    if ft == "help" or ft == "NvimTree" then
-      vim.keymap.set("n", "q", vim.cmd.bd, { desc = "Close", buffer = buffer })
-    else
-      vim.keymap.set("n", "q", vim.cmd.close, { desc = "Close", buffer = buffer })
-    end
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "qf", "fugitive", "git" },
+  callback = function()
+    vim.keymap.set("n", "q", vim.cmd.close, { desc = "Close", buffer = vim.api.nvim_get_current_buf() })
   end,
 })
 
