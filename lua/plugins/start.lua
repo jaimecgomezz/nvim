@@ -21,10 +21,8 @@ return {
           let g:startify_lists = [{ 'type': 'files',     'header': ['   Recent']  }]
         ]])
   end,
-	-- stylua: ignore
-	keys = {
-        { "<leader>vs", "<CMD> Startify <CR>", desc = "Startify" },
-        { "<leader>bq", "<CMD>silent! %bd <BAR> Startify <CR>", desc = "Startify" },
-    }
-,
+  keys = {
+    { "<leader>vs", "<CMD> Startify <CR>", desc = "Startify" },
+    { "<leader>bq", "<CMD>silent! %bd <BAR> Startify <CR>", desc = "Startify" },
+  },
 }
