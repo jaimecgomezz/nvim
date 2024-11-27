@@ -21,9 +21,14 @@ return {
         ["kwargs"] = "kwargs",
       },
     },
-		-- stylua: ignore
-		keys = {
-			{ "gcg", function() require('neogen').generate() end, desc = "Generate Annotations (Neogen)" },
-		},
+    keys = {
+      {
+        "gcg",
+        function()
+          require("neogen").generate()
+        end,
+        desc = "Generate Annotations (Neogen)",
+      },
+    },
   },
 }
