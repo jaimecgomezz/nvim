@@ -101,34 +101,12 @@ return {
     end,
   },
   {
-    "anuvyklack/hydra.nvim",
-  },
-  {
     "folke/lazydev.nvim",
     ft = "lua",
     dependencies = { { "Bilal2453/luvit-meta", lazy = true } },
     opts = {
       library = {
         { path = "luvit-meta/library", words = { "vim%.uv" } },
-      },
-    },
-  },
-  {
-    "andrewferrier/debugprint.nvim",
-    opts = {
-      keymaps = {
-        normal = {
-          plain_below = "<leader>dp",
-          plain_above = "<leader>dP",
-          variable_below = "<leader>dv",
-          variable_above = "<leader>dV",
-          toggle_comment_debug_prints = "<leader>dt",
-          delete_debug_prints = "<leader>dD",
-        },
-        visual = {
-          variable_below = "<leader>dv",
-          variable_above = "<leader>dV",
-        },
       },
     },
   },
@@ -149,11 +127,5 @@ return {
       { '"', mode = { "n", "v" } },
       { "<C-R>", mode = "i" },
     },
-  },
-  {
-    "NStefan002/screenkey.nvim",
-    commands = { "Screenkey" },
-    lazy = false,
-    version = "*",
   },
 }
