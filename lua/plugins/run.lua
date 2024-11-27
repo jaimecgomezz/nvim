@@ -66,53 +66,18 @@ return {
         },
       })
     end,
-		-- stylua: ignore
-		keys = { 
-		    { "<leader>rr", function()
-                if vim.o.buftype == "terminal" then
-                    vim.cmd("close")
-                else
-                    vim.cmd("IronFocus")
-                end
-            end, desc = "Toggle REPL", },
-		},
-  },
-  {
-    "LintaoAmons/scratch.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" },
-    opts = {
-      window_cmd = "edit",
-      use_telescope = true,
-      file_picker = "telescope",
-      filetypes = { "lua", "js", "sh", "ts", "rb", "py" },
-      filetype_details = {
-        go = {
-          requireDir = true,
-          filename = "main",
-          content = { "package main", "", "func main() {", "  ", "}" },
-          cursor = {
-            location = { 4, 2 },
-            insert_mode = true,
-          },
-        },
-      },
-      localKeys = {
-        {
-          filenameContains = { "sh" },
-          LocalKeys = {
-            {
-              cmd = "<CMD>RunShellCurrentLine<CR>",
-              key = "<C-r>",
-              modes = { "n", "i", "v" },
-            },
-          },
-        },
-      },
-    },
     keys = {
-      { "<leader>rn", "<CMD> Scratch <CR>", desc = "Create a scratch file" },
-      { "<leader>rN", "<CMD> ScratchWithName <CR>", desc = "Create a named scratch file" },
-      { "<leader>ro", "<CMD> ScratchOpen <CR>", desc = "Open a scratch file" },
+      {
+        "<leader>rr",
+        function()
+          if vim.o.buftype == "terminal" then
+            vim.cmd("close")
+          else
+            vim.cmd("IronFocus")
+          end
+        end,
+        desc = "Toggle REPL",
+      },
     },
   },
 }
