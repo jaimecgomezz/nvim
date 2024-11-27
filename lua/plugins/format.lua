@@ -27,8 +27,13 @@ return {
       sql = { "sql_formatter" },
     },
   },
-	-- stylua: ignore
-	keys = {
-		{ "<leader>bf", function() require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 2000 }) end, desc = "Format buffer", },
-	},
+  keys = {
+    {
+      "<leader>bf",
+      function()
+        require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 2000 })
+      end,
+      desc = "Format buffer",
+    },
+  },
 }
