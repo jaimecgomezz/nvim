@@ -3,6 +3,7 @@ return {
     "otavioschwanck/arrow.nvim",
     lazy = false,
     opts = {
+      leader_key = "'",
       global_bookmarks = false,
       separate_by_branch = true,
       hide_handbook = true,
@@ -29,13 +30,6 @@ return {
       end,
     },
     keys = {
-      {
-        "'",
-        function()
-          require("arrow.persist").load_cache_file()
-          require("arrow.ui").openMenu()
-        end,
-      },
       {
         "<leader>hh",
         function()
