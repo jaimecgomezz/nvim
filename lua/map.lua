@@ -41,3 +41,8 @@ vim.keymap.set("n", "<localleader>w", function()
 end, { desc = "Toggle wrap" })
 vim.keymap.set("n", "j", "gj", { desc = "Move to line below" })
 vim.keymap.set("n", "k", "gk", { desc = "Move to line below" })
+
+-- Toggle numbers
+vim.keymap.set("n", "<localleader>n", function()
+  vim.o.relativenumber = not vim.o.relativenumber
+end, { desc = "Toggle line number" })
