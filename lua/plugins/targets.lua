@@ -6,12 +6,11 @@ return {
       leader_key = "'",
       global_bookmarks = false,
       separate_by_branch = true,
-      hide_handbook = true,
       mappings = {
         edit = "e",
         delete_mode = "d",
         clear_all_items = "X",
-        toggle = "a",
+        toggle = "t",
         open_vertical = "v",
         open_horizontal = "s",
         quit = "q",
@@ -25,9 +24,6 @@ return {
       per_buffer_config = {
         lines = 10,
       },
-      save_path = function()
-        return vim.fn.stdpath("cache") .. "/arrow"
-      end,
     },
     keys = {
       {
