@@ -6,6 +6,7 @@ return {
       leader_key = "'",
       global_bookmarks = false,
       separate_by_branch = true,
+      hide_handbook = true,
       mappings = {
         edit = "e",
         delete_mode = "d",
