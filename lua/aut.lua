@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "qf", "fugitive", "git" },
+  pattern = { "qf", "fugitive", "git", "neotest-summary" },
   callback = function()
     vim.keymap.set("n", "q", vim.cmd.close, { desc = "Close", buffer = vim.api.nvim_get_current_buf() })
   end,
