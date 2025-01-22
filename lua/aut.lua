@@ -47,3 +47,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.fn.mkdir(dirname, "p", tonumber("0755", 8))
   end,
 })
+
+-- Hide quickfix and loclist buffers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "qf" },
+  callback = function()
+    vim.bo.buflisted = false
+  end,
+})
