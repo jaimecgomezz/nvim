@@ -14,7 +14,7 @@ local function custom_qfx(_)
     else
       items = fn.getloclist(info.winid, { id = info.id, items = 0 }).items
     end
-    local limit = 80
+    local limit = 60
     local fnameFmt1, fnameFmt2 = "%-" .. limit .. "s", "…%." .. (limit - 1) .. "s"
     local validFmt = "%s │%5d:%-3d│%s %s"
     for i = info.start_idx, info.end_idx do
@@ -56,15 +56,34 @@ return {
     "kevinhwang91/nvim-bqf",
     ft = "qf",
     opts = {
+      auto_resize_height = true,
       filter = {
         fzf = {
+          action_for = { ["ctrl-s"] = "vsplit", ["ctrl-t"] = "split" },
           extra_opts = { "--bind", "ctrl-o:toggle-all", "--delimiter", "│" },
         },
       },
       preview = {
-        auto_preview = false,
+        auto_preview = true,
         show_title = false,
         winblend = 0,
+        win_height = 12,
+        win_vheight = 12,
+        delay_syntax = 80,
+        border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+        should_preview_cb = function(bufnr, qwinid)
+          local ret = true
+          local bufname = vim.api.nvim_buf_get_name(bufnr)
+          local fsize = vim.fn.getfsize(bufname)
+          if fsize > 100 * 1024 then
+            -- skip file size greater than 100k
+            ret = false
+          elseif bufname:match("^fugitive://") then
+            -- skip fugitive buffer
+            ret = false
+          end
+          return ret
+        end,
       },
     },
     init = custom_qfx,
