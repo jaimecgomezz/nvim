@@ -82,12 +82,10 @@ return {
   },
   keys = {
     { "<C-p>", [[<CMD> Telescope find_files <CR>]], desc = "Find files" },
-    { "<leader>ff", "<cmd> Telescope live_grep <CR>", desc = "Live grep" },
     { "<leader>fo", "<cmd> Telescope oldfiles <CR>", desc = "Find oldfiles" },
     { "<leader>ft", "<cmd> Telescope filetypes <CR>", desc = "Find filetypes" },
     { "<leader>fr", "<cmd> Telescope registers <CR>", desc = "Find registers" },
     { "<leader>fd", "<cmd> Telescope diagnostics bufnr=0 <CR>", desc = "Find diagnostics" },
-    { "<leader>fw", "<cmd> Telescope grep_string <CR>", desc = "Find word under cursor" },
     { "<leader>fc", "<cmd> Telescope colorscheme <CR>", desc = "Find colorschemes" },
     { "<leader>fh", "<cmd> Telescope help_tags <CR>", desc = "Find help tags" },
     { "z=", "<cmd> Telescope spell_suggest <CR>", desc = "Suggest spell corrections" },

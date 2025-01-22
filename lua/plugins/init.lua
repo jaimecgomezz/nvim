@@ -128,4 +128,12 @@ return {
       { "<C-R>", mode = "i" },
     },
   },
+  {
+    "mhinz/vim-grepper",
+    keys = {
+      { "<leader>ff", "<cmd> Grepper <CR>", desc = "Find word under cursor", mode = { "n" } },
+      { "<leader>fw", "<cmd> Grepper -cword -noprompt <CR>", desc = "Find word under cursor", mode = { "n" } },
+      { "<leader>fw", "<cmd> Grepper -highlight -noprompt <CR>", desc = "Find word highlighted", mode = { "v" } },
+    },
+  },
 }
