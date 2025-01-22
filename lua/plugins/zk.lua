@@ -11,21 +11,21 @@ return {
       function()
         require("zk").cd()
       end,
-      desc = "Open notes",
+      desc = "Move to notes directory",
     },
     {
       "<leader>zi",
       function()
         require("zk").index()
       end,
-      desc = "Open notes",
+      desc = "Index notes",
     },
     {
       "<leader>zo",
       function()
         require("zk.commands").get("ZkNotes")({ sort = { "modified" } })
       end,
-      desc = "Open notes",
+      desc = "Open note",
     },
     {
       "<leader>zn",
@@ -47,21 +47,21 @@ return {
           require("zk.commands").get("ZkNew")({ dir = "ideas", title = title })
         end
       end,
-      desc = "New note",
+      desc = "New idea",
     },
     {
       "<leader>zt",
       function()
         require("zk.commands").get("ZkTags")()
       end,
-      desc = "Open notes matching tags",
+      desc = "Search notes by tags",
     },
     {
       "<leader>zf",
       function()
         require("zk.commands").get("ZkNotes")({ sort = { "modified" } })
       end,
-      desc = "Search for notes",
+      desc = "Search notes by name",
     },
     {
       "<leader>zb",
