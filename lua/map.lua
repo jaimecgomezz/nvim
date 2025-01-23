@@ -50,3 +50,7 @@ end, { desc = "Toggle line number" })
 -- Quickfix
 vim.keymap.set("n", "]q", "<CMD> cnext <CR>", { desc = "Next quickfix item" })
 vim.keymap.set("n", "[q", "<CMD> cprev <CR>", { desc = "Previous quickfix item" })
+
+-- Loclist
+vim.keymap.set("n", "]l", "<CMD> lnext <CR>", { desc = "Next loclist item" })
+vim.keymap.set("n", "[l", "<CMD> lprev <CR>", { desc = "Previous loclist item" })
