@@ -46,3 +46,7 @@ vim.keymap.set("n", "k", "gk", { desc = "Move to line below" })
 vim.keymap.set("n", "<localleader>n", function()
   vim.o.relativenumber = not vim.o.relativenumber
 end, { desc = "Toggle line number" })
+
+-- Quickfix
+vim.keymap.set("n", "]q", "<CMD> cnext <CR>", { desc = "Next quickfix item" })
+vim.keymap.set("n", "[q", "<CMD> cprev <CR>", { desc = "Previous quickfix item" })
