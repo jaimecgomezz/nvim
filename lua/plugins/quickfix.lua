@@ -14,7 +14,29 @@ local function custom_qfx(_)
     else
       items = fn.getloclist(info.winid, { id = info.id, items = 0 }).items
     end
-    local limit = 60
+
+    local max_limit = 60
+    local items_limit = 0
+    for i = info.start_idx, info.end_idx do
+      local e = items[i]
+      local fname = ""
+      local str
+      if e.valid == 1 then
+        if e.bufnr > 0 then
+          fname = fn.bufname(e.bufnr)
+          if fname == "" then
+            fname = "[No Name]"
+          else
+            fname = fname:gsub("^" .. vim.env.HOME, "~")
+          end
+        end
+      end
+
+      items_limit = math.max(items_limit, #fname)
+    end
+
+    local limit = math.min(max_limit, items_limit)
+
     local fnameFmt1, fnameFmt2 = "%-" .. limit .. "s", "…%." .. (limit - 1) .. "s"
     local validFmt = "%s │%5d:%-3d│%s %s"
     for i = info.start_idx, info.end_idx do
