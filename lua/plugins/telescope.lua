@@ -82,6 +82,7 @@ return {
   },
   keys = {
     { "<C-p>", [[<CMD> Telescope find_files <CR>]], desc = "Find files" },
+    { "<leader>ff", "<cmd> Telescope live_grep <CR>", desc = "Live grep" },
     { "<leader>fo", "<cmd> Telescope oldfiles <CR>", desc = "Find oldfiles" },
     { "<leader>ft", "<cmd> Telescope filetypes <CR>", desc = "Find filetypes" },
     { "<leader>fr", "<cmd> Telescope registers <CR>", desc = "Find registers" },

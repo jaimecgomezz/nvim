@@ -130,10 +130,16 @@ return {
   },
   {
     "mhinz/vim-grepper",
+    init = function()
+      vim.g.grepper = {
+        highlight = 1,
+        tools = { "ag", "git", "ack", "ack-grep", "grep", "findstr", "rg", "pt", "sift" },
+      }
+    end,
+    cmd = { "Grepper" },
     keys = {
-      { "<leader>ff", "<cmd> Grepper <CR>", desc = "Find word under cursor", mode = { "n" } },
-      { "<leader>fw", "<cmd> Grepper -cword -noprompt <CR>", desc = "Find word under cursor", mode = { "n" } },
-      { "<leader>fw", "<cmd> Grepper -highlight -noprompt <CR>", desc = "Find word highlighted", mode = { "v" } },
+      { "<leader>fw", "<CMD> Grepper -cword -noprompt <CR>", desc = "Find word under cursor", mode = { "n" } },
+      { "<leader>fw", "<plug>(GrepperOperator)", desc = "Find word highlighted", mode = { "x" }, noremap = false },
     },
   },
 }
