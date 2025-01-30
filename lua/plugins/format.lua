@@ -31,7 +31,7 @@ return {
     {
       "<leader>bf",
       function()
-        require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 2000 })
+        require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 5000 })
       end,
       desc = "Format buffer",
     },
