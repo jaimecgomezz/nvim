@@ -63,4 +63,17 @@ return {
       { "mx", "<CMD> BookmarkClearAll <CR>", desc = "Clear all bookmark" },
     },
   },
+  {
+    "https://gitlab.com/yorickpeterse/nvim-window.git",
+    opts = {},
+    keys = {
+      {
+        "<C-w>p",
+        function()
+          require("nvim-window").pick()
+        end,
+        desc = "Pick window",
+      },
+    },
+  },
 }
