@@ -47,6 +47,11 @@ vim.keymap.set("n", "<localleader>n", function()
   vim.o.relativenumber = not vim.o.relativenumber
 end, { desc = "Toggle line number" })
 
+-- Set scrolloff
+vim.keymap.set("n", "<localleader>o", function()
+  vim.o.scrolloff = 9999
+end, { desc = "Enforce scrolloff" })
+
 -- Quickfix
 vim.keymap.set("n", "]q", "<CMD> cnext <CR>", { desc = "Next quickfix item" })
 vim.keymap.set("n", "[q", "<CMD> cprev <CR>", { desc = "Previous quickfix item" })
