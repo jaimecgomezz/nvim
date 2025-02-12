@@ -5,20 +5,9 @@ return {
     vim.filetype.add({ extension = { ["http"] = "http" } })
   end,
   keys = {
-    { "<leader>s", "", desc = "+Rest" },
-    { "<leader>ss", "<CMD> Rest run <CR>", desc = "Run request under cursor" },
-    {
-      "<leader>sS",
-      function()
-        vim.ui.input({ prompt = "Request name " }, function(name)
-          if name ~= nil and name ~= "" then
-            cmd = "Rest run " .. name
-            vim.cmd(cmd)
-          end
-        end)
-      end,
-      desc = "Run names request",
-    },
+    { "<leader>ss", "<CMD> Rest send <CR>", desc = "Run request under cursor" },
+    { "<leader>sS", "<CMD> Rest run <CR>", desc = "Run names request" },
+    { "<leader>so", "<CMD> Rest open <CR>", desc = "Open results pane" },
     { "<leader>sp", "<CMD> Rest last <CR>", desc = "Run previous request" },
     { "<leader>sl", "<CMD> Rest logs <CR>", desc = "Open rest logs" },
     { "<leader>sc", "<CMD> Rest cookies <CR>", desc = "Open rest cookies" },
