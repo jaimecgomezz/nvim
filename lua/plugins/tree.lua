@@ -90,16 +90,14 @@ return {
         -- Traversing
         ["<CR>"] = "actions.select",
         ["<Tab>"] = "actions.select",
-        ["l"] = "actions.select",
-        ["-"] = "actions.parent",
         ["<BS>"] = "actions.parent",
-        ["h"] = "actions.parent",
+        ["<S-Tab>"] = "actions.select",
 
         -- Opening
         ["<C-s>"] = "actions.select_vsplit",
         ["<C-t>"] = "actions.select_split",
         ["<C-S-t>"] = "actions.select_tab",
-        ["p"] = "actions.preview",
+        ["<C-p>"] = "actions.preview",
 
         -- cwd
         ["_"] = "actions.open_cwd",
