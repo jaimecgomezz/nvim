@@ -5,7 +5,7 @@ return {
     formatters = {
       sql_formatter = {
         command = "sql-formatter",
-        args = { { "-l", "postgresql" } },
+        args = { "-l", "postgresql" },
       },
     },
     format_on_save = {
