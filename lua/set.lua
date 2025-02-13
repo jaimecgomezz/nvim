@@ -33,7 +33,7 @@ opt.ruler = false
 opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 2
-opt.scrolloff = 9999
+opt.scrolloff = 99
 opt.cursorline = true
 opt.signcolumn = "yes"
 

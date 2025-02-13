@@ -31,6 +31,14 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "TermLeave", "TermClose" }, {
+  callback = function()
+    vim.o.number = true
+    vim.o.relativenumber = true
+    vim.o.scrolloff = 99
+  end,
+})
+
 -- Change to insert mode when entered to terminal buffer
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
