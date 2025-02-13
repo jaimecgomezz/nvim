@@ -49,7 +49,7 @@ end, { desc = "Toggle line number" })
 
 -- Set scrolloff
 vim.keymap.set("n", "<localleader>o", function()
-  vim.o.scrolloff = 9999
+  vim.o.scrolloff = 99
 end, { desc = "Enforce scrolloff" })
 
 -- Quickfix

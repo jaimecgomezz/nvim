@@ -33,8 +33,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 vim.api.nvim_create_autocmd({ "TermLeave", "TermClose" }, {
   callback = function()
-    vim.o.number = true
-    vim.o.relativenumber = true
     vim.o.scrolloff = 99
   end,
 })
