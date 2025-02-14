@@ -26,6 +26,7 @@ return {
     keys = {
       { "<leader>gg", toggle_fugitive, desc = "Open fugitive" },
       { "<leader>gc", "<CMD> Git commit <CR>", desc = "Git commit" },
+      { "<leader>gd", "<CMD> Gdiffsplit <CR>", desc = "Git diff" },
       { "<leader>gp", "<CMD> Git pull <CR>", desc = "Git pull" },
       { "<leader>gf", "<CMD> Git fetch <CR>", desc = "Git fetch" },
       { "<leader>gs", "<CMD> Git stash <CR>", desc = "Git stash" },

@@ -20,63 +20,63 @@ return {
     end,
     keys = {
       {
-        "<leader>qd",
+        "<localleader>qd",
         function()
           require("macrothis").delete()
         end,
         desc = "delete",
       },
       {
-        "<leader>qe",
+        "<localleader>qe",
         function()
           require("macrothis").edit()
         end,
         desc = "edit",
       },
       {
-        "<leader>ql",
+        "<localleader>ql",
         function()
           require("macrothis").load()
         end,
         desc = "load",
       },
       {
-        "<leader>qr",
+        "<localleader>qr",
         function()
           require("macrothis").rename()
         end,
         desc = "rename",
       },
       {
-        "<leader>qQ",
+        "<localleader>qQ",
         function()
           require("macrothis").quickfix()
         end,
         desc = "run macro on all files in quickfix",
       },
       {
-        "<leader>qq",
+        "<localleader>qq",
         function()
           require("macrothis").run()
         end,
         desc = "run macro",
       },
       {
-        "<leader>qs",
+        "<localleader>qs",
         function()
           require("macrothis").save()
         end,
         desc = "save",
       },
       {
-        "<leader>qx",
+        "<localleader>qx",
         function()
           require("macrothis").register()
         end,
         desc = "edit register",
       },
       {
-        "<leader>qy",
+        "<localleader>qy",
         function()
           require("macrothis").copy_macro_printable()
         end,
@@ -84,7 +84,7 @@ return {
       },
 
       -- Telescope integration
-      { "<leader>fq", "<CMD> Telescope macrothis <CR>", desc = "list macros" },
+      { "<localleader>fq", "<CMD> Telescope macrothis <CR>", desc = "list macros" },
     },
   },
 }
