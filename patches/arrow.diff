@@ -1,0 +1,13 @@
+diff --git a/lua/arrow/ui.lua b/lua/arrow/ui.lua
+index 494c844..eaa3b30 100644
+--- a/lua/arrow/ui.lua
++++ b/lua/arrow/ui.lua
+@@ -411,7 +411,7 @@ function M.openMenu(bufnr)
+ 
+ 	local call_buffer = bufnr or vim.api.nvim_get_current_buf()
+ 
+-	if vim.g.arrow_filenames == 0 then
++	if #vim.g.arrow_filenames == 0 then
+ 		persist.load_cache_file()
+ 	end
+ 

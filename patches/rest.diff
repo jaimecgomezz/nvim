@@ -1,0 +1,51 @@
+diff --git a/lua/rest-nvim/commands.lua b/lua/rest-nvim/commands.lua
+index 055e69f..28b289f 100644
+--- a/lua/rest-nvim/commands.lua
++++ b/lua/rest-nvim/commands.lua
+@@ -139,6 +139,46 @@ local rest_command_tbl = {
+             return matches
+         end,
+     },
++    send = {
++        impl = function(args, opts)
++            if vim.bo.filetype ~= "http" then
++                vim.notify(
++                    "`:Rest run` can be only called from http file",
++                    vim.log.levels.ERROR,
++                    { title = "rest.nvim" }
++                )
++                return
++            end
++            if #args > 1 then
++                vim.notify("Running multiple request isn't supported yet", vim.log.levels.WARN, { title = "rest.nvim" })
++                return
++            end
++            if opts.smods.tab ~= -1 then
++                vim.notify(
++                    "`:Rest run` cannot be run with `:tab` command modifier",
++                    vim.log.levels.ERROR,
++                    { title = "rest.nvim" }
++                )
++                return
++            end
++            ui().clear()
++            request().run(args[1])
++        end,
++        ---@return string[]
++        complete = function(args)
++            local names = parser().get_request_names(0)
++            local matches = vim.iter(names)
++                :filter(function(name)
++                    return name:find("^" .. vim.pesc(args))
++                end)
++                :map(function(name)
++                    name = name:gsub("%s+", "\\ ")
++                    return name
++                end)
++                :totable()
++            return matches
++        end,
++    },
+     last = {
+         impl = function(_, opts)
+             if opts.smods.tab ~= -1 then

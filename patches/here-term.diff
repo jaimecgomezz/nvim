@@ -1,0 +1,53 @@
+diff --git a/lua/here-term.lua b/lua/here-term.lua
+index 0af50c3..e099494 100644
+--- a/lua/here-term.lua
++++ b/lua/here-term.lua
+@@ -10,7 +10,13 @@ local function map(mode, combo, mapping, desc)
+   end
+ end
+ 
+-local function return_to_buffer(here_prevbuff, here_termbuff)
++local function return_to_buffer(here_prevbuff, here_prevbufftype, here_termbuff)
++  if here_prevbufftype == "rest_nvim_result" and here_prevbuff ~= here_termbuff then
++    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true))
++    vim.cmd("Rest open")
++    return
++  end
++
+   -- Enter the buffer we were at prior to entering our terminal
+   if vim.fn.buflisted(here_prevbuff) == 1 and here_prevbuff ~= here_termbuff then
+     vim.cmd("buffer" .. here_prevbuff)
+@@ -36,14 +42,14 @@ local function return_to_buffer(here_prevbuff, here_termbuff)
+   end
+ end
+ 
+-local function exit_terminal(here_prevbuff, curbuff, here_termbuff)
++local function exit_terminal(here_prevbuff, here_prevbufftype, curbuff, here_termbuff)
+   -- Prevent creating/entering out terminal if within another terminal, like a
+   -- REPL, Overseer console, Toggleterm, etc
+   if curbuff ~= here_termbuff then
+     return
+   end
+ 
+-  return_to_buffer(here_prevbuff, here_termbuff)
++  return_to_buffer(here_prevbuff, here_prevbufftype, here_termbuff)
+ end
+ 
+ local function enter_terminal(currbuff, here_termbuff)
+@@ -63,13 +69,15 @@ end
+ 
+ M.toggle_terminal = function()
+   local here_prevbuff = vim.g.here_prevbuff
++  local here_prevbufftype = vim.g.here_prevbufftype
+   local here_termbuff = vim.g.here_termbuff
+   local currbuff = vim.api.nvim_get_current_buf()
+ 
+   if vim.bo.buftype == "terminal" then
+-    exit_terminal(here_prevbuff, currbuff, here_termbuff)
++    exit_terminal(here_prevbuff, here_prevbufftype, currbuff, here_termbuff)
+   else
+     vim.g.here_prevbuff = currbuff
++    vim.g.here_prevbufftype = vim.bo.filetype
+     enter_terminal(currbuff, here_termbuff)
+   end
+ end

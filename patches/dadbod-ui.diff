@@ -1,0 +1,14 @@
+diff --git a/ftplugin/redis.vim b/ftplugin/redis.vim
+new file mode 100644
+index 0000000..4edb828
+--- /dev/null
++++ b/ftplugin/redis.vim
+@@ -0,0 +1,8 @@
++if get(g:, 'db_ui_disable_mappings', 0) || get(g:, 'db_ui_disable_mappings_redis', 0)
++  finish
++endif
++
++call db_ui#utils#set_mapping('<Leader>W', '<Plug>(DBUI_SaveQuery)')
++call db_ui#utils#set_mapping('<Leader>E', '<Plug>(DBUI_EditBindParameters)')
++call db_ui#utils#set_mapping('<Leader>S', '<Plug>(DBUI_ExecuteQuery)')
++call db_ui#utils#set_mapping('<Leader>S', '<Plug>(DBUI_ExecuteQuery)', 'v')

@@ -1,0 +1,25 @@
+diff --git a/autoload/db/adapter/rediss.vim b/autoload/db/adapter/rediss.vim
+new file mode 100644
+index 0000000..9503807
+--- /dev/null
++++ b/autoload/db/adapter/rediss.vim
+@@ -0,0 +1,19 @@
++function! db#adapter#rediss#input_extension(...) abort
++  return 'redis'
++endfunction
++
++function! db#adapter#rediss#canonicalize(url) abort
++  return substitute(a:url, '^rediss:/\=/\@!', 'rediss:///', '')
++endfunction
++
++function! db#adapter#rediss#interactive(url) abort
++  return ['redis-cli', '-u', a:url]
++endfunction
++
++function! db#adapter#rediss#auth_input() abort
++  return 'dbsize'
++endfunction
++
++function! db#adapter#rediss#auth_pattern() abort
++  return '(error) ERR operation not permitted'
++endfunction
