@@ -24,7 +24,6 @@ return {
     "rcarriga/cmp-dap",
     "L3MON4D3/LuaSnip",
     "windwp/nvim-autopairs",
-    "ray-x/cmp-treesitter",
   },
   config = function()
     local cmp = require("cmp")
@@ -45,7 +44,6 @@ return {
             luasnip = "[SNIP]",
             buffer = "[BUF]",
             path = "[PATH]",
-            treesitter = "[TREE]",
             ["vim-dadbod-completion"] = "[DB]",
             dap = "[DAP]",
           },
@@ -89,7 +87,6 @@ return {
           end,
         },
         { name = "path" },
-        { name = "treesitter" },
         { name = "nvim_lua" },
       },
       sorting = {
