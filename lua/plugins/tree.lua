@@ -96,10 +96,7 @@ return {
         ["H"] = "actions.parent",
 
         -- Opening
-        ["v"] = "actions.select_vsplit",
-        ["s"] = "actions.select_split",
-        ["t"] = "actions.select_tab",
-        ["p"] = "actions.preview",
+        ["P"] = "actions.preview",
 
         -- cwd
         ["_"] = "actions.open_cwd",
