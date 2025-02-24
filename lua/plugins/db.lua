@@ -1,3 +1,5 @@
+local db_filetypes = { "sql", "redis" }
+
 return {
   {
     "tpope/vim-dadbod",
@@ -11,9 +13,9 @@ return {
       { "<leader>qq", "<CMD> DBUIToggle <CR>", desc = "Toggle DB UI" },
       { "<leader>qf", "<CMD> DBUIFindBuffer <CR>", desc = "Find query in drawer" },
       { "<leader>ql", "<CMD> DBUILastQueryInfo <CR>", desc = "Find query in drawer" },
-      { "<leader>sw", "<Plug>(DBUI_SaveQuery)", desc = "Save query", ft = "sql" },
-      { "<leader>se", "<Plug>(DBUI_EditBindParameters)", desc = "Edit query bind params", ft = "sql" },
-      { "<leader>ss", "<Plug>(DBUI_ExecuteQuery)", desc = "Send query", ft = "sql", mode = { "n", "v" } },
+      { "<leader>sw", "<Plug>(DBUI_SaveQuery)", desc = "Save query", ft = "sql", ft = db_filetypes },
+      { "<leader>se", "<Plug>(DBUI_EditBindParameters)", desc = "Edit query bind params", ft = db_filetypes },
+      { "<leader>ss", "<Plug>(DBUI_ExecuteQuery)", desc = "Send query", mode = { "n", "v" }, ft = db_filetypes },
     },
     init = function()
       vim.g.db_ui_disable_mappings_sql = 1
