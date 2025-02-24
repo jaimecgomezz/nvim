@@ -50,16 +50,16 @@ return {
     {
       "<leader>mm",
       function()
-        require("mind").open_project()
+        require("mind").open_main()
       end,
-      desc = "Open Mind tree",
+      desc = "Open main tree",
     },
     {
       "<leader>mM",
       function()
-        require("mind").open_main()
+        require("mind").open_project()
       end,
-      desc = "Open Mind tree",
+      desc = "Open project tree",
     },
     {
       "<leader>mc",
@@ -84,32 +84,6 @@ return {
             args.save_tree,
             args.opts
           )
-        end)
-      end,
-    },
-    {
-      "<leader>mi",
-      function()
-        require("mind").wrap_smart_project_tree_fn(function(args)
-          local tree = args.get_tree()
-          local mind_node = require("mind.node")
-
-          local _, tasks = mind_node.get_node_by_path(tree, "/tasks", true)
-          tasks.icon = "󰗇 "
-
-          local _, backlog = mind_node.get_node_by_path(tree, "/tasks/backlog", true)
-          backlog.icon = ""
-
-          local _, on_going = mind_node.get_node_by_path(tree, "/tasks/progress", true)
-          on_going.icon = " "
-
-          local _, done = mind_node.get_node_by_path(tree, "/tasks/done", true)
-          done.icon = " "
-
-          local _, notes = mind_node.get_node_by_path(tree, "/notes", true)
-          notes.icon = " "
-
-          args.save_tree()
         end)
       end,
     },
