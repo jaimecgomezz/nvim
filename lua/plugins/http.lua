@@ -62,13 +62,12 @@ return {
     vim.filetype.add({ extension = { ["http"] = "http" } })
   end,
   keys = {
-    { "<leader>ss", "<CMD> Rest send <CR>", desc = "Run request under cursor" },
-    { "<leader>sS", "<CMD> Rest run <CR>", desc = "Run names request" },
     { "<C-'>", toggle_rest, desc = "Open results pane", mode = { "n", "i", "t" } },
-    { "<leader>sp", "<CMD> Rest last <CR>", desc = "Run previous request" },
-    { "<leader>sl", "<CMD> Rest logs <CR>", desc = "Open rest logs" },
-    { "<leader>sc", "<CMD> Rest cookies <CR>", desc = "Open rest cookies" },
-    { "<leader>se", "<CMD> Rest env <CR>", desc = "Open rest env" },
-    { "<leader>sE", "<CMD> Rest env select <CR>", desc = "Set rest env" },
+    { "<leader>ss", "<CMD> Rest send <CR>", desc = "Run request under cursor", ft = "http" },
+    { "<leader>sS", "<CMD> Rest run <CR>", desc = "Run names request", ft = "http" },
+    { "<leader>sp", "<CMD> Rest last <CR>", desc = "Run previous request", ft = "http" },
+    { "<leader>sl", "<CMD> Rest logs <CR>", desc = "Open rest logs", ft = "http" },
+    { "<leader>sc", "<CMD> Rest cookies <CR>", desc = "Open rest cookies", ft = "http" },
+    { "<leader>se", "<CMD> Rest env select <CR>", desc = "Open rest env", ft = "http" },
   },
 }
