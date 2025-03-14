@@ -12,3 +12,6 @@ require("rdr")
 
 -- Lazy package manaer and plugins
 require("lzy")
+
+-- Autochdir
+require("acd")

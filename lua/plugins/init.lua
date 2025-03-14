@@ -74,14 +74,6 @@ return {
     end,
   },
   {
-    "airblade/vim-rooter",
-    init = function()
-      vim.g.rooter_buftypes = { "" }
-      vim.g.rooter_patterns = { ".git", "!^tmp" }
-      vim.g.rooter_change_directory_for_non_project_files = "current"
-    end,
-  },
-  {
     "chrishrb/gx.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = { "Browse" },
