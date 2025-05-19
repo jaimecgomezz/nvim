@@ -1,3 +1,23 @@
+local function pick_and_run(cb)
+  local dirs = vim.split(vim.fn.glob("~/zk/*/"), '\n', { trimempty = true })
+  vim.ui.select(dirs, {
+    format_item = function(item)
+      local name = item
+
+      for match in string.gmatch(item, "([^/]+)") do
+        name = match
+      end
+
+      return name
+    end
+  }, function(choice)
+    if choice ~= nil and choice ~= '' then
+      vim.fn.setenv('ZK_NOTEBOOK_DIR', choice)
+      cb()
+    end
+  end)
+end
+
 return {
   "zk-org/zk-nvim",
   config = function()
@@ -30,11 +50,13 @@ return {
     {
       "<leader>zn",
       function()
-        local title = vim.fn.input("Title: ")
+        pick_and_run(function()
+          local title = vim.fn.input("Title: ")
 
-        if title and title ~= "" then
-          require("zk.commands").get("ZkNew")({ dir = "notes", title = title })
-        end
+          if title and title ~= "" then
+            require("zk.commands").get("ZkNew")({ dir = "notes", title = title })
+          end
+        end)
       end,
       desc = "New note",
     },
