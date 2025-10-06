@@ -1,4 +1,4 @@
--- Options and global configurations
+-- Options and global conuigurations
 require("set")
 
 -- Mappings and general utilities
