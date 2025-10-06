@@ -61,3 +61,14 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.buflisted = false
   end,
 })
+
+-- Silence W10 (Changing a read-only file)
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.schedule(function()
+      if vim.bo.buftype == "nofile" then
+        vim.cmd("set noro")
+      end
+    end)
+  end,
+})
