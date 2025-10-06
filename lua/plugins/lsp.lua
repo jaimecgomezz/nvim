@@ -19,11 +19,20 @@ local on_attach = function(_, bufnr)
   local opts = { buffer = bufnr, remap = false, silent = true }
 
   vim.keymap.set("n", "K", function()
-    vim.lsp.buf.hover()
+    vim.lsp.buf.hover({
+      border = "single",
+      max_width = 80,
+      max_height = 20,
+    })
   end, vim.tbl_deep_extend("force", opts, { desc = "LSP Hover" }))
 
   vim.keymap.set("i", "<C-s>", function()
-    vim.lsp.buf.signature_help()
+    vim.lsp.buf.signature_help({
+      border = "single",
+      title = "hover",
+      max_width = 80,
+      max_height = 20,
+    })
   end, { desc = "LSP signature help" })
 
   vim.keymap.set("n", "<Esc>", function()
@@ -103,22 +112,6 @@ return {
 
       local opts = {
         on_attach = on_attach,
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
-        handlers = {
-          ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-            border = "single",
-            title = "hover",
-            max_width = 80,
-            max_height = 20,
-          }),
-
-          ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-            border = "single",
-            title = "hover",
-            max_width = 80,
-            max_height = 20,
-          }),
-        },
       }
 
       lspconfig.clangd.setup(opts)
