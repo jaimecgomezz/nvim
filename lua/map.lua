@@ -39,8 +39,8 @@ vim.keymap.set("n", "<localleader>w", function()
   vim.o.wrap = wrap
   vim.o.textwidth = wrap and 0 or 80
 end, { desc = "Toggle wrap" })
-vim.keymap.set("n", "j", "gjzz", { desc = "Move to line below" })
-vim.keymap.set("n", "k", "gkzz", { desc = "Move to line below" })
+vim.keymap.set({ "n", "v" }, "j", "gj", { desc = "Move to line below" })
+vim.keymap.set({ "n", "v" }, "k", "gk", { desc = "Move to line below" })
 
 -- Toggle numbers
 vim.keymap.set("n", "<localleader>n", function()
