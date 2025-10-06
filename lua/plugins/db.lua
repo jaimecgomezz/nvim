@@ -1,4 +1,4 @@
-local db_filetypes = { "sql", "redis" }
+local db_filetypes = { "sql", "redis", "mysql" }
 
 return {
   {
@@ -24,7 +24,6 @@ return {
       vim.g.db_ui_show_database_icon = 1
       vim.g.db_ui_execute_on_save = 0
       vim.g.db_ui_use_nerd_fonts = 1
-      vim.g.db_ui_show_database_icon = 1
       vim.g.db_ui_hide_schemas = { "pg_catalog", "pg_toast_temp.*" }
     end,
   },
