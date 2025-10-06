@@ -1,144 +1,132 @@
--- sources:
---      - https://github.com/catgoose/nvim/blob/main/lua/plugins/cmp.lua
-
-local buffer_source = {
-  name = "buffer",
-  option = {
-    get_bufnrs = function()
-      return vim.api.nvim_list_bufs()
-    end,
-  },
-}
-
 return {
-  "hrsh7th/nvim-cmp",
+  "saghen/blink.cmp",
+  version = "1.*",
   dependencies = {
-    "onsails/lspkind.nvim",
-    "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
-    "rcarriga/cmp-dap",
-    "L3MON4D3/LuaSnip",
-    "windwp/nvim-autopairs",
+    { "rafamadriz/friendly-snippets" },
+    { "L3MON4D3/LuaSnip", version = "v2.*" },
   },
-  config = function()
-    local cmp = require("cmp")
-    local lspkind = require("lspkind")
+  opts = {
+    keymap = {
+      preset = "none",
+      ["<C-space>"] = { "show", "hide" },
+      ["<C-e>"] = { "hide", "fallback" },
+      ["<CR>"] = { "accept", "fallback" },
 
-    cmp.setup({
-      preselect = cmp.PreselectMode.None,
+      -- Movement
+      ["<Tab>"] = { "select_next", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
+
+      ["<Up>"] = { "select_prev", "fallback" },
+      ["<Down>"] = { "select_next", "fallback" },
+
+      ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+    },
+
+    appearance = {
+      nerd_font_variant = "mono",
+    },
+
+    completion = {
+      accept = {
+        auto_brackets = {
+          enabled = true,
+        },
+      },
+      list = {
+        selection = {
+          preselect = false,
+          auto_insert = true,
+        },
+      },
+      menu = {
+        border = "single",
+        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+        zindex = 1001,
+        scrolloff = 0,
+        col_offset = 0,
+        side_padding = 1,
+        scrollbar = true,
+        draw = {
+          treesitter = { "lsp" },
+          columns = { { "label", gap = 1 }, { "kind_icon", "kind" } },
+          components = {
+            kind_icon = {
+              text = function(ctx)
+                return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+              end,
+              highlight = "BlinkCmpMenu",
+            },
+            kind = {
+              highlight = "BlinkCmpMenu",
+            },
+          },
+        },
+      },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 0,
+        treesitter_highlighting = true,
+        window = {
+          border = "single",
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+        },
+      },
+    },
+
+    sources = {
+      default = { "lsp", "path", "snippets", "buffer" },
+      per_filetype = {
+        sql = { "dadbod", "snippets", "buffer" },
+      },
+      providers = {
+        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+        lsp = { fallbacks = {} },
+      },
+    },
+
+    fuzzy = {
+      implementation = "rust",
+      fuzzy = {
+        sorts = {
+          "exact",
+          "score",
+          "sort_text",
+        },
+      },
+    },
+
+    cmdline = {
+      enabled = true,
+      sources = function()
+        local type = vim.fn.getcmdtype()
+
+        -- Search forward and backward
+        if type == "/" or type == "?" then
+          return { "buffer" }
+        end
+
+        -- Commands
+        if type == ":" or type == "@" then
+          return { "cmdline", "buffer" }
+        end
+
+        return {}
+      end,
       completion = {
-        completeopt = "menu,menuone,noselect,noinsert",
-      },
-      formatting = {
-        format = lspkind.cmp_format({
-          mode = "symbol_text",
-          ellipsis_char = "...",
-          menu = {
-            nvim_lsp = "[LSP]",
-            nvim_lua = "[LUA]",
-            luasnip = "[SNIP]",
-            buffer = "[BUF]",
-            path = "[PATH]",
-            ["vim-dadbod-completion"] = "[DB]",
-            dap = "[DAP]",
-          },
-        }),
-      },
-      snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body)
-        end,
-      },
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      },
-      view = {
-        entries = {
-          name = "custom",
-          follow_cursor = true,
-        },
-      },
-      sources = {
-        {
-          name = "nvim_lsp",
-        },
-        {
-          name = "luasnip",
-          option = { use_show_condition = true },
-          entry_filter = function()
-            local context = require("cmp.config.context")
-            return not context.in_treesitter_capture("string") and not context.in_syntax_group("String")
-          end,
-        },
-        buffer_source,
-        {
-          name = "lazydev",
-          entry_filter = function()
-            if vim.bo.filetype ~= "lua" then
-              return false
-            end
-            return true
-          end,
-        },
-        { name = "path" },
-        { name = "nvim_lua" },
-      },
-      sorting = {
-        priority_weight = 2,
-        comparators = {
-          cmp.config.compare.offset,
-          cmp.config.compare.exact,
-          cmp.config.compare.score,
-          cmp.config.compare.recently_used,
-          cmp.config.compare.kind,
-          cmp.config.compare.sort_text,
-          cmp.config.compare.length,
-          cmp.config.compare.order,
-        },
-      },
-      mapping = {
-        ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-      },
-    })
-
-    -- `:` cmdline setup.
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "path" },
-      }, {
-        {
-          name = "cmdline",
-          option = {
-            ignore_cmds = { "Man", "!" },
+        list = {
+          selection = {
+            preselect = true,
+            auto_insert = true,
           },
         },
-      }),
-    })
-
-    cmp.setup.filetype({ "sql" }, {
-      sources = {
-        { name = "vim-dadbod-completion" },
-        { name = "nvim_lsp" },
-        buffer_source,
       },
-    })
+    },
 
-    cmp.setup.filetype({ "dap-repl", "dapui_watches" }, {
-      sources = cmp.config.sources({
-        { name = "dap" },
-        buffer_source,
-      }),
-    })
+    snippets = {
+      preset = "luasnip",
+    },
+  },
 
-    cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
-  end,
+  opts_extend = { "sources.default" },
 }
