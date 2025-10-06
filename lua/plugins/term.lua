@@ -8,10 +8,14 @@ return {
     "willothy/flatten.nvim",
     priority = 1001,
     opts = function()
+      ---@type Terminal?
       local saved_terminal
 
       return {
-        callbacks = {
+        window = {
+          open = "current",
+        },
+        hooks = {
           should_block = function(argv)
             return vim.tbl_contains(argv, "-b") or vim.tbl_contains(argv, "-d")
           end,
